@@ -1,18 +1,18 @@
 import { z } from "zod"
 
-export const PRODUCTION_EXTENSION_ENV_DEFAULTS = {
-  WXT_API_URL: "https://api.readfrog.app",
-  WXT_WEBSITE_URL: "https://www.readfrog.app",
-  WXT_OFFICIAL_SITE_ORIGINS: "https://readfrog.app,https://www.readfrog.app",
-  WXT_AUTH_COOKIE_DOMAINS: "readfrog.app",
-} as const
-
+// Fallbacks for development only. A production build must name its own backend
+// explicitly (see findMissingProductionEnv), so nothing ships pointing at a
+// server we do not run.
 export const LOCAL_EXTENSION_ENV_DEFAULTS = {
   WXT_API_URL: "https://localhost:4433",
   WXT_WEBSITE_URL: "https://localhost:8877",
   WXT_OFFICIAL_SITE_ORIGINS: "http://localhost:8888,https://localhost:8877",
   WXT_AUTH_COOKIE_DOMAINS: "localhost",
 } as const
+
+export const REQUIRED_PRODUCTION_ENV_KEYS = Object.keys(
+  LOCAL_EXTENSION_ENV_DEFAULTS,
+) as (keyof typeof LOCAL_EXTENSION_ENV_DEFAULTS)[]
 
 type RawEnvValue = string | boolean | undefined
 export type RawExtensionEnv = Record<string, RawEnvValue>
@@ -100,9 +100,9 @@ export const LOCAL_PACKAGES_DEDUPE = [
 ]
 
 export function resolveExtensionEnv(rawEnv: RawExtensionEnv) {
-  const defaults = isLocalPackagesEnabled(rawEnv)
-    ? LOCAL_EXTENSION_ENV_DEFAULTS
-    : PRODUCTION_EXTENSION_ENV_DEFAULTS
+  // Still parsed so a malformed WXT_USE_LOCAL_PACKAGES fails early.
+  isLocalPackagesEnabled(rawEnv)
+  const defaults = LOCAL_EXTENSION_ENV_DEFAULTS
 
   return {
     ...rawEnv,
@@ -112,6 +112,14 @@ export function resolveExtensionEnv(rawEnv: RawExtensionEnv) {
       rawEnv.WXT_OFFICIAL_SITE_ORIGINS ?? defaults.WXT_OFFICIAL_SITE_ORIGINS,
     WXT_AUTH_COOKIE_DOMAINS: rawEnv.WXT_AUTH_COOKIE_DOMAINS ?? defaults.WXT_AUTH_COOKIE_DOMAINS,
   }
+}
+
+/** The backend URLs a production build was given no value for. */
+export function findMissingProductionEnv(rawEnv: RawExtensionEnv) {
+  return REQUIRED_PRODUCTION_ENV_KEYS.filter((key) => {
+    const value = rawEnv[key]
+    return typeof value !== "string" || value.trim() === ""
+  })
 }
 
 export function createExtensionClientEnvSchema(isProd: boolean, skipRequiredProductionEnv = false) {
@@ -127,8 +135,9 @@ export function createExtensionClientEnvSchema(isProd: boolean, skipRequiredProd
       .string()
       .transform((value, ctx) => parseCommaSeparatedEntries(value, ctx, strictCookieDomainSchema)),
     WXT_GOOGLE_CLIENT_ID: requiresProductionEnv ? z.string().min(1) : optionalNonEmptyStringSchema,
-    WXT_POSTHOG_HOST: requiresProductionEnv ? strictUrlSchema : optionalStrictUrlSchema,
-    WXT_POSTHOG_API_KEY: requiresProductionEnv ? z.string().min(1) : optionalNonEmptyStringSchema,
+    // Optional: analytics stay off unless both are set.
+    WXT_POSTHOG_HOST: optionalStrictUrlSchema,
+    WXT_POSTHOG_API_KEY: optionalNonEmptyStringSchema,
     WXT_POSTHOG_TEST_UUID: optionalNonEmptyStringSchema,
     WXT_ANALYTICS_DAILY_FEATURE_CACHE_ENABLED: rawBooleanSchema.default(false),
   } satisfies Record<string, z.ZodType>

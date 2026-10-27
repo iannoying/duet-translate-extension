@@ -188,7 +188,7 @@ function renderWhatsNewFooter() {
 const latestBlogPost = {
   date: new Date("2026-03-20T12:00:00.000Z"),
   description: "Latest updates",
-  imageUrl: "https://www.readfrog.app/blog/landing-page-refresh/cover-en.png",
+  imageUrl: "https://www.app.test/blog/landing-page-refresh/cover-en.png",
   title: "Spring release",
   url: "/blog/spring-release",
 }
@@ -216,7 +216,7 @@ describe("whatsNewFooter", () => {
     await waitFor(() => {
       expect(getBlogLocaleFromUILanguageMock).toHaveBeenCalledWith("zh-CN")
       expect(getLatestBlogDateMock).toHaveBeenCalledWith(
-        "https://www.readfrog.app/api/blog/latest",
+        "https://www.app.test/api/blog/latest",
         "zh",
         expect.stringMatching(/^\d+\.\d+\.\d+$/),
       )
@@ -272,7 +272,7 @@ describe("whatsNewFooter", () => {
   })
 
   it("uses the override URL for the latest blog title and image links", async () => {
-    const urlOverride = "https://www.readfrog.app"
+    const urlOverride = "https://www.app.test"
     getLatestBlogDateMock.mockResolvedValue({ ...latestBlogPost, urlOverride })
     getLastViewedBlogDateMock.mockResolvedValue(latestBlogPost.date)
     saveLastViewedBlogDateMock.mockResolvedValue(undefined)

@@ -113,7 +113,7 @@ describe("blogNotification", () => {
     await waitFor(() => {
       expect(getBlogLocaleFromUILanguageMock).toHaveBeenCalledWith("zh-CN")
       expect(getLatestBlogDateMock).toHaveBeenCalledWith(
-        "https://www.readfrog.app/api/blog/latest",
+        "https://www.app.test/api/blog/latest",
         "zh",
         expect.stringMatching(/^\d+\.\d+\.\d+$/),
       )

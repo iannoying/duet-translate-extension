@@ -24,6 +24,13 @@ export default defineConfig({
       // @vitest-environment-options pragmas still override this.
       jsdom: { url: "https://neutral-test.example/" },
     },
+    // Pin the backend env so tests never depend on the localhost dev fallbacks.
+    env: {
+      WXT_API_URL: "https://api.app.test",
+      WXT_WEBSITE_URL: "https://www.app.test",
+      WXT_OFFICIAL_SITE_ORIGINS: "https://app.test,https://www.app.test",
+      WXT_AUTH_COOKIE_DOMAINS: "app.test",
+    },
     globals: true,
     setupFiles: "vitest.setup.ts",
     watch: false,
