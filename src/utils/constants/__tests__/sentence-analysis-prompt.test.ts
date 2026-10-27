@@ -1,13 +1,13 @@
 import { readFile } from "node:fs/promises"
-import { compileLayout, renderLayoutHtml } from "@read-frog/layout-engine/core"
+import { describe, expect, it } from "vitest"
+import { compileLayout, renderLayoutHtml } from "@/layout-engine/core"
 import {
   SENTENCE_ANALYSIS_CLAUSE_KINDS,
   SENTENCE_ANALYSIS_FORMS,
   SENTENCE_ANALYSIS_OBSTACLES,
   SENTENCE_ANALYSIS_ROLES,
   SENTENCE_ANALYSIS_SENSES,
-} from "@read-frog/layout-engine/presets"
-import { describe, expect, it } from "vitest"
+} from "@/layout-engine/presets"
 import { SUPPORTED_UI_LOCALES } from "@/utils/i18n/locales"
 import { buildCustomActionLayoutScope } from "@/utils/layout-host/host"
 

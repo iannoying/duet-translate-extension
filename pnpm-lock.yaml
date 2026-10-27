@@ -238,6 +238,9 @@ importers:
       '@base-ui/react':
         specifier: ^1.9.0
         version: 1.9.0(@date-fns/tz@1.5.0)(@types/react@19.3.0)(date-fns@4.4.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@codemirror/autocomplete':
+        specifier: ^6.19.1
+        version: 6.19.1
       '@codemirror/lang-css':
         specifier: ^6.3.1
         version: 6.3.1
@@ -247,6 +250,9 @@ importers:
       '@codemirror/lang-liquid':
         specifier: ^6.3.3
         version: 6.3.3
+      '@codemirror/language':
+        specifier: ^6.12.3
+        version: 6.12.3
       '@codemirror/lint':
         specifier: ^6.9.7
         version: 6.9.7
@@ -295,9 +301,6 @@ importers:
       '@read-frog/definitions':
         specifier: 0.11.0
         version: 0.11.0
-      '@read-frog/layout-engine':
-        specifier: 0.5.0
-        version: 0.5.0(@codemirror/lang-liquid@6.3.3)(@codemirror/lint@6.9.7)(@codemirror/state@6.7.6)(@codemirror/view@6.43.14)(dompurify@3.4.16)(liquidjs@10.30.0)(morphdom@2.7.8)(react@19.3.0)
       '@remixicon/react':
         specifier: ^4.9.0
         version: 4.9.0(react@19.3.0)
@@ -2476,33 +2479,6 @@ packages:
 
   '@read-frog/definitions@0.11.0':
     resolution: {integrity: sha512-wzW9QA0NgtHfAjn+LiePl8GCVPaqIgDpqtegzn+eOHoBxiEZKtvAR56hfb8tCNPiMaPLHEoN7BiquRFJqinTiA==}
-
-  '@read-frog/layout-engine@0.5.0':
-    resolution: {integrity: sha512-EmPrzJ+YBYxyGUM4p3EQCT4U9sSGUUWMpIHPfmu4zKsBKPuMVhSy3tPv8aL1giEAZweD8kvCl7xJKCHUA1CWQA==}
-    peerDependencies:
-      '@codemirror/lang-liquid': ^6.3.3
-      '@codemirror/lint': ^6.9.7
-      '@codemirror/state': ^6.7.6
-      '@codemirror/view': ^6.43.14
-      dompurify: ^3.4.16
-      liquidjs: ~10.30.0
-      morphdom: ^2.7.8
-      react: ^19.3.0
-    peerDependenciesMeta:
-      '@codemirror/lang-liquid':
-        optional: true
-      '@codemirror/lint':
-        optional: true
-      '@codemirror/state':
-        optional: true
-      '@codemirror/view':
-        optional: true
-      dompurify:
-        optional: true
-      morphdom:
-        optional: true
-      react:
-        optional: true
 
   '@remix-run/route-pattern@0.22.1':
     resolution: {integrity: sha512-czdGJWh09Lapvcqt7Vb09KlrU2PhRJ8xQaI+AItTuD9aDJ5MAgxnS38lnys6Ll+6RJEqPiaUqTwIQhVLwFvv+w==}
@@ -9152,18 +9128,6 @@ snapshots:
     dependencies:
       temporal-polyfill: 1.0.5
       zod: 4.6.5
-
-  '@read-frog/layout-engine@0.5.0(@codemirror/lang-liquid@6.3.3)(@codemirror/lint@6.9.7)(@codemirror/state@6.7.6)(@codemirror/view@6.43.14)(dompurify@3.4.16)(liquidjs@10.30.0)(morphdom@2.7.8)(react@19.3.0)':
-    dependencies:
-      liquidjs: 10.30.0
-    optionalDependencies:
-      '@codemirror/lang-liquid': 6.3.3
-      '@codemirror/lint': 6.9.7
-      '@codemirror/state': 6.7.6
-      '@codemirror/view': 6.43.14
-      dompurify: 3.4.16
-      morphdom: 2.7.8
-      react: 19.3.0
 
   '@remix-run/route-pattern@0.22.1': {}
 

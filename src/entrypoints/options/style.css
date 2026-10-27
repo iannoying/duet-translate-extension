@@ -4,7 +4,7 @@ body {
 }
 
 /* Field pills in the custom action Layout editor
-   (@read-frog/layout-engine/codemirror): a tint of the accent, like the
+   (src/layout-engine/codemirror.ts): a tint of the accent, like the
    website's card template editor. */
 :root {
   --rf-field-pill-background: color-mix(in oklab, var(--rf-accent) 16%, transparent);

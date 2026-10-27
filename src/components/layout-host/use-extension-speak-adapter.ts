@@ -1,4 +1,4 @@
-import type { LayoutSpeakOptions, SpeakAdapter, SpeakLabels } from "@read-frog/layout-engine/dom"
+import type { LayoutSpeakOptions, SpeakAdapter, SpeakLabels } from "@/layout-engine/dom"
 import type { SurfaceByFeature } from "@/types/analytics"
 import type { TTSConfig } from "@/types/config/tts"
 import { speechLanguageFromTag } from "@read-frog/definitions"
