@@ -1,5 +1,5 @@
-import { AUTH_BASE_PATH } from "@read-frog/definitions"
 import { createAuthClient } from "better-auth/client"
+import { AUTH_BASE_PATH } from "@/definitions"
 import { env } from "@/env"
 
 // Background scripts can fetch the API directly. UI authClient intentionally

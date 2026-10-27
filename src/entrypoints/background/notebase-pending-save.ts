@@ -16,8 +16,8 @@ import type {
   PendingNotebaseSave,
   PendingNotebaseSaveActionStatus,
 } from "@/utils/notebase/pending-save"
-import { AUTH_COOKIE_PATTERNS } from "@read-frog/definitions"
 import { browser } from "#imports"
+import { AUTH_COOKIE_PATTERNS } from "@/definitions"
 import { env } from "@/env"
 import { buildFeatureUsedEventProperties } from "@/utils/analytics"
 import { classifyFailureReason } from "@/utils/analytics-failure-reason"

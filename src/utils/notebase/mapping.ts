@@ -3,7 +3,6 @@ import type {
   NotebaseGetSchemaOutput,
   NotebaseRowCreateInput,
 } from "@read-frog/api-contract"
-import type { NotebaseColumnConfig } from "@read-frog/definitions"
 import type {
   SelectionToolbarCustomAction,
   SelectionToolbarCustomActionNotebaseConnection,
@@ -56,13 +55,19 @@ export function createNotebaseMapping(
   }
 }
 
-export function isSupportedNotebaseColumnConfig(config: NotebaseColumnConfig) {
+// Only a column's type matters here, so any column config will do.
+interface ColumnTypeOnly {
+  readonly type: string
+  readonly [setting: string]: unknown
+}
+
+export function isSupportedNotebaseColumnConfig(config: ColumnTypeOnly) {
   return config.type === "string" || config.type === "number"
 }
 
 export function isNotebaseMappingCompatible(
   localType: SelectionToolbarCustomActionOutputType,
-  notebaseColumnConfig: NotebaseColumnConfig,
+  notebaseColumnConfig: ColumnTypeOnly,
 ) {
   return (
     isSupportedNotebaseColumnConfig(notebaseColumnConfig) && localType === notebaseColumnConfig.type

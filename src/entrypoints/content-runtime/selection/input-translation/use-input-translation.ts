@@ -1,4 +1,4 @@
-import type { LangCodeISO6393 } from "@read-frog/definitions"
+import type { LangCodeISO6393 } from "@/definitions"
 import { useAtomValue } from "jotai"
 import { useCallback, useEffect, useRef } from "react"
 import { toastManager } from "@/components/ui/base-ui/toast"

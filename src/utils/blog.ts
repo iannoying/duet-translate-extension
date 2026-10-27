@@ -1,11 +1,11 @@
-import type { LatestBlogPost } from "@read-frog/definitions"
+import type { LatestBlogPost } from "@/definitions"
 import type { UiLanguage } from "@/types/config/config"
+import { browser, storage } from "#imports"
 import {
   bilibiliVideoUrlSchema,
   getBilibiliVideoIdFromUrl,
   latestBlogResponseSchema,
-} from "@read-frog/definitions"
-import { browser, storage } from "#imports"
+} from "@/definitions"
 import { logger } from "./logger"
 import { sendMessage } from "./message"
 
@@ -26,9 +26,9 @@ const BLOG_LOCALE_BY_PRIMARY_LANGUAGE: Partial<Record<string, BlogLocale>> = {
   vi: "vi",
 }
 
-// Wire schema and bilibili helpers live in @read-frog/definitions, shared with
+// Wire schema and bilibili helpers live in @/definitions, shared with
 // the www route that serves /api/blog/latest.
-export type { LatestBlogPost } from "@read-frog/definitions"
+export type { LatestBlogPost } from "@/definitions"
 
 /**
  * Saves the last viewed blog date to Chrome storage

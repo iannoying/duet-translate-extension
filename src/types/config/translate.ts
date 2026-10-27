@@ -1,5 +1,5 @@
-import { langCodeISO6393Schema } from "@read-frog/definitions"
 import { z } from "zod"
+import { langCodeISO6393Schema } from "@/definitions"
 import { DEFAULT_NODE_TRANSLATION_SHORTCUT_KEY, HOTKEYS } from "@/utils/constants/hotkeys"
 import {
   BUILT_IN_PAGE_TRANSLATE_PROMPT_IDS,

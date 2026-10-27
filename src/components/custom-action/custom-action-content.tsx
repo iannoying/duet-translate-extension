@@ -1,4 +1,4 @@
-import type { LangCodeISO6393 } from "@read-frog/definitions"
+import type { LangCodeISO6393 } from "@/definitions"
 import type { LayoutStatus } from "@/layout-engine/contract"
 import type { SurfaceByFeature } from "@/types/analytics"
 import type { ThinkingSnapshot } from "@/types/background-stream"

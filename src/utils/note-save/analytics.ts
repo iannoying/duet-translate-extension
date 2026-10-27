@@ -1,4 +1,4 @@
-import type { NoteSaveSurface } from "@read-frog/definitions"
+import type { NoteSaveSurface } from "@/definitions"
 import type { AnalyticsFailureReason, NoteSavePath, SurfaceByFeature } from "@/types/analytics"
 import type { FeatureUsedEventInput } from "@/utils/analytics"
 import { ANALYTICS_FEATURE } from "@/types/analytics"

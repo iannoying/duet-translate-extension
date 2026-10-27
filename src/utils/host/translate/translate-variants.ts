@@ -1,4 +1,4 @@
-import type { LangCodeISO6393 } from "@read-frog/definitions"
+import type { LangCodeISO6393 } from "@/definitions"
 import type { HostedAiTextStreamRoute } from "@/types/background-stream"
 import type { Config, InputTranslationLang } from "@/types/config/config"
 import type { TranslateProviderConfig } from "@/types/config/provider"

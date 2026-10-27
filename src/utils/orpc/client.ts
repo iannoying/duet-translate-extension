@@ -2,7 +2,7 @@ import type { ExtensionORPCClient, ExtensionORPCClientContext } from "./client-c
 import { createORPCClient } from "@orpc/client"
 import { RPCLink } from "@orpc/client/fetch"
 import { createTanstackQueryUtils } from "@orpc/tanstack-query"
-import { ORPC_PREFIX } from "@read-frog/definitions"
+import { ORPC_PREFIX } from "@/definitions"
 import { env } from "@/env"
 import { normalizeHeaders } from "../http"
 import { sendMessage } from "../message"

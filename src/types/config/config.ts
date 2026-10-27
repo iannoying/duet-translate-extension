@@ -1,5 +1,5 @@
-import { langCodeISO6393Schema, langLevel } from "@read-frog/definitions"
 import { z } from "zod"
+import { langCodeISO6393Schema, langLevel } from "@/definitions"
 import {
   BUILT_IN_ACTION_IDS,
   BUILT_IN_ACTION_KEYS,

@@ -1,6 +1,6 @@
-import type { LangCodeISO6393 } from "@read-frog/definitions"
+import type { LangCodeISO6393 } from "@/definitions"
 import type { GlossaryTargetLang } from "@/utils/glossary/target-language"
-import { langCodeISO6393Schema } from "@read-frog/definitions"
+import { langCodeISO6393Schema } from "@/definitions"
 import { ALL_LANGUAGES } from "@/utils/glossary/target-language"
 import { getLanguageLabel, getLanguageName } from "@/utils/language-labels"
 

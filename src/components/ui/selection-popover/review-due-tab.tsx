@@ -1,4 +1,4 @@
-import type { ReviewEntrySource } from "@read-frog/definitions"
+import type { ReviewEntrySource } from "@/definitions"
 import { useQuery } from "@tanstack/react-query"
 import { domAnimation, LazyMotion, m, useReducedMotion } from "motion/react"
 import { ArrowUpRightIcon } from "@/components/icons/arrow-up-right-icon"

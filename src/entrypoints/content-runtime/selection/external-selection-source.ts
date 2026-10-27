@@ -1,7 +1,5 @@
-import type {
-  EbookBridgeExtensionHandshake,
-  EbookBridgeSelectionPayload,
-} from "@read-frog/definitions"
+import type { EbookBridgeExtensionHandshake, EbookBridgeSelectionPayload } from "@/definitions"
+import { browser } from "#imports"
 import {
   EBOOK_BRIDGE_EXTENSION_SOURCE,
   EBOOK_BRIDGE_HANDSHAKE_TYPE,
@@ -9,8 +7,7 @@ import {
   EBOOK_BRIDGE_SELECTION_CLEARED_TYPE,
   EBOOK_SELECTION_BRIDGE_PROTOCOL_VERSION,
   ebookBridgePageMessageSchema,
-} from "@read-frog/definitions"
-import { browser } from "#imports"
+} from "@/definitions"
 import { env } from "@/env"
 import {
   EXTERNAL_SELECTION_CLEAR_EVENT,

@@ -76,7 +76,6 @@
     "@orpc/tanstack-query": "^1.15.5",
     "@radix-ui/react-slot": "^1.4.0",
     "@read-frog/api-contract": "0.23.0",
-    "@read-frog/definitions": "0.11.0",
     "@remixicon/react": "^4.9.0",
     "@t3-oss/env-core": "^0.13.11",
     "@tabler/icons-react": "^3.49.0",

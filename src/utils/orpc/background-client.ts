@@ -1,7 +1,7 @@
 import type { ExtensionORPCClient, ExtensionORPCClientContext } from "./client-context"
 import { createORPCClient } from "@orpc/client"
 import { RPCLink } from "@orpc/client/fetch"
-import { ORPC_PREFIX } from "@read-frog/definitions"
+import { ORPC_PREFIX } from "@/definitions"
 import { env } from "@/env"
 import { buildExtensionORPCHeaders } from "./client-context"
 

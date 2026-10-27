@@ -1,4 +1,4 @@
-import type { LangCodeISO6393 } from "@read-frog/definitions"
+import type { LangCodeISO6393 } from "@/definitions"
 import type { SelectionToolbarCustomActionOutputField } from "@/types/config/selection-toolbar"
 import type { SupportedUiLocale } from "@/utils/i18n/locales"
 import { describe, expect, it } from "vitest"
