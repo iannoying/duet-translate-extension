@@ -40,12 +40,15 @@ export function StoreReviewPrompt() {
     await queryClient.invalidateQueries({ queryKey: STORE_REVIEW_PROMPT_QUERY_KEY })
   }
 
+  const reviewUrl = getReviewUrl("popup-prompt")
+
   const handleRate = async () => {
-    window.open(getReviewUrl("popup-prompt"), "_blank", "noopener,noreferrer")
+    window.open(reviewUrl, "_blank", "noopener,noreferrer")
     await dismiss()
   }
 
-  if (!shouldShow) return null
+  // Nothing to ask for until the store this copy came from has a listing.
+  if (!shouldShow || !reviewUrl) return null
 
   return (
     <div className="absolute inset-x-4 bottom-3 z-10 flex flex-col gap-2 rounded-lg border border-accent/40 bg-background px-3 py-2.5 shadow-md">

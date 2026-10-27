@@ -4416,7 +4416,7 @@
   },
   {
     "id": "readfrog-youtube",
-    "description": "Skip YouTube chrome, metadata, and Read Frog subtitle UI",
+    "description": "Skip YouTube chrome, metadata, and our subtitle UI",
     "matches": "www.youtube.com",
     "excludeSelectors": [
       "#masthead-container *",

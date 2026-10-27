@@ -1,10 +1,15 @@
-import type { ExtensionStatusResponse } from "@read-frog/definitions"
-import {
-  EXTENSION_STATUS_REQUEST_SOURCE,
-  EXTENSION_STATUS_REQUEST_TYPE,
-  EXTENSION_STATUS_RESPONSE_SOURCE,
-  EXTENSION_STATUS_RESPONSE_TYPE,
-} from "@read-frog/definitions"
+import type { ExtensionStatusResponse as UpstreamExtensionStatusResponse } from "@read-frog/definitions"
+import { BRAND } from "@/utils/constants/brand"
+
+// The website's guide pages ask whether the extension is installed with these.
+const EXTENSION_STATUS_REQUEST_SOURCE = `${BRAND.slug}-page`
+const EXTENSION_STATUS_RESPONSE_SOURCE = `${BRAND.slug}-ext`
+const EXTENSION_STATUS_REQUEST_TYPE = "getExtensionStatus"
+const EXTENSION_STATUS_RESPONSE_TYPE = "extensionStatus"
+
+type ExtensionStatusResponse = Omit<UpstreamExtensionStatusResponse, "source"> & {
+  source: typeof EXTENSION_STATUS_RESPONSE_SOURCE
+}
 
 interface ExtensionStatusMessageEvent {
   data: unknown

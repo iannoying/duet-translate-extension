@@ -1,14 +1,13 @@
-name: Read Frog
-extName: "Read Frog - ИИ-перевод и карточки"
+name: Getu Translate
+extName: "Getu Translate - ИИ-перевод и карточки"
 extDescription: "Двуязычный ИИ-перевод веб-страниц и субтитров YouTube, Netflix и X. Сохраняйте новые слова и повторяйте их на карточках."
-uninstallSurveyUrl: https://tally.so/r/nPK6Ob
 account:
   login: Войти
   webApp: Веб-приложение
   logout: Выйти
   logoutError: Не удалось выйти. Попробуйте ещё раз.
   grantAccess: Предоставить доступ
-  grantAccessHint: Нужен доступ к readfrog.app
+  grantAccessHint: Нужен доступ к Getu Translate
   grantAccessError: Не удалось предоставить доступ. Попробуйте ещё раз.
 dataTypes:
   string: Текст
@@ -19,7 +18,7 @@ contextMenu:
   readAloudSelection: Прочитать вслух "%s"
   showOriginal: Показать оригинал
 sidePanel:
-  firefoxUserActionHint: В Firefox откройте Read Frog из боковой панели браузера.
+  firefoxUserActionHint: В Firefox откройте Getu Translate из боковой панели браузера.
   firefoxUserActionHelpText: Как открыть боковую панель Firefox
   firefoxUserActionHelpUrl: https://support.mozilla.org/ru/kb/ispolzovanije-bokovoi-paneli-dostup-instrumenty-i-vertikalnyje-vkladki
 popup:
@@ -54,11 +53,11 @@ popup:
   discord:
     tooltip: Присоединяйтесь к Discord, чтобы связаться с разработчиками и получить ранний доступ к новым функциям
   blog:
-    notification: Что нового в Read Frog
+    notification: Что нового в Getu Translate
   aiSmartContext: Умный контекст ИИ
   aiSmartContextDescription: Использует контекст веб-страницы для улучшения качества перевода. Требуется LLM-провайдер перевода.
   storeReview:
-    title: Нравится Read Frog?
+    title: Нравится Getu Translate?
     description: Отзыв в магазине поможет другим читателям найти расширение.
     action: Оставить отзыв
     dismiss: Закрыть
@@ -119,15 +118,15 @@ options:
     roadmap: Дорожная карта
   helpAndCommunity:
     title: Помощь и сообщество
-    pageDescription: Узнайте, как пользоваться Read Frog, обратитесь за помощью к команде или присоединяйтесь к сообществу.
+    pageDescription: Узнайте, как пользоваться Getu Translate, обратитесь за помощью к команде или присоединяйтесь к сообществу.
     help:
       title: Помощь
     tutorial:
       title: Руководство
-      description: Прочитайте документацию и узнайте, как пользоваться Read Frog
+      description: Прочитайте документацию и узнайте, как пользоваться Getu Translate
     email:
       title: Написать нам
-      description: Свяжитесь с командой напрямую по адресу contact@readfrog.app
+      description: Свяжитесь с командой напрямую по адресу $1
     featureRequest:
       title: Предложить функцию
       description: Предложите идею и голосуйте за то, что команда сделает дальше
@@ -145,8 +144,8 @@ options:
       qrCodeAlt: QR-код WeChat
   apiProviders:
     title: API-провайдеры
-    pageDescription: Подключите ИИ-сервисы, которые вызывает Read Frog, и выберите провайдера для каждой функции.
-    description: Добавьте провайдеров, которых может вызывать Read Frog. Более 20 встроено; также можно добавить пользовательские API, совместимые с Chat Completions, и API Open Responses.
+    pageDescription: Подключите ИИ-сервисы, которые вызывает Getu Translate, и выберите провайдера для каждой функции.
+    description: Добавьте провайдеров, которых может вызывать Getu Translate. Более 20 встроено; также можно добавить пользовательские API, совместимые с Chat Completions, и API Open Responses.
     configTitle: Настройка провайдеров
     addProvider: Добавить провайдера
     builtInProvider: Встроенный провайдер
@@ -253,8 +252,8 @@ options:
         customChatComplete: Пользовательский Chat Complete
         customResponses: Пользовательский Responses
       attribution:
-        builtInAi: Стандартная модель, размещённая Read Frog. Пользователи без Ultra могут использовать её только в пользовательских AI-действиях; пользователям Ultra доступно больше функций.
-        builtInAiAdvance: Продвинутая модель, размещённая Read Frog, — только для подписчиков Ultra. Работает во всех функциях встроенного ИИ — переводе страниц, пользовательских AI-действиях и других — с общей недельной квотой. Расходует квоту быстрее, чем стандартная модель.
+        builtInAi: Стандартная модель, размещённая Getu Translate. Пользователи без Ultra могут использовать её только в пользовательских AI-действиях; пользователям Ultra доступно больше функций.
+        builtInAiAdvance: Продвинутая модель, размещённая Getu Translate, — только для подписчиков Ultra. Работает во всех функциях встроенного ИИ — переводе страниц, пользовательских AI-действиях и других — с общей недельной квотой. Расходует квоту быстрее, чем стандартная модель.
       description:
         openai: Предоставляет модели, такие как GPT-4o
         azure: Модели OpenAI в Azure через ваши развертывания
@@ -336,15 +335,15 @@ options:
   patterns:
     duplicate: Этот шаблон уже в списке
     gluedWildcard: «*» должна заменять часть адреса целиком, например *.example.com или example.*
-    unsupported: Read Frog не может сопоставить этот адрес. Порты и схемы, кроме http и https, не поддерживаются.
+    unsupported: Getu Translate не может сопоставить этот адрес. Порты и схемы, кроме http и https, не поддерживаются.
   preference:
     title: Предпочтения
-    pageDescription: Задайте внешний вид Read Frog, места его работы, а также синхронизацию и резервное копирование конфигурации.
+    pageDescription: Задайте внешний вид Getu Translate, места его работы, а также синхронизацию и резервное копирование конфигурации.
     appearanceAndLanguage:
       title: Оформление и язык
       theme:
         title: Тема
-        description: Выберите тему для Read Frog.
+        description: Выберите тему для Getu Translate.
         system: Системная
         light: Светлая
         dark: Тёмная
@@ -438,7 +437,7 @@ options:
           accountChangedRetry: Пока диалог был открыт, сменился вошедший аккаунт Google. Ничего не загружено — синхронизируйте ещё раз.
           busy: Другая вкладка сейчас синхронизирует ваши глоссарии.
           malformed: Файл глоссариев в Drive не удалось прочитать, поэтому ничего не изменено.
-          versionTooNew: Этот файл глоссариев записан более новой версией Read Frog. Сначала обновите расширение.
+          versionTooNew: Этот файл глоссариев записан более новой версией Getu Translate. Сначала обновите расширение.
           duplicateFiles: В вашем Drive больше одного файла глоссариев. Ничего не изменено — удалите лишний.
           capExceeded: "Слияние превысило бы лимит глоссария на $1. Ничего не изменено."
           failed: Не удалось синхронизировать глоссарии
@@ -465,7 +464,7 @@ options:
         glossaryUndone: Глоссарии восстановлены в состояние до импорта
         glossaryUndoUnavailable: Отмена больше недоступна — глоссарии успели измениться.
         glossaryMalformed: Глоссарии из этого файла не удалось прочитать. Ничего не изменено.
-        glossaryVersionTooNew: Глоссарии в этом файле записаны более новой версией Read Frog. Сначала обновите расширение.
+        glossaryVersionTooNew: Глоссарии в этом файле записаны более новой версией Getu Translate. Сначала обновите расширение.
         glossaryCapExceeded: "В этом файле на $1 строк глоссария больше лимита в $2. Ничего не изменено."
         exportOptions:
           title: Выберите параметры экспорта
@@ -519,8 +518,8 @@ options:
         description: Включить экспериментальные функции, которые могут быть нестабильны
       analytics:
         title: Помочь улучшить пользовательский опыт
-        tooltip: Когда параметр включен, Read Frog отправляет анонимные сигналы об использовании продукта, чтобы мы могли находить ошибки, проверять надежность функций, улучшать производительность и UX-детали, а также понимать, что развивать дальше в первую очередь.
-        description: Улучшайте Read Frog, помогая находить ошибки, дорабатывать интерфейс и не только
+        tooltip: Когда параметр включен, Getu Translate отправляет анонимные сигналы об использовании продукта, чтобы мы могли находить ошибки, проверять надежность функций, улучшать производительность и UX-детали, а также понимать, что развивать дальше в первую очередь.
+        description: Улучшайте Getu Translate, помогая находить ошибки, дорабатывать интерфейс и не только
   shortcuts:
     title: Горячие клавиши
     pageDescription: Задайте клавиши, которые запускают перевод, озвучивание и AI-действия во время чтения.
@@ -584,7 +583,7 @@ options:
     demoImageAlt: Демо плавающей кнопки
     enable:
       title: Включить плавающую кнопку
-      description: Отображать плавающую кнопку на веб-страницах для быстрого доступа к функциям Read Frog
+      description: Отображать плавающую кнопку на веб-страницах для быстрого доступа к функциям Getu Translate
     display:
       title: Отображение
       side:
@@ -789,7 +788,7 @@ options:
           title: Подключение Notebase
           description: Сохранить структурированные результаты этого действия в удалённую Notebase.
           loginRequiredTitle: Войдите, чтобы настроить Notebase
-          loginRequiredDescription: Войдите на readfrog.app, прежде чем выбирать notebase или редактировать сопоставления.
+          loginRequiredDescription: Войдите на Getu Translate, прежде чем выбирать notebase или редактировать сопоставления.
           loginRequiredConnectedDescription: Это подключение создано аккаунтом ниже. Если войти в тот же аккаунт, сопоставления полей будут восстановлены. Если войти в другой аккаунт, прежние сопоставления будут очищены при создании или подключении Notebase.
           loginAction: Войти
           connectedAccountLabel: Подключённый аккаунт
@@ -801,7 +800,7 @@ options:
           clearConnectionAction: Очистить подключение
           refreshAction: Обновить
           emptyTitle: Notebase пока нет
-          emptyDescription: Создайте notebase на readfrog.app, затем вернитесь сюда и сопоставьте поля.
+          emptyDescription: Создайте notebase на Getu Translate, затем вернитесь сюда и сопоставьте поля.
           openNotebaseAction: Открыть Notebase
           accessDeniedTitle: Нет доступа к Notebase
           accessDeniedDescription: У этого аккаунта нет разрешения на загрузку данных Notebase.
@@ -1128,7 +1127,7 @@ options:
       importModeMerge: Добавить к списку
       importModeReplace: Заменить список
       importEmpty: В этом файле не найдено терминов.
-      importMissingHeader: "Это не файл экспорта глоссария Read Frog. В нём должны быть эти столбцы:"
+      importMissingHeader: "Это не файл экспорта глоссария Getu Translate. В нём должны быть эти столбцы:"
       importOverflow: "Этот импорт превысит лимит на $1 терминов. Ничего не изменено."
       importSuccess: "Импортировано новых терминов: $1, обновлено: $2."
       importSkipped: "Пропущено неверных строк: $1, дубликатов: $2."
@@ -1150,7 +1149,7 @@ options:
           description: "Все термины будут удалены безвозвратно. Всего: $1. Это действие нельзя отменить."
   contextMenu:
     title: Контекстное меню
-    pageDescription: Управляйте пунктами Read Frog в контекстном меню браузера.
+    pageDescription: Управляйте пунктами Getu Translate в контекстном меню браузера.
     demoImageAlt: Демо контекстного меню
     enable:
       title: Включить перевод в контекстном меню
@@ -1229,10 +1228,7 @@ options:
       title: Пользовательские промпты страниц
       description: Настройка различных типов промптов позволяет вам самостоятельно изменять тип промпта во время перевода. Промпт — это текст, который пользователь отправляет LLM.
       managePrompts: Управление промптами
-      communityPrompts: Получайте или делитесь промптами с сообществом
-      communityPromptsUrl: https://github.com/mengxi-ream/read-frog/discussions/821
       variableReference: Справочник переменных
-      variableReferenceUrl: https://readfrog.app/ru/docs/page-translation/prompts/variables
       addPrompt: Добавить промпт
       default: По умолчанию
       builtIn: Встроенный
@@ -1371,9 +1367,9 @@ options:
       noVoicesFound: Голоса не найдены
       language:
         title: Голос для языка
-        description: Выберите язык, а затем голос, которым он будет читаться. Сброс вернёт голос, который Read Frog подбирает для этого языка.
+        description: Выберите язык, а затем голос, которым он будет читаться. Сброс вернёт голос, который Getu Translate подбирает для этого языка.
         reset: Сброс
-        previewSample: Привет от Read Frog! Так я буду звучать при чтении вслух.
+        previewSample: Привет от Getu Translate! Так я буду звучать при чтении вслух.
       fallback:
         title: Резервный голос
         description: Голос для языков, которым вы не назначили собственный.
@@ -1521,7 +1517,7 @@ options:
   rateUs:
     title: Оцените нас
   configMigration:
-    versionTooNew: Версия импортированной конфигурации новее, пожалуйста, обновите Read Frog до последней версии
+    versionTooNew: Версия импортированной конфигурации новее, пожалуйста, обновите Getu Translate до последней версии
     validationError: Ошибка валидации конфигурации
 side:
   sourceLang: Исходный язык
@@ -1578,7 +1574,7 @@ action:
   saveToNotebaseSaving: Сохранение...
   saveToNotebaseSuccess: Сохранено в Notebase
   saveToNotebaseFailed: Не удалось сохранить в Notebase
-  saveToNotebaseLoginRequired: Войдите на readfrog.app, чтобы сохранить в Notebase
+  saveToNotebaseLoginRequired: Войдите на Getu Translate, чтобы сохранить в Notebase
   saveToNotebaseAccessDenied: Этот аккаунт не может открыть выбранную Notebase
   saveToNotebaseLimitExceeded: Для сохранения большего числа заметок Notebase требуется апгрейд
   saveToNotebaseTableUnavailable: Выбранная Notebase больше недоступна
@@ -1597,13 +1593,13 @@ action:
   saveToNotebaseConnectExisting: Подключить существующую Notebase
   saveToNotebaseGoConfigure: Настроить
   saveToNotebaseLoginConnectedTitle: Войти и сохранить?
-  saveToNotebaseLoginConnectedDescription: Этот Custom Action подключён к аккаунту ниже. После входа Read Frog сохранит в существующую Notebase, если это возможно, или создаст новую Notebase для текущего аккаунта.
+  saveToNotebaseLoginConnectedDescription: Этот Custom Action подключён к аккаунту ниже. После входа Getu Translate сохранит в существующую Notebase, если это возможно, или создаст новую Notebase для текущего аккаунта.
   saveToNotebaseConnectionUnavailableTitle: Подключение Notebase недоступно
   saveToNotebaseMissingNotebaseDescription: Старая Notebase больше не существует или недоступна этому аккаунту. Создайте новую Notebase и сохраните результат либо подключите существующую Notebase в Custom AI Actions.
   saveToNotebaseAccountUnavailableDescription: Текущий аккаунт не совпадает с подключённым аккаунтом ниже. Создание и сохранение заменит прежнее подключение и сопоставления полей. Также можно подключить существующую Notebase в Custom AI Actions.
   saveToNotebasePendingLogin: Войдите, чтобы завершить сохранение
-  saveToNotebasePendingLoginDescription: После входа Read Frog автоматически создаст Notebase и сохранит этот результат.
-  saveToNotebasePendingConnectedLoginDescription: После входа Read Frog сохранит в подключённую Notebase, если это возможно. Если аккаунт не может её использовать, будет создана новая Notebase.
+  saveToNotebasePendingLoginDescription: После входа Getu Translate автоматически создаст Notebase и сохранит этот результат.
+  saveToNotebasePendingConnectedLoginDescription: После входа Getu Translate сохранит в подключённую Notebase, если это возможно. Если аккаунт не может её использовать, будет создана новая Notebase.
   upgrade: Повысить тариф
   updatePayment: Обновить оплату
   openCustomActions: Открыть Custom AI Actions
@@ -1667,7 +1663,7 @@ subtitles:
     downloadTranslatedComplete: Переведённые субтитры скачаны
     downloadSource: Скачать исходные субтитры
   state:
-    loading: Read Frog загрузка субтитров
+    loading: Getu Translate загрузка субтитров
     translating: Перевод…
     error: Произошла ошибка
   errors:

@@ -1,14 +1,13 @@
-name: Read Frog
-extName: "Read Frog - Traducción con IA y flashcards"
+name: Getu Translate
+extName: "Getu Translate - Traducción con IA y flashcards"
 extDescription: "Traducción bilingüe con IA para webs y subtítulos de YouTube, Netflix y X. Guarda palabras nuevas y repásalas con flashcards."
-uninstallSurveyUrl: https://tally.so/r/nPK6Ob
 account:
   login: Iniciar sesión
   webApp: Aplicación web
   logout: Cerrar sesión
   logoutError: No se pudo cerrar sesión. Inténtalo de nuevo.
   grantAccess: Conceder acceso
-  grantAccessHint: Necesita acceso a readfrog.app
+  grantAccessHint: Necesita acceso a Getu Translate
   grantAccessError: No se pudo conceder el acceso. Inténtalo de nuevo.
 dataTypes:
   string: Texto
@@ -19,7 +18,7 @@ contextMenu:
   readAloudSelection: Leer en voz alta "%s"
   showOriginal: Mostrar original
 sidePanel:
-  firefoxUserActionHint: En Firefox, abre Read Frog desde la barra lateral del navegador.
+  firefoxUserActionHint: En Firefox, abre Getu Translate desde la barra lateral del navegador.
   firefoxUserActionHelpText: Aprende a abrir la barra lateral de Firefox
   firefoxUserActionHelpUrl: https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs
 popup:
@@ -54,11 +53,11 @@ popup:
   discord:
     tooltip: Únete a Discord para conectar con desarrolladores y obtener acceso anticipado a nuevas funciones
   blog:
-    notification: Novedades de Read Frog
+    notification: Novedades de Getu Translate
   aiSmartContext: Contexto inteligente de IA
   aiSmartContextDescription: Usa el contexto de la página web para mejorar la calidad de la traducción. Requiere un proveedor de traducción LLM.
   storeReview:
-    title: ¿Te gusta Read Frog?
+    title: ¿Te gusta Getu Translate?
     description: Una reseña en la tienda ayuda a que otros lectores lo descubran.
     action: Escribir una reseña
     dismiss: Descartar
@@ -119,15 +118,15 @@ options:
     roadmap: Hoja de ruta
   helpAndCommunity:
     title: Ayuda y comunidad
-    pageDescription: Aprende a usar Read Frog, pide ayuda al equipo o únete a otros usuarios en la comunidad.
+    pageDescription: Aprende a usar Getu Translate, pide ayuda al equipo o únete a otros usuarios en la comunidad.
     help:
       title: Ayuda
     tutorial:
       title: Tutorial
-      description: Lee la documentación y aprende a usar Read Frog
+      description: Lee la documentación y aprende a usar Getu Translate
     email:
       title: Escríbenos
-      description: Contacta directamente con el equipo en contact@readfrog.app
+      description: Contacta directamente con el equipo en $1
     featureRequest:
       title: Sugerir una función
       description: Propón una idea y vota lo que el equipo construirá a continuación
@@ -145,8 +144,8 @@ options:
       qrCodeAlt: Código QR de WeChat
   apiProviders:
     title: Proveedores de API
-    pageDescription: Conecta los servicios de IA que usa Read Frog y elige cuál se encarga de cada función.
-    description: Añade los proveedores que Read Frog puede llamar. Más de 20 vienen integrados y puedes añadir API personalizadas compatibles con Chat Completions u Open Responses.
+    pageDescription: Conecta los servicios de IA que usa Getu Translate y elige cuál se encarga de cada función.
+    description: Añade los proveedores que Getu Translate puede llamar. Más de 20 vienen integrados y puedes añadir API personalizadas compatibles con Chat Completions u Open Responses.
     configTitle: Configuración de proveedores
     addProvider: Añadir proveedor
     builtInProvider: Proveedor integrado
@@ -254,8 +253,8 @@ options:
         customChatComplete: Personalizado Chat Complete
         customResponses: Personalizado Responses
       attribution:
-        builtInAi: Modelo estándar alojado por Read Frog. Los usuarios sin Ultra solo pueden usarlo en las acciones de IA personalizadas; los usuarios Ultra pueden usarlo en más funciones.
-        builtInAiAdvance: Modelo avanzado alojado por Read Frog, exclusivo para miembros Ultra. Funciona en todas las funciones de IA integrada — traducción de página, acciones de IA personalizadas y más — con una cuota semanal compartida. Consume la cuota más rápido que el modelo estándar.
+        builtInAi: Modelo estándar alojado por Getu Translate. Los usuarios sin Ultra solo pueden usarlo en las acciones de IA personalizadas; los usuarios Ultra pueden usarlo en más funciones.
+        builtInAiAdvance: Modelo avanzado alojado por Getu Translate, exclusivo para miembros Ultra. Funciona en todas las funciones de IA integrada — traducción de página, acciones de IA personalizadas y más — con una cuota semanal compartida. Consume la cuota más rápido que el modelo estándar.
       description:
         openai: Proporciona modelos como GPT-4o
         azure: Modelos OpenAI hospedados en Azure mediante tus implementaciones
@@ -337,15 +336,15 @@ options:
   patterns:
     duplicate: Este patrón ya está en la lista
     gluedWildcard: Un "*" debe sustituir una parte completa de la dirección, como *.example.com o example.*
-    unsupported: Read Frog no puede hacer coincidir esta dirección. No se admiten los puertos ni los esquemas distintos de http y https.
+    unsupported: Getu Translate no puede hacer coincidir esta dirección. No se admiten los puertos ni los esquemas distintos de http y https.
   preference:
     title: Preferencias
-    pageDescription: Define la apariencia de Read Frog, dónde se ejecuta y cómo se sincroniza y respalda tu configuración.
+    pageDescription: Define la apariencia de Getu Translate, dónde se ejecuta y cómo se sincroniza y respalda tu configuración.
     appearanceAndLanguage:
       title: Apariencia e idioma
       theme:
         title: Tema
-        description: Elige un tema para Read Frog.
+        description: Elige un tema para Getu Translate.
         system: Sistema
         light: Claro
         dark: Oscuro
@@ -364,7 +363,7 @@ options:
         description: El idioma al que se traducen las páginas.
     extensionActivation:
       title: Activación de la extensión
-      description: Si Read Frog se ejecuta en todas partes salvo en los sitios que indiques, o solo en los sitios que indiques
+      description: Si Getu Translate se ejecuta en todas partes salvo en los sitios que indiques, o solo en los sitios que indiques
       manageSites: Gestionar sitios
       mode:
         title: Modo de activación
@@ -439,7 +438,7 @@ options:
           accountChangedRetry: La cuenta de Google conectada cambió mientras el diálogo estaba abierto. No se subió nada; vuelve a sincronizar.
           busy: Otra pestaña está sincronizando tus glosarios ahora mismo.
           malformed: No se pudo leer el archivo de glosarios de tu Drive, así que no se cambió nada.
-          versionTooNew: Ese archivo de glosarios lo escribió una versión más reciente de Read Frog. Actualiza la extensión primero.
+          versionTooNew: Ese archivo de glosarios lo escribió una versión más reciente de Getu Translate. Actualiza la extensión primero.
           duplicateFiles: Tu Drive tiene más de un archivo de glosarios. No se cambió nada - elimina el sobrante.
           capExceeded: "La fusión superaría el límite de glosarios en $1. No se cambió nada."
           failed: Falló la sincronización de glosarios
@@ -466,7 +465,7 @@ options:
         glossaryUndone: Tus glosarios volvieron a como estaban antes de la importación
         glossaryUndoUnavailable: "Esa acción ya no se puede deshacer: tus glosarios han cambiado desde entonces."
         glossaryMalformed: No se pudieron leer los glosarios de ese archivo. No se cambió nada.
-        glossaryVersionTooNew: Los glosarios de ese archivo los escribió una versión más reciente de Read Frog. Actualiza la extensión primero.
+        glossaryVersionTooNew: Los glosarios de ese archivo los escribió una versión más reciente de Getu Translate. Actualiza la extensión primero.
         glossaryCapExceeded: "Ese archivo tiene $1 filas de glosario más que el límite de $2. No se cambió nada."
         exportOptions:
           title: Seleccionar opciones de exportación
@@ -520,8 +519,8 @@ options:
         description: Activa funciones experimentales que todavía pueden ser inestables
       analytics:
         title: Ayuda a mejorar la experiencia de usuario
-        tooltip: Cuando está activado, Read Frog envía señales anónimas de uso del producto para que podamos detectar errores, verificar la fiabilidad de las funciones, mejorar el rendimiento y el acabado de la UX, y priorizar trabajos futuros.
-        description: Mejora Read Frog ayudándonos a localizar errores, pulir la interfaz y más
+        tooltip: Cuando está activado, Getu Translate envía señales anónimas de uso del producto para que podamos detectar errores, verificar la fiabilidad de las funciones, mejorar el rendimiento y el acabado de la UX, y priorizar trabajos futuros.
+        description: Mejora Getu Translate ayudándonos a localizar errores, pulir la interfaz y más
   shortcuts:
     title: Atajos
     pageDescription: Define las teclas que traducen, leen en voz alta y ejecutan acciones AI mientras lees.
@@ -585,7 +584,7 @@ options:
     demoImageAlt: Demostración del botón flotante
     enable:
       title: Activar botón flotante
-      description: Muestra el botón flotante en páginas web para acceder rápidamente a las funciones de Read Frog
+      description: Muestra el botón flotante en páginas web para acceder rápidamente a las funciones de Getu Translate
     display:
       title: Visualización
       side:
@@ -790,7 +789,7 @@ options:
           title: Conexión de Notebase
           description: Guarda los resultados estructurados de esta acción en una Notebase remota.
           loginRequiredTitle: Inicia sesión para configurar Notebase
-          loginRequiredDescription: Inicia sesión en readfrog.app antes de elegir una Notebase o editar asignaciones.
+          loginRequiredDescription: Inicia sesión en Getu Translate antes de elegir una Notebase o editar asignaciones.
           loginRequiredConnectedDescription: Esta conexión fue creada por la cuenta de abajo. Si inicias sesión con la misma cuenta, se restaurarán las asignaciones de campos. Si inicias sesión con otra cuenta, las asignaciones anteriores se borrarán al crear o conectar una Notebase.
           loginAction: Iniciar sesión
           connectedAccountLabel: Cuenta conectada
@@ -802,7 +801,7 @@ options:
           clearConnectionAction: Borrar conexión
           refreshAction: Actualizar
           emptyTitle: Aún no hay Notebases
-          emptyDescription: Crea una Notebase en readfrog.app y vuelve aquí para asignar campos.
+          emptyDescription: Crea una Notebase en Getu Translate y vuelve aquí para asignar campos.
           openNotebaseAction: Abrir Notebase
           accessDeniedTitle: No se puede acceder a Notebase
           accessDeniedDescription: Esta cuenta no tiene permiso para cargar datos de Notebase.
@@ -1133,7 +1132,7 @@ options:
       importModeMerge: Añadir a la lista
       importModeReplace: Reemplazar la lista
       importEmpty: No se encontraron términos en ese archivo.
-      importMissingHeader: "Ese archivo no es una exportación de glosario de Read Frog. Necesita estas columnas:"
+      importMissingHeader: "Ese archivo no es una exportación de glosario de Getu Translate. Necesita estas columnas:"
       importOverflow: "Esa importación superaría el límite en $1 términos. No se ha cambiado nada."
       importSuccess: "Se han importado $1 términos nuevos y actualizado $2."
       importSkipped: "Se han omitido $1 filas no válidas y $2 duplicados."
@@ -1155,7 +1154,7 @@ options:
           description: "Se eliminarán permanentemente los $1 términos. Esta acción no se puede deshacer."
   contextMenu:
     title: Menú contextual
-    pageDescription: Controla las opciones de Read Frog en el menú contextual del navegador.
+    pageDescription: Controla las opciones de Getu Translate en el menú contextual del navegador.
     demoImageAlt: Demostración del menú contextual
     enable:
       title: Activar traducción en menú contextual
@@ -1234,10 +1233,7 @@ options:
       title: Prompts personalizados de página
       description: Personalizar distintos tipos de Prompts te permite ajustar tú mismo el tipo de Prompt durante la traducción. Un Prompt representa el texto que el usuario envía al LLM.
       managePrompts: Gestionar prompts
-      communityPrompts: Obtener o compartir prompts de la comunidad
-      communityPromptsUrl: https://github.com/mengxi-ream/read-frog/discussions/821
       variableReference: Referencia de variables
-      variableReferenceUrl: https://readfrog.app/es/docs/page-translation/prompts/variables
       addPrompt: Añadir Prompt
       default: Predeterminado
       builtIn: Integrado
@@ -1376,9 +1372,9 @@ options:
       noVoicesFound: No se encontraron voces
       language:
         title: Voz por idioma
-        description: Elige un idioma y luego la voz que lo lee en voz alta. Restablecer devuelve la voz que Read Frog elige para ese idioma.
+        description: Elige un idioma y luego la voz que lo lee en voz alta. Restablecer devuelve la voz que Getu Translate elige para ese idioma.
         reset: Restablecer
-        previewSample: ¡Hola desde Read Frog! Así sonaré al leer en voz alta.
+        previewSample: ¡Hola desde Getu Translate! Así sonaré al leer en voz alta.
       fallback:
         title: Voz alternativa
         description: La voz para cualquier idioma al que no le hayas asignado una propia.
@@ -1526,7 +1522,7 @@ options:
   rateUs:
     title: Calificarnos
   configMigration:
-    versionTooNew: La versión de configuración importada es más reciente; actualiza Read Frog a la última versión
+    versionTooNew: La versión de configuración importada es más reciente; actualiza Getu Translate a la última versión
     validationError: Error de validación de configuración
 side:
   sourceLang: Idioma de origen
@@ -1583,7 +1579,7 @@ action:
   saveToNotebaseSaving: Guardando...
   saveToNotebaseSuccess: Guardado en Notebase
   saveToNotebaseFailed: No se pudo guardar en Notebase
-  saveToNotebaseLoginRequired: Inicia sesión en readfrog.app para guardar en Notebase
+  saveToNotebaseLoginRequired: Inicia sesión en Getu Translate para guardar en Notebase
   saveToNotebaseAccessDenied: Esta cuenta no puede acceder a la Notebase seleccionada
   saveToNotebaseLimitExceeded: Se requiere una mejora para guardar más notas de Notebase
   saveToNotebaseTableUnavailable: La Notebase seleccionada ya no está disponible
@@ -1602,13 +1598,13 @@ action:
   saveToNotebaseConnectExisting: Conectar Notebase existente
   saveToNotebaseGoConfigure: Configurar
   saveToNotebaseLoginConnectedTitle: ¿Iniciar sesión para guardar?
-  saveToNotebaseLoginConnectedDescription: Esta Custom Action está conectada a la cuenta de abajo. Después de iniciar sesión, Read Frog guardará en la Notebase existente si es posible, o creará una nueva Notebase para la cuenta actual.
+  saveToNotebaseLoginConnectedDescription: Esta Custom Action está conectada a la cuenta de abajo. Después de iniciar sesión, Getu Translate guardará en la Notebase existente si es posible, o creará una nueva Notebase para la cuenta actual.
   saveToNotebaseConnectionUnavailableTitle: Conexión de Notebase no disponible
   saveToNotebaseMissingNotebaseDescription: La Notebase anterior ya no existe o esta cuenta no puede abrirla. Crea una nueva Notebase y guarda este resultado, o conecta una Notebase existente en Custom AI Actions.
   saveToNotebaseAccountUnavailableDescription: La cuenta actual no coincide con la cuenta conectada de abajo. Crear y guardar reemplazará la conexión anterior y los mapeos de campos. También puedes conectar una Notebase existente en Custom AI Actions.
   saveToNotebasePendingLogin: Inicia sesión para terminar de guardar
-  saveToNotebasePendingLoginDescription: Después de iniciar sesión, Read Frog creará la Notebase y guardará este resultado automáticamente.
-  saveToNotebasePendingConnectedLoginDescription: Después de iniciar sesión, Read Frog guardará en la Notebase conectada si es posible. Si esta cuenta no puede usarla, creará una nueva Notebase y guardará este resultado.
+  saveToNotebasePendingLoginDescription: Después de iniciar sesión, Getu Translate creará la Notebase y guardará este resultado automáticamente.
+  saveToNotebasePendingConnectedLoginDescription: Después de iniciar sesión, Getu Translate guardará en la Notebase conectada si es posible. Si esta cuenta no puede usarla, creará una nueva Notebase y guardará este resultado.
   upgrade: Mejorar plan
   updatePayment: Actualizar pago
   openCustomActions: Abrir Custom AI Actions
@@ -1672,7 +1668,7 @@ subtitles:
     downloadTranslatedComplete: Subtítulos traducidos descargados
     downloadSource: Descargar subtítulos de origen
   state:
-    loading: Read Frog está cargando subtítulos
+    loading: Getu Translate está cargando subtítulos
     translating: Traduciendo…
     error: Se produjo un error
   errors:

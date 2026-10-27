@@ -115,10 +115,10 @@ export function getBlogLocaleFromUILanguage(uiLanguage: UiLanguage): BlogLocale 
 }
 
 /**
- * Fetches the latest blog post from the Read Frog blog API.
+ * Fetches the latest blog post from the website's blog API.
  * Uses background fetch with optional 1-day cache.
  *
- * @param apiUrl - The URL of the blog API endpoint (default: production URL)
+ * @param apiUrl - The URL of the blog API endpoint
  * @param locale - The locale to fetch the latest post for (default: 'en')
  * @param extensionVersion - The current extension version to filter compatible posts
  * @param useCache - Whether to use cache (default: true)
@@ -133,8 +133,8 @@ export function getBlogLocaleFromUILanguage(uiLanguage: UiLanguage): BlogLocale 
  * //   title: 'Spring update',
  * //   description: 'New subtitle features shipped.',
  * //   url: '/blog/post-slug',
- * //   urlOverride: 'https://www.readfrog.app',
- * //   imageUrl: 'https://www.readfrog.app/blog/landing-page-refresh/cover-en.png',
+ * //   urlOverride: 'https://www.example.com',
+ * //   imageUrl: 'https://www.example.com/blog/landing-page-refresh/cover-en.png',
  * //   videoUrl: 'https://www.bilibili.com/video/BV...',
  * //   extensionVersion: '1.11.0',
  * // }
@@ -144,7 +144,7 @@ export function getBlogLocaleFromUILanguage(uiLanguage: UiLanguage): BlogLocale 
  * ```
  */
 export async function getLatestBlogDate(
-  apiUrl: string = "https://readfrog.app/api/blog/latest",
+  apiUrl: string,
   locale: string = "en",
   extensionVersion?: string,
   useCache: boolean = true,

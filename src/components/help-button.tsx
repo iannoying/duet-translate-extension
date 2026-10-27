@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react"
 import { useCallback, useRef, useState } from "react"
+import { BRAND } from "@/utils/constants/brand"
 import { cn } from "@/utils/styles/utils"
 
 type Corner = "bottom-right" | "top-right"
@@ -59,7 +60,7 @@ export function HelpButton() {
         localStorage.setItem(STORAGE_KEY, newCorner)
       } else {
         window.open(
-          "https://github.com/mengxi-ream/read-frog/issues?q=sort%3Aupdated-desc+is%3Aissue+is%3Aopen",
+          `${BRAND.sourceRepoUrl}/issues?q=sort%3Aupdated-desc+is%3Aissue+is%3Aopen`,
           "_blank",
         )
       }

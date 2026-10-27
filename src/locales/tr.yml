@@ -1,14 +1,13 @@
-name: Read Frog
-extName: "Read Frog - Yapay Zekâ Çeviri ve Kartlar"
+name: Getu Translate
+extName: "Getu Translate - Yapay Zekâ Çeviri ve Kartlar"
 extDescription: "Web sayfaları ve YouTube, Netflix, X altyazıları için yapay zekâ ile iki dilli çeviri. Yeni kelimeleri kaydedip kartlarla çalışın."
-uninstallSurveyUrl: https://tally.so/r/nPK6Ob
 account:
   login: Giriş yap
   webApp: Web uygulaması
   logout: Çıkış yap
   logoutError: Çıkış yapılamadı. Lütfen tekrar deneyin.
   grantAccess: Erişim ver
-  grantAccessHint: readfrog.app erişimi gerekiyor
+  grantAccessHint: Getu Translate erişimi gerekiyor
   grantAccessError: Erişim verilemedi. Lütfen tekrar deneyin.
 dataTypes:
   string: Metin
@@ -19,7 +18,7 @@ contextMenu:
   readAloudSelection: '"%s" Sesli oku'
   showOriginal: Orijinali Göster
 sidePanel:
-  firefoxUserActionHint: Firefox'ta Read Frog'u tarayıcının kenar çubuğundan açın.
+  firefoxUserActionHint: Firefox'ta Getu Translate'u tarayıcının kenar çubuğundan açın.
   firefoxUserActionHelpText: Firefox kenar çubuğunu açmayı öğrenin
   firefoxUserActionHelpUrl: https://support.mozilla.org/tr/kb/use-sidebar-access-tools-and-vertical-tabs
 popup:
@@ -54,11 +53,11 @@ popup:
   discord:
     tooltip: Geliştiricilerle bağlantı kurmak ve yeni özelliklere erken erişim sağlamak için Discord'a katılın
   blog:
-    notification: Read Frog'da yenilikler
+    notification: Getu Translate'da yenilikler
   aiSmartContext: AI Akıllı Bağlam
   aiSmartContextDescription: Çeviri kalitesini artırmak için web sayfası bağlamını kullanır. LLM çeviri sağlayıcısı gerektirir.
   storeReview:
-    title: Read Frog'u beğendiniz mi?
+    title: Getu Translate'u beğendiniz mi?
     description: Mağazaya bırakacağınız kısa bir değerlendirme, diğer okurların onu bulmasına yardımcı olur.
     action: Değerlendirme yaz
     dismiss: Kapat
@@ -119,15 +118,15 @@ options:
     roadmap: Yol Haritası
   helpAndCommunity:
     title: Yardım ve topluluk
-    pageDescription: Read Frog'u nasıl kullanacağınızı öğrenin, ekipten yardım alın ya da toplulukta diğer kullanıcılara katılın.
+    pageDescription: Getu Translate'u nasıl kullanacağınızı öğrenin, ekipten yardım alın ya da toplulukta diğer kullanıcılara katılın.
     help:
       title: Yardım
     tutorial:
       title: Rehber
-      description: Belgeleri okuyun ve Read Frog'u nasıl kullanacağınızı öğrenin
+      description: Belgeleri okuyun ve Getu Translate'u nasıl kullanacağınızı öğrenin
     email:
       title: Bize e-posta gönderin
-      description: Ekibe doğrudan contact@readfrog.app adresinden ulaşın
+      description: Ekibe doğrudan $1 adresinden ulaşın
     featureRequest:
       title: Özellik önerisi
       description: Bir fikir önerin ve ekibin sırada ne geliştireceğini oylayın
@@ -145,8 +144,8 @@ options:
       qrCodeAlt: WeChat QR kodu
   apiProviders:
     title: API Sağlayıcıları
-    pageDescription: Read Frog'un çağırdığı yapay zekâ servislerini bağlayın ve her özelliğin hangisini kullanacağını seçin.
-    description: Read Frog'un çağırabileceği sağlayıcıları ekleyin. 20'den fazlası yerleşik gelir; ayrıca Chat Completions uyumlu ve Open Responses API'lerini özel olarak ekleyebilirsiniz.
+    pageDescription: Getu Translate'un çağırdığı yapay zekâ servislerini bağlayın ve her özelliğin hangisini kullanacağını seçin.
+    description: Getu Translate'un çağırabileceği sağlayıcıları ekleyin. 20'den fazlası yerleşik gelir; ayrıca Chat Completions uyumlu ve Open Responses API'lerini özel olarak ekleyebilirsiniz.
     configTitle: Sağlayıcı yapılandırması
     addProvider: Sağlayıcı ekle
     builtInProvider: Yerleşik sağlayıcı
@@ -253,8 +252,8 @@ options:
         customChatComplete: Özel Chat Complete
         customResponses: Özel Responses
       attribution:
-        builtInAi: Read Frog tarafından barındırılan standart model. Ultra olmayan kullanıcılar yalnızca özel AI eylemlerinde kullanabilir; Ultra kullanıcıları daha fazla özellikte kullanabilir.
-        builtInAiAdvance: Read Frog tarafından barındırılan gelişmiş model, yalnızca Ultra üyelerine özeldir. Sayfa çevirisi, özel AI eylemleri ve diğer tüm yerleşik AI özelliklerinde çalışır; haftalık kota ortaktır. Kotayı standart modelden daha hızlı tüketir.
+        builtInAi: Getu Translate tarafından barındırılan standart model. Ultra olmayan kullanıcılar yalnızca özel AI eylemlerinde kullanabilir; Ultra kullanıcıları daha fazla özellikte kullanabilir.
+        builtInAiAdvance: Getu Translate tarafından barındırılan gelişmiş model, yalnızca Ultra üyelerine özeldir. Sayfa çevirisi, özel AI eylemleri ve diğer tüm yerleşik AI özelliklerinde çalışır; haftalık kota ortaktır. Kotayı standart modelden daha hızlı tüketir.
       description:
         openai: GPT-4o gibi modeller sağlar
         azure: Azure dağıtımlarınız üzerinden OpenAI modelleri
@@ -336,15 +335,15 @@ options:
   patterns:
     duplicate: Bu desen zaten listede
     gluedWildcard: '"*" adresin bir bölümünün tamamının yerini almalıdır, örneğin *.example.com veya example.*'
-    unsupported: Read Frog bu adresi eşleştiremiyor. Bağlantı noktaları ile http ve https dışındaki şemalar desteklenmiyor.
+    unsupported: Getu Translate bu adresi eşleştiremiyor. Bağlantı noktaları ile http ve https dışındaki şemalar desteklenmiyor.
   preference:
     title: Tercihler
-    pageDescription: Read Frog'un görünümünü, nerede çalışacağını ve yapılandırmanızın nasıl eşitlenip yedekleneceğini ayarlayın.
+    pageDescription: Getu Translate'un görünümünü, nerede çalışacağını ve yapılandırmanızın nasıl eşitlenip yedekleneceğini ayarlayın.
     appearanceAndLanguage:
       title: Görünüm ve dil
       theme:
         title: Tema
-        description: Read Frog için bir tema seçin.
+        description: Getu Translate için bir tema seçin.
         system: Sistem
         light: Açık
         dark: Koyu
@@ -363,7 +362,7 @@ options:
         description: Sayfaların çevrileceği dil.
     extensionActivation:
       title: Uzantı etkinleştirme
-      description: Read Frog listelediğiniz siteler dışında her yerde mi, yoksa yalnızca listelediğiniz sitelerde mi çalışsın
+      description: Getu Translate listelediğiniz siteler dışında her yerde mi, yoksa yalnızca listelediğiniz sitelerde mi çalışsın
       manageSites: Siteleri yönet
       mode:
         title: Etkinleştirme modu
@@ -438,7 +437,7 @@ options:
           accountChangedRetry: İletişim kutusu açıkken oturum açılan Google hesabı değişti. Hiçbir şey yüklenmedi; yeniden eşitleyin.
           busy: Başka bir sekme şu anda sözlüklerinizi eşitliyor.
           malformed: Drive'daki sözlük dosyası okunamadı, bu yüzden hiçbir şey değişmedi.
-          versionTooNew: O sözlük dosyasını Read Frog'un daha yeni bir sürümü yazmış. Önce uzantıyı güncelleyin.
+          versionTooNew: O sözlük dosyasını Getu Translate'un daha yeni bir sürümü yazmış. Önce uzantıyı güncelleyin.
           duplicateFiles: Drive'ınızda birden fazla sözlük dosyası var. Hiçbir şey değişmedi - lütfen fazla olanı silin.
           capExceeded: "Birleştirme sözlük sınırını $1 aşardı. Hiçbir şey değişmedi."
           failed: Sözlük eşitleme başarısız
@@ -465,7 +464,7 @@ options:
         glossaryUndone: Sözlükleriniz içe aktarmadan önceki haline döndürüldü
         glossaryUndoUnavailable: Bu geri alma artık kullanılamıyor — sözlükleriniz o zamandan beri değişti.
         glossaryMalformed: O dosyadaki sözlükler okunamadı. Hiçbir şey değişmedi.
-        glossaryVersionTooNew: O dosyadaki sözlükleri Read Frog'un daha yeni bir sürümü yazmış. Önce uzantıyı güncelleyin.
+        glossaryVersionTooNew: O dosyadaki sözlükleri Getu Translate'un daha yeni bir sürümü yazmış. Önce uzantıyı güncelleyin.
         glossaryCapExceeded: "O dosyada $2 sınırından $1 fazla sözlük satırı var. Hiçbir şey değişmedi."
         exportOptions:
           title: Dışa aktarma seçeneklerini seçin
@@ -519,8 +518,8 @@ options:
         description: Henüz kararsız olabilecek deneysel özellikleri açın
       analytics:
         title: Kullanıcı deneyimini geliştirmemize yardımcı ol
-        tooltip: Açık olduğunda Read Frog, hataları yakalamak, özelliklerin güvenilir çalıştığını doğrulamak, performansı ve UX ayrıntılarını iyileştirmek ve sıradaki önceliklerimizi belirlemek için anonim kullanım sinyalleri gönderir.
-        description: Hataları bulmamıza, arayüzü iyileştirmemize ve daha fazlasına yardım ederek Read Frog'u geliştirin
+        tooltip: Açık olduğunda Getu Translate, hataları yakalamak, özelliklerin güvenilir çalıştığını doğrulamak, performansı ve UX ayrıntılarını iyileştirmek ve sıradaki önceliklerimizi belirlemek için anonim kullanım sinyalleri gönderir.
+        description: Hataları bulmamıza, arayüzü iyileştirmemize ve daha fazlasına yardım ederek Getu Translate'u geliştirin
   shortcuts:
     title: Kısayollar
     pageDescription: Okurken çeviri, sesli okuma ve AI eylemlerini başlatan tuşları belirleyin.
@@ -584,7 +583,7 @@ options:
     demoImageAlt: Yüzen buton demosu
     enable:
       title: Yüzen butonu etkinleştir
-      description: Read Frog özelliklerine hızlı erişim için web sayfalarında yüzen butonu görüntüle
+      description: Getu Translate özelliklerine hızlı erişim için web sayfalarında yüzen butonu görüntüle
     display:
       title: Görünüm
       side:
@@ -789,7 +788,7 @@ options:
           title: Notebase bağlantısı
           description: Bu eylemin yapılandırılmış sonuçlarını uzak bir Notebase'e kaydedin.
           loginRequiredTitle: Notebase yapılandırmak için giriş yapın
-          loginRequiredDescription: notebase seçmeden veya eşlemeleri düzenlemeden önce readfrog.app'te oturum açın.
+          loginRequiredDescription: notebase seçmeden veya eşlemeleri düzenlemeden önce Getu Translate'te oturum açın.
           loginRequiredConnectedDescription: Bu bağlantı aşağıdaki hesapla oluşturuldu. Aynı hesapla giriş yaparsanız alan eşlemeleri geri yüklenir. Başka bir hesapla giriş yaparsanız Notebase oluştururken veya bağlarken önceki eşlemeler temizlenir.
           loginAction: Giriş yap
           connectedAccountLabel: Bağlı hesap
@@ -801,7 +800,7 @@ options:
           clearConnectionAction: Bağlantıyı temizle
           refreshAction: Yenile
           emptyTitle: Henüz Notebase yok
-          emptyDescription: readfrog.app'te bir notebase oluşturun, sonra alanları eşlemek için buraya dönün.
+          emptyDescription: Getu Translate'te bir notebase oluşturun, sonra alanları eşlemek için buraya dönün.
           openNotebaseAction: Notebase'i aç
           accessDeniedTitle: Notebase'e erişilemiyor
           accessDeniedDescription: Bu hesabın Notebase verilerini yükleme izni yok.
@@ -1128,7 +1127,7 @@ options:
       importModeMerge: Listeye ekle
       importModeReplace: Listeyi değiştir
       importEmpty: Bu dosyada terim bulunamadı.
-      importMissingHeader: "Bu dosya bir Read Frog sözlük dışa aktarımı değil. Şu sütunlar gerekli:"
+      importMissingHeader: "Bu dosya bir Getu Translate sözlük dışa aktarımı değil. Şu sütunlar gerekli:"
       importOverflow: "Bu içe aktarma limiti $1 terim aşacak. Hiçbir şey değiştirilmedi."
       importSuccess: "$1 yeni terim içe aktarıldı, $2 terim güncellendi."
       importSkipped: "$1 geçersiz satır ve $2 yinelenen terim atlandı."
@@ -1150,7 +1149,7 @@ options:
           description: "$1 terimin tamamı kalıcı olarak silinecek. Bu işlem geri alınamaz."
   contextMenu:
     title: Bağlam Menüsü
-    pageDescription: Tarayıcının sağ tık menüsündeki Read Frog seçeneklerini yönetin.
+    pageDescription: Tarayıcının sağ tık menüsündeki Getu Translate seçeneklerini yönetin.
     demoImageAlt: Bağlam menüsü demosu
     enable:
       title: Bağlam menüsü çevirisini etkinleştir
@@ -1229,10 +1228,7 @@ options:
       title: Özel sayfa istemleri
       description: Farklı türde Promptları özelleştirmek, çeviri sırasında Prompt türünü kendiniz ayarlamanıza olanak tanır. Prompt, kullanıcının LLM'ye gönderdiği metni temsil eder.
       managePrompts: Promptları yönet
-      communityPrompts: Topluluktan prompt al veya paylaş
-      communityPromptsUrl: https://github.com/mengxi-ream/read-frog/discussions/821
       variableReference: Değişken başvurusu
-      variableReferenceUrl: https://readfrog.app/tr/docs/page-translation/prompts/variables
       addPrompt: Prompt ekle
       default: Varsayılan
       builtIn: Yerleşik
@@ -1371,9 +1367,9 @@ options:
       noVoicesFound: Ses bulunamadı
       language:
         title: Dil sesi
-        description: Bir dil seçin, ardından o dili okuyacak sesi belirleyin. Sıfırlamak, Read Frog'un o dil için seçtiği sesi geri getirir.
+        description: Bir dil seçin, ardından o dili okuyacak sesi belirleyin. Sıfırlamak, Getu Translate'un o dil için seçtiği sesi geri getirir.
         reset: Sıfırla
-        previewSample: Read Frog'dan merhaba! Yüksek sesle okurken böyle ses çıkaracağım.
+        previewSample: Getu Translate'dan merhaba! Yüksek sesle okurken böyle ses çıkaracağım.
       fallback:
         title: Yedek ses
         description: Kendine ait bir ses atamadığınız diller bu sesle okunur.
@@ -1521,7 +1517,7 @@ options:
   rateUs:
     title: Bizi Değerlendirin
   configMigration:
-    versionTooNew: İçe aktarılan yapılandırma sürümü daha yeni, lütfen Read Frog'u en son sürüme yükseltin
+    versionTooNew: İçe aktarılan yapılandırma sürümü daha yeni, lütfen Getu Translate'u en son sürüme yükseltin
     validationError: Yapılandırma doğrulaması başarısız
 side:
   sourceLang: Kaynak Dil
@@ -1578,7 +1574,7 @@ action:
   saveToNotebaseSaving: Kaydediliyor...
   saveToNotebaseSuccess: Notebase'e kaydedildi
   saveToNotebaseFailed: Notebase'e kaydetme başarısız oldu
-  saveToNotebaseLoginRequired: Notebase'e kaydetmek için readfrog.app'te oturum açın
+  saveToNotebaseLoginRequired: Notebase'e kaydetmek için Getu Translate'te oturum açın
   saveToNotebaseAccessDenied: Bu hesap seçilen Notebase'e erişemiyor
   saveToNotebaseLimitExceeded: Daha fazla Notebase notu kaydetmek için yükseltme gerekir
   saveToNotebaseTableUnavailable: Seçilen Notebase artık kullanılamıyor
@@ -1602,8 +1598,8 @@ action:
   saveToNotebaseMissingNotebaseDescription: Eski Notebase artık yok veya bu hesapla açılamıyor. Yeni bir Notebase oluşturup kaydedin ya da Custom AI Actions içinde mevcut bir Notebase bağlayın.
   saveToNotebaseAccountUnavailableDescription: Giriş yapılan hesap aşağıdaki bağlı hesapla eşleşmiyor. Oluşturup kaydetmek önceki bağlantıyı ve alan eşlemelerini değiştirir. Custom AI Actions içinde mevcut bir Notebase de bağlayabilirsiniz.
   saveToNotebasePendingLogin: Kaydetmeyi tamamlamak için giriş yapın
-  saveToNotebasePendingLoginDescription: Giriş yaptıktan sonra Read Frog Notebase'i oluşturur ve bu sonucu otomatik olarak kaydeder.
-  saveToNotebasePendingConnectedLoginDescription: Girişten sonra Read Frog mümkünse bağlı Notebase'e kaydeder. Bu hesap onu kullanamazsa yeni bir Notebase oluşturup kaydeder.
+  saveToNotebasePendingLoginDescription: Giriş yaptıktan sonra Getu Translate Notebase'i oluşturur ve bu sonucu otomatik olarak kaydeder.
+  saveToNotebasePendingConnectedLoginDescription: Girişten sonra Getu Translate mümkünse bağlı Notebase'e kaydeder. Bu hesap onu kullanamazsa yeni bir Notebase oluşturup kaydeder.
   upgrade: Yükselt
   updatePayment: Ödemeyi güncelle
   openCustomActions: Custom AI Actions'ı aç
@@ -1667,7 +1663,7 @@ subtitles:
     downloadTranslatedComplete: Çevrilmiş altyazılar indirildi
     downloadSource: Kaynak altyazıları indir
   state:
-    loading: Read Frog altyazılar yükleniyor
+    loading: Getu Translate altyazılar yükleniyor
     translating: Çevriliyor…
     error: Bir hata oluştu
   errors:

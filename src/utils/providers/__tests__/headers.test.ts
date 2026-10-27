@@ -27,8 +27,8 @@ describe("provider headers", () => {
 
   describe("forced headers", () => {
     const jalapeno = {
-      "HTTP-Referer": "https://www.readfrog.app",
-      "X-Jalapeno-Title": "Read Frog",
+      "HTTP-Referer": "https://www.app.test",
+      "X-Jalapeno-Title": "Getu Translate",
     }
 
     it("sends them when the user has configured no headers", () => {
@@ -64,8 +64,8 @@ describe("provider headers", () => {
     it("keeps OpenRouter attribution when the user adds their own", () => {
       expect(getProviderHeadersWithOverride("openrouter", { "X-Test": "1" })).toEqual({
         "X-Test": "1",
-        "HTTP-Referer": "https://www.readfrog.app",
-        "X-OpenRouter-Title": "Read Frog",
+        "HTTP-Referer": "https://www.app.test",
+        "X-OpenRouter-Title": "Getu Translate",
       })
     })
   })

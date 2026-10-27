@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/base-ui/button"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/base-ui/tooltip"
 import { i18n } from "@/utils/i18n"
 
-export function DiscordButton() {
+export function DiscordButton({ url }: { url: string }) {
   return (
     <Tooltip>
       <TooltipTrigger
@@ -11,9 +11,7 @@ export function DiscordButton() {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() =>
-              window.open("https://discord.gg/ej45e3PezJ", "_blank", "noopener,noreferrer")
-            }
+            onClick={() => window.open(url, "_blank", "noopener,noreferrer")}
           />
         }
       >

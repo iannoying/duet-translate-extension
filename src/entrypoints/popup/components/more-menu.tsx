@@ -11,17 +11,14 @@ import {
 } from "@/components/ui/base-ui/dropdown-menu"
 import { env } from "@/env"
 import { configFieldsAtomMap } from "@/utils/atoms/config"
+import { BRAND } from "@/utils/constants/brand"
 import { buildFeaturebasePortalUrl } from "@/utils/featurebase"
 import { i18n } from "@/utils/i18n"
 import { resolveUiLocale } from "@/utils/i18n/locale-map"
 import { getReviewUrl } from "@/utils/utils"
 
-const SUPPORT_EMAIL = "contact@readfrog.app"
-const DISCORD_INVITE_URL = "https://discord.gg/ej45e3PezJ"
-const GITHUB_REPO_URL = "https://github.com/mengxi-ream/read-frog"
-const WECHAT_QR_URL = `${GITHUB_REPO_URL}/blob/main/assets/wechat-account.jpg`
-
-function openExternal(url: string) {
+function openExternal(url: string | undefined) {
+  if (!url) return
   window.open(url, "_blank", "noopener,noreferrer")
 }
 
@@ -32,6 +29,9 @@ function openExternal(url: string) {
 export function MoreMenu() {
   const uiLanguage = useAtomValue(configFieldsAtomMap.uiLanguage)
   const locale = resolveUiLocale(uiLanguage)
+  const featureRequestUrl = buildFeaturebasePortalUrl({ destination: "feedback", locale })
+  const bugReportUrl = buildFeaturebasePortalUrl({ destination: "tickets", locale })
+  const reviewUrl = getReviewUrl("popup")
 
   return (
     <DropdownMenu>
@@ -59,34 +59,33 @@ export function MoreMenu() {
             {i18n.t("popup.more.tutorial")}
           </DropdownMenuItem>
 
-          <DropdownMenuItem
-            onClick={() => openExternal(`mailto:${SUPPORT_EMAIL}`)}
-            className="cursor-pointer"
-          >
-            <Icon icon="tabler:mail" className="size-4" strokeWidth={1.6} />
-            {i18n.t("popup.more.emailUs")}
-          </DropdownMenuItem>
+          {BRAND.supportEmail && (
+            <DropdownMenuItem
+              onClick={() => openExternal(`mailto:${BRAND.supportEmail}`)}
+              className="cursor-pointer"
+            >
+              <Icon icon="tabler:mail" className="size-4" strokeWidth={1.6} />
+              {i18n.t("popup.more.emailUs")}
+            </DropdownMenuItem>
+          )}
 
-          <DropdownMenuItem
-            // The portal's own root is the feedback board; `tickets` is the support queue.
-            onClick={() =>
-              openExternal(buildFeaturebasePortalUrl({ destination: "feedback", locale }))
-            }
-            className="cursor-pointer"
-          >
-            <Icon icon="tabler:message-circle" className="size-4" strokeWidth={1.6} />
-            {i18n.t("popup.more.featureRequest")}
-          </DropdownMenuItem>
+          {featureRequestUrl && (
+            <DropdownMenuItem
+              // The portal's own root is the feedback board; `tickets` is the support queue.
+              onClick={() => openExternal(featureRequestUrl)}
+              className="cursor-pointer"
+            >
+              <Icon icon="tabler:message-circle" className="size-4" strokeWidth={1.6} />
+              {i18n.t("popup.more.featureRequest")}
+            </DropdownMenuItem>
+          )}
 
-          <DropdownMenuItem
-            onClick={() =>
-              openExternal(buildFeaturebasePortalUrl({ destination: "tickets", locale }))
-            }
-            className="cursor-pointer"
-          >
-            <Icon icon="tabler:bug" className="size-4" strokeWidth={1.6} />
-            {i18n.t("popup.more.bugReport")}
-          </DropdownMenuItem>
+          {bugReportUrl && (
+            <DropdownMenuItem onClick={() => openExternal(bugReportUrl)} className="cursor-pointer">
+              <Icon icon="tabler:bug" className="size-4" strokeWidth={1.6} />
+              {i18n.t("popup.more.bugReport")}
+            </DropdownMenuItem>
+          )}
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
@@ -94,34 +93,30 @@ export function MoreMenu() {
         <DropdownMenuGroup>
           <DropdownMenuLabel>{i18n.t("popup.more.community")}</DropdownMenuLabel>
 
-          <DropdownMenuItem
-            onClick={() => openExternal(DISCORD_INVITE_URL)}
-            className="cursor-pointer"
-          >
-            <Icon icon="logos:discord-icon" className="size-4" strokeWidth={1.6} />
-            {i18n.t("popup.more.joinDiscord")}
-          </DropdownMenuItem>
-
-          <DropdownMenuItem onClick={() => openExternal(WECHAT_QR_URL)} className="cursor-pointer">
-            <Icon icon="streamline-logos:wechat-logo-solid" className="size-4" strokeWidth={1.6} />
-            {i18n.t("popup.more.joinWechat")}
-          </DropdownMenuItem>
+          {BRAND.discordInviteUrl && (
+            <DropdownMenuItem
+              onClick={() => openExternal(BRAND.discordInviteUrl)}
+              className="cursor-pointer"
+            >
+              <Icon icon="logos:discord-icon" className="size-4" strokeWidth={1.6} />
+              {i18n.t("popup.more.joinDiscord")}
+            </DropdownMenuItem>
+          )}
 
           <DropdownMenuItem
-            onClick={() => openExternal(GITHUB_REPO_URL)}
+            onClick={() => openExternal(BRAND.sourceRepoUrl)}
             className="cursor-pointer"
           >
             <Icon icon="fa7-brands:github" className="size-4" strokeWidth={1.6} />
             {i18n.t("popup.more.starGithub")}
           </DropdownMenuItem>
 
-          <DropdownMenuItem
-            onClick={() => openExternal(getReviewUrl("popup"))}
-            className="cursor-pointer"
-          >
-            <Icon icon="tabler:star" className="size-4" strokeWidth={1.6} />
-            {i18n.t("popup.more.rateUs")}
-          </DropdownMenuItem>
+          {reviewUrl && (
+            <DropdownMenuItem onClick={() => openExternal(reviewUrl)} className="cursor-pointer">
+              <Icon icon="tabler:star" className="size-4" strokeWidth={1.6} />
+              {i18n.t("popup.more.rateUs")}
+            </DropdownMenuItem>
+          )}
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -1,8 +1,8 @@
 {
-  "name": "@read-frog/extension",
+  "name": "getu-translate",
   "version": "1.54.0",
   "private": true,
-  "description": "Read Frog browser extension for language learning",
+  "description": "Getu Translate (懂你翻译) browser extension for AI translation and language learning",
   "type": "module",
   "scripts": {
     "build": "wxt build",

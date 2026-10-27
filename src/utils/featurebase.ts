@@ -1,6 +1,5 @@
 import type { SupportedUiLocale } from "@/utils/i18n/resources"
-
-const FEATUREBASE_PORTAL_ORIGIN = "https://feedback.readfrog.app"
+import { BRAND } from "@/utils/constants/brand"
 
 export type FeaturebasePortalDestination = "feedback" | "roadmap" | "tickets"
 
@@ -11,17 +10,21 @@ export interface FeaturebaseFeedbackMetadata {
   page_url?: string
 }
 
+/** Undefined while no feedback portal is configured, so callers can hide their entry. */
 export function buildFeaturebasePortalUrl({
   destination,
   locale,
   metadata,
+  origin = BRAND.feedbackPortalOrigin,
 }: {
   destination: FeaturebasePortalDestination
   locale: SupportedUiLocale
   metadata?: Record<string, string | undefined>
-}) {
+  origin?: string
+}): string | undefined {
+  if (!origin) return undefined
   const pathname = destination === "feedback" ? `/${locale}` : `/${locale}/${destination}`
-  const url = new URL(pathname, FEATUREBASE_PORTAL_ORIGIN)
+  const url = new URL(pathname, origin)
 
   const definedMetadata = metadata
     ? Object.fromEntries(

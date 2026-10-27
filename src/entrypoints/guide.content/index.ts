@@ -35,7 +35,7 @@ export default defineContentScript({
       }
 
       const { source, type } = e.data || {}
-      if (source !== "read-frog-page") return
+      if (source !== `${kebabCase(APP_NAME)}-page`) return
 
       if (type === "getPinState") {
         const isPinned = await sendMessage("getPinState", undefined)
