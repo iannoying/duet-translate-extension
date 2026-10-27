@@ -3,7 +3,7 @@ import type {
   DictionarySlot,
   ImproveWritingSlot,
   SentenceAnalysisSlot,
-} from "@read-frog/layout-engine/presets"
+} from "@/layout-engine/presets"
 import type {
   SelectionToolbarCustomActionOutputField,
   SelectionToolbarCustomActionSampleData,

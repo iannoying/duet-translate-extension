@@ -5,13 +5,6 @@ import type {
   SelectionToolbarCustomActionOutputField,
   SelectionToolbarCustomActionSampleData,
 } from "@/types/config/selection-toolbar"
-import { formatFieldRef, LAYOUT_CTX_ROOT } from "@read-frog/layout-engine/contract"
-import { analyzeLayout } from "@read-frog/layout-engine/editor"
-import {
-  DEFAULT_LAYOUT,
-  LAYOUT_SPEAK_BUTTON_CSS,
-  SPEAK_BUTTON_ICONS,
-} from "@read-frog/layout-engine/presets"
 import {
   IconBraces,
   IconChevronDown,
@@ -66,6 +59,13 @@ import {
   PopoverTrigger,
 } from "@/components/ui/base-ui/popover"
 import { Skeleton } from "@/components/ui/base-ui/skeleton"
+import { formatFieldRef, LAYOUT_CTX_ROOT } from "@/layout-engine/contract"
+import { analyzeLayout } from "@/layout-engine/editor"
+import {
+  DEFAULT_LAYOUT,
+  LAYOUT_SPEAK_BUTTON_CSS,
+  SPEAK_BUTTON_ICONS,
+} from "@/layout-engine/presets"
 import { MAX_CUSTOM_ACTION_LAYOUT_LENGTH } from "@/types/config/selection-toolbar"
 import { i18n } from "@/utils/i18n"
 import { resolveActionLayout } from "@/utils/layout-host/resolve"

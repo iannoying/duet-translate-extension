@@ -1,11 +1,7 @@
-import {
-  compileLayout,
-  getCompiledLayoutCss,
-  renderLayoutHtml,
-} from "@read-frog/layout-engine/core"
-import { lintLayout } from "@read-frog/layout-engine/editor"
-import { DEFAULT_LAYOUT } from "@read-frog/layout-engine/presets"
 import { describe, expect, it } from "vitest"
+import { compileLayout, getCompiledLayoutCss, renderLayoutHtml } from "@/layout-engine/core"
+import { lintLayout } from "@/layout-engine/editor"
+import { DEFAULT_LAYOUT } from "@/layout-engine/presets"
 import { MAX_CUSTOM_ACTION_LAYOUT_LENGTH } from "@/types/config/selection-toolbar"
 import { buildCustomActionLayoutScope, CUSTOM_ACTION_LAYOUT_HOST } from "@/utils/layout-host/host"
 import { migrate } from "../../migration-scripts/v102-to-v103"
@@ -326,7 +322,7 @@ describe("v102 to v103 migration", () => {
 
 // Every user who had a custom action before layouts existed got one of these
 // three layouts, verbatim, in their config. They must render as they did when
-// v103 shipped whatever version of @read-frog/layout-engine this build pins: a
+// v103 shipped whatever version of the layout engine this build carries: a
 // change to these files is a change to what those users see, so review it
 // before updating them (vitest -u).
 describe("layouts written by the v102 to v103 migration", () => {

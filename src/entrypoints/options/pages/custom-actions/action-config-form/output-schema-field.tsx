@@ -3,8 +3,6 @@ import type {
   SelectionToolbarCustomActionOutputField,
 } from "@/types/config/selection-toolbar"
 import { Icon } from "@iconify/react"
-import { LAYOUT_RESERVED_FIELD_NAMES } from "@read-frog/layout-engine/contract"
-import { renameLayoutFieldRefs } from "@read-frog/layout-engine/editor"
 import { useForm } from "@tanstack/react-form"
 import { useEffect, useState } from "react"
 import { fieldContext as FieldContext } from "@/components/form/form-context"
@@ -41,6 +39,8 @@ import {
   SelectValue,
 } from "@/components/ui/base-ui/select"
 import { toastManager } from "@/components/ui/base-ui/toast"
+import { LAYOUT_RESERVED_FIELD_NAMES } from "@/layout-engine/contract"
+import { renameLayoutFieldRefs } from "@/layout-engine/editor"
 import { selectionToolbarCustomActionOutputTypeSchema } from "@/types/config/selection-toolbar"
 import {
   createOutputSchemaField,

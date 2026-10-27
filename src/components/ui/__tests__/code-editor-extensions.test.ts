@@ -1,3 +1,4 @@
+import type { LiquidEditorField } from "../liquid-code-editor-extensions"
 // @vitest-environment jsdom
 /**
  * Regression test for #1782: the options page crashed with
@@ -12,22 +13,21 @@
  * and resolve them through the app's own @codemirror/state instance.
  * They fail whenever the lockfile splits the CodeMirror packages again.
  */
-import type { LayoutCompletionSource } from "@read-frog/layout-engine/codemirror"
-import type { LiquidEditorField } from "../liquid-code-editor-extensions"
+import type { LayoutCompletionSource } from "@/layout-engine/codemirror"
 import { css } from "@codemirror/lang-css"
 import { json, jsonParseLinter } from "@codemirror/lang-json"
 import { closePercentBrace, liquid } from "@codemirror/lang-liquid"
 import { linter, lintGutter } from "@codemirror/lint"
 import { EditorState } from "@codemirror/state"
 import { EditorView } from "@codemirror/view"
-import { refreshFieldPills } from "@read-frog/layout-engine/codemirror"
-import { DEFAULT_LAYOUT } from "@read-frog/layout-engine/presets"
 import { color } from "@uiw/codemirror-extensions-color"
 import {
   getDefaultExtensions,
   EditorState as ReactCodeMirrorEditorState,
 } from "@uiw/react-codemirror"
 import { afterEach, describe, expect, it } from "vitest"
+import { refreshFieldPills } from "@/layout-engine/codemirror"
+import { DEFAULT_LAYOUT } from "@/layout-engine/presets"
 import { cssLinter } from "@/utils/css/lint-css"
 import { i18n } from "@/utils/i18n"
 import { CUSTOM_ACTION_LAYOUT_HOST } from "@/utils/layout-host/host"

@@ -1,4 +1,4 @@
-import { DEFAULT_LAYOUT } from "@read-frog/layout-engine/presets"
+import { DEFAULT_LAYOUT } from "@/layout-engine/presets"
 
 // The layout source an action renders with. `layout` is optional in the config
 // schema, and a missing or blank one means "the default field list". Kept

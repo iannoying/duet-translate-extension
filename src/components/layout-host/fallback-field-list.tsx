@@ -1,7 +1,7 @@
-import type { LayoutStatus } from "@read-frog/layout-engine/contract"
+import type { LayoutStatus } from "@/layout-engine/contract"
 import type { SelectionToolbarCustomActionOutputField } from "@/types/config/selection-toolbar"
-import { formatLayoutFieldValue } from "@read-frog/layout-engine/core"
 import { IconHash, IconTypography } from "@tabler/icons-react"
+import { formatLayoutFieldValue } from "@/layout-engine/core"
 
 // Last resort of the layout fallback chain (custom layout → default layout →
 // this): a plain React field list that never touches Liquid, the sanitizer or
