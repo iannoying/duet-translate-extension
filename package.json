@@ -1,8 +1,8 @@
 {
-  "name": "getu-translate",
+  "name": "duet-translate",
   "version": "1.54.0",
   "private": true,
-  "description": "Getu Translate (懂你翻译) browser extension for AI translation and language learning",
+  "description": "Duet Translate (懂你翻译) browser extension for AI translation and language learning",
   "type": "module",
   "scripts": {
     "build": "wxt build",

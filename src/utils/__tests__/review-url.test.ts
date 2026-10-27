@@ -5,7 +5,7 @@ import { getReviewUrl } from "../utils"
 const LISTINGS = {
   chromeWebStoreId: "chromeid",
   edgeAddOnsId: "edgeid",
-  firefoxAddOnSlug: "getu-translate",
+  firefoxAddOnSlug: "duet-translate",
 }
 
 const testRuntimeId = browser.runtime.id
@@ -41,7 +41,7 @@ describe("getReviewUrl", () => {
     ["edge", "https://microsoftedge.microsoft.com/addons/detail/edgeid?utm_source=extension"],
     [
       "firefox",
-      "https://addons.mozilla.org/firefox/addon/getu-translate/reviews/?utm_source=extension",
+      "https://addons.mozilla.org/firefox/addon/duet-translate/reviews/?utm_source=extension",
     ],
   ])("falls back to the %s build target for any other id", (target, expected) => {
     vi.stubEnv("BROWSER", target)

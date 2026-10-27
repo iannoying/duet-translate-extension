@@ -1,5 +1,5 @@
-name: Getu Translate
-extName: "Getu Translate - Sİ tərcüməsi və söz kartları"
+name: Duet Translate
+extName: "Duet Translate - Sİ tərcüməsi və söz kartları"
 extDescription: "Veb-səhifələr və YouTube, Netflix, X altyazıları üçün Sİ ilə ikidilli tərcümə. Yeni sözləri saxlayın, kartlarla təkrarlayın."
 account:
   login: Daxil ol
@@ -7,7 +7,7 @@ account:
   logout: Çıxış et
   logoutError: Çıxış etmək mümkün olmadı. Yenidən cəhd edin.
   grantAccess: İcazə ver
-  grantAccessHint: Getu Translate girişi lazımdır
+  grantAccessHint: Duet Translate girişi lazımdır
   grantAccessError: İcazə verilə bilmədi. Yenidən cəhd edin.
 dataTypes:
   string: Mətn
@@ -18,7 +18,7 @@ contextMenu:
   readAloudSelection: '"%s" mətnini səsləndir'
   showOriginal: Orijinalı göstər
 sidePanel:
-  firefoxUserActionHint: Firefox brauzerində Getu Translate genişlənməsini yan paneldən açın.
+  firefoxUserActionHint: Firefox brauzerində Duet Translate genişlənməsini yan paneldən açın.
   firefoxUserActionHelpText: Firefox yan panelini açmağı öyrənin
   firefoxUserActionHelpUrl: https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs
 popup:
@@ -53,11 +53,11 @@ popup:
   discord:
     tooltip: Tərtibatçılarla ünsiyyət qurmaq və yeni funksiyaları erkən sınamaq üçün Discord icmasına qoşulun
   blog:
-    notification: Getu Translate yenilikləri
+    notification: Duet Translate yenilikləri
   aiSmartContext: Süni intellektlə ağıllı kontekst
   aiSmartContextDescription: Tərcümənin keyfiyyətini artırmaq üçün səhifənin kontekstindən istifadə edir. LLM tərcümə provayderi tələb olunur.
   storeReview:
-    title: Getu Translate xoşunuza gəlir?
+    title: Duet Translate xoşunuza gəlir?
     description: Mağazada yazacağınız qısa rəy digər oxucuların onu tapmasına kömək edir.
     action: Rəy yaz
     dismiss: Bağla
@@ -118,12 +118,12 @@ options:
     roadmap: İnkişaf planı
   helpAndCommunity:
     title: Kömək və icma
-    pageDescription: Getu Translate genişlənməsindən istifadə etməyi öyrənin, komandadan kömək alın və ya icmadakı digər istifadəçilərə qoşulun.
+    pageDescription: Duet Translate genişlənməsindən istifadə etməyi öyrənin, komandadan kömək alın və ya icmadakı digər istifadəçilərə qoşulun.
     help:
       title: Kömək
     tutorial:
       title: Təlimat
-      description: Sənədləri oxuyun və Getu Translate genişlənməsindən istifadə etməyi öyrənin
+      description: Sənədləri oxuyun və Duet Translate genişlənməsindən istifadə etməyi öyrənin
     email:
       title: Bizə e-poçt göndər
       description: Komanda ilə birbaşa $1 ünvanında əlaqə saxlayın
@@ -144,8 +144,8 @@ options:
       qrCodeAlt: WeChat QR kodu
   apiProviders:
     title: API provayderləri
-    pageDescription: Getu Translate genişlənməsinin istifadə etdiyi süni intellekt xidmətlərini qoşun, sonra hər funksiyanı hansı xidmətin icra edəcəyini seçin.
-    description: Getu Translate genişlənməsinin müraciət edə biləcəyi provayderləri əlavə edin. 20-dən çox hazır seçim, həmçinin Chat Completions ilə uyğun API-lər və Open Responses API-ləri üçün fərdi qoşulma dəstəyi var.
+    pageDescription: Duet Translate genişlənməsinin istifadə etdiyi süni intellekt xidmətlərini qoşun, sonra hər funksiyanı hansı xidmətin icra edəcəyini seçin.
+    description: Duet Translate genişlənməsinin müraciət edə biləcəyi provayderləri əlavə edin. 20-dən çox hazır seçim, həmçinin Chat Completions ilə uyğun API-lər və Open Responses API-ləri üçün fərdi qoşulma dəstəyi var.
     configTitle: Provayder konfiqurasiyası
     addProvider: Provayder əlavə et
     builtInProvider: Daxili provayder
@@ -253,8 +253,8 @@ options:
         customChatComplete: Fərdi Chat Complete
         customResponses: Fərdi Responses
       attribution:
-        builtInAi: Getu Translate serverlərində işləyən standart model. Ultra abunəliyi olmayan istifadəçilər ondan yalnız fərdi süni intellekt əməliyyatlarında, Ultra üzvləri isə daha çox funksiyada istifadə edə bilər.
-        builtInAiAdvance: Yalnız Ultra üzvləri üçün Getu Translate serverlərində işləyən təkmil model. Səhifə tərcüməsini, fərdi süni intellekt əməliyyatlarını və bütün digər daxili süni intellekt funksiyalarını ortaq həftəlik kvota ilə icra edir. Kvotanı standart modeldən daha sürətli sərf edir.
+        builtInAi: Duet Translate serverlərində işləyən standart model. Ultra abunəliyi olmayan istifadəçilər ondan yalnız fərdi süni intellekt əməliyyatlarında, Ultra üzvləri isə daha çox funksiyada istifadə edə bilər.
+        builtInAiAdvance: Yalnız Ultra üzvləri üçün Duet Translate serverlərində işləyən təkmil model. Səhifə tərcüməsini, fərdi süni intellekt əməliyyatlarını və bütün digər daxili süni intellekt funksiyalarını ortaq həftəlik kvota ilə icra edir. Kvotanı standart modeldən daha sürətli sərf edir.
       description:
         openai: GPT-4o kimi modellər təqdim edir
         azure: Azure üzərində yerləşdirdiyiniz OpenAI modelləri
@@ -336,15 +336,15 @@ options:
   patterns:
     duplicate: Bu şablon artıq siyahıdadır
     gluedWildcard: '"*" ünvanın bütöv bir hissəsini əvəz etməlidir, məsələn *.example.com və ya example.*'
-    unsupported: Getu Translate bu ünvanı uyğunlaşdıra bilmir. Portlar və http ilə https xaricindəki sxemlər dəstəklənmir.
+    unsupported: Duet Translate bu ünvanı uyğunlaşdıra bilmir. Portlar və http ilə https xaricindəki sxemlər dəstəklənmir.
   preference:
     title: Ümumi parametrlər
-    pageDescription: Getu Translate genişlənməsinin görünüşünü, harada işləyəcəyini, konfiqurasiyanın necə sinxronlaşdırılacağını və ehtiyat nüsxəsinin necə yaradılacağını təyin edin.
+    pageDescription: Duet Translate genişlənməsinin görünüşünü, harada işləyəcəyini, konfiqurasiyanın necə sinxronlaşdırılacağını və ehtiyat nüsxəsinin necə yaradılacağını təyin edin.
     appearanceAndLanguage:
       title: Görünüş və dil
       theme:
         title: Mövzu
-        description: Getu Translate üçün mövzu seçin.
+        description: Duet Translate üçün mövzu seçin.
         system: Sistem
         light: Açıq
         dark: Tünd
@@ -363,7 +363,7 @@ options:
         description: Səhifələrin tərcümə edildiyi dil.
     extensionActivation:
       title: Genişlənmənin aktivliyi
-      description: Getu Translate genişlənməsinin sadaladığınız saytlardan başqa hər yerdə, yoxsa yalnız sadaladığınız saytlarda işləyəcəyini seçin
+      description: Duet Translate genişlənməsinin sadaladığınız saytlardan başqa hər yerdə, yoxsa yalnız sadaladığınız saytlarda işləyəcəyini seçin
       manageSites: Saytları idarə et
       mode:
         title: Aktivləşdirmə rejimi
@@ -438,7 +438,7 @@ options:
           accountChangedRetry: Dialoq açıq ikən daxil olunmuş Google hesabı dəyişdi. Heç nə yüklənmədi — yenidən sinxronlaşdırın.
           busy: Başqa bir tab hazırda lüğətlərinizi sinxronlaşdırır.
           malformed: Drive-dakı lüğət faylı oxuna bilmədi, ona görə heç nə dəyişmədi.
-          versionTooNew: Həmin lüğət faylını Getu Translate-un daha yeni versiyası yazıb. Əvvəlcə genişlənməni yeniləyin.
+          versionTooNew: Həmin lüğət faylını Duet Translate-un daha yeni versiyası yazıb. Əvvəlcə genişlənməni yeniləyin.
           duplicateFiles: Drive-ınızda birdən çox lüğət faylı var. Heç nə dəyişmədi - artıq olanı silin.
           capExceeded: "Birləşdirmə lüğət limitini $1 aşardı. Heç nə dəyişmədi."
           failed: Lüğət sinxronizasiyası alınmadı
@@ -465,7 +465,7 @@ options:
         glossaryUndone: Lüğətləriniz idxaldan əvvəlki halına qaytarıldı
         glossaryUndoUnavailable: Bu geri alma artıq mümkün deyil — lüğətləriniz o vaxtdan bəri dəyişib.
         glossaryMalformed: Həmin fayldakı lüğətlər oxuna bilmədi. Heç nə dəyişmədi.
-        glossaryVersionTooNew: Həmin fayldakı lüğətləri Getu Translate-un daha yeni versiyası yazıb. Əvvəlcə genişlənməni yeniləyin.
+        glossaryVersionTooNew: Həmin fayldakı lüğətləri Duet Translate-un daha yeni versiyası yazıb. Əvvəlcə genişlənməni yeniləyin.
         glossaryCapExceeded: "Həmin faylda $2 limitindən $1 çox lüğət sətri var. Heç nə dəyişmədi."
         exportOptions:
           title: İxrac seçimlərini təyin edin
@@ -519,8 +519,8 @@ options:
         description: Hələ qeyri-sabit ola biləcək sınaq funksiyalarını aktiv edin
       analytics:
         title: İstifadəçi təcrübəsini yaxşılaşdırmağa kömək et
-        tooltip: Aktiv olduqda Getu Translate məhsulun istifadəsi barədə anonim məlumatlar göndərir. Bu məlumatlar xətaları tapmağa, funksiyaların etibarlılığını yoxlamağa, məhsuldarlığı və istifadə rahatlığını artırmağa, gələcək işlərin prioritetlərini müəyyən etməyə kömək edir.
-        description: Xətaları tapmaqda, görünüşü təkmilləşdirməkdə və digər işlərdə bizə kömək edərək Getu Translate təcrübəsini yaxşılaşdırın
+        tooltip: Aktiv olduqda Duet Translate məhsulun istifadəsi barədə anonim məlumatlar göndərir. Bu məlumatlar xətaları tapmağa, funksiyaların etibarlılığını yoxlamağa, məhsuldarlığı və istifadə rahatlığını artırmağa, gələcək işlərin prioritetlərini müəyyən etməyə kömək edir.
+        description: Xətaları tapmaqda, görünüşü təkmilləşdirməkdə və digər işlərdə bizə kömək edərək Duet Translate təcrübəsini yaxşılaşdırın
   shortcuts:
     title: Qısayollar
     pageDescription: Oxuyarkən tərcümə, səsləndirmə və süni intellekt əməliyyatlarını başladan düymələri təyin edin.
@@ -584,7 +584,7 @@ options:
     demoImageAlt: Üzən düymə nümunəsi
     enable:
       title: Üzən düyməni aktiv et
-      description: Getu Translate funksiyalarına sürətli çıxış üçün veb səhifələrdə üzən düyməni göstərin
+      description: Duet Translate funksiyalarına sürətli çıxış üçün veb səhifələrdə üzən düyməni göstərin
     display:
       title: Görünüş
       side:
@@ -789,7 +789,7 @@ options:
           title: Notebase qoşulması
           description: Bu əməliyyatın strukturlaşdırılmış nəticələrini uzaqdakı Notebase daxilində saxlayın.
           loginRequiredTitle: Notebase parametrlərini tənzimləmək üçün daxil olun
-          loginRequiredDescription: Notebase seçməzdən və ya uyğunlaşdırmaları redaktə etməzdən əvvəl Getu Translate saytında daxil olun.
+          loginRequiredDescription: Notebase seçməzdən və ya uyğunlaşdırmaları redaktə etməzdən əvvəl Duet Translate saytında daxil olun.
           loginRequiredConnectedDescription: Bu qoşulma aşağıdakı hesab tərəfindən yaradılıb. Eyni hesabla daxil olsanız, sahə uyğunlaşdırmaları bərpa ediləcək. Başqa hesabla daxil olsanız, Notebase yaradarkən və ya qoşarkən əvvəlki uyğunlaşdırmalar silinəcək.
           loginAction: Daxil ol
           connectedAccountLabel: Qoşulmuş hesab
@@ -801,7 +801,7 @@ options:
           clearConnectionAction: Qoşulmanı sil
           refreshAction: Yenilə
           emptyTitle: Hələ Notebase yoxdur
-          emptyDescription: Getu Translate saytında Notebase yaradın, sonra sahələri uyğunlaşdırmaq üçün buraya qayıdın.
+          emptyDescription: Duet Translate saytında Notebase yaradın, sonra sahələri uyğunlaşdırmaq üçün buraya qayıdın.
           openNotebaseAction: Notebase səhifəsini aç
           accessDeniedTitle: Notebase əlçatan deyil
           accessDeniedDescription: Bu hesabın Notebase məlumatlarını yükləməyə icazəsi yoxdur.
@@ -1132,7 +1132,7 @@ options:
       importModeMerge: Siyahıya əlavə et
       importModeReplace: Siyahını əvəz et
       importEmpty: Bu faylda termin tapılmadı.
-      importMissingHeader: "Bu fayl Getu Translate lüğət ixracı deyil. Bu sütunlar tələb olunur:"
+      importMissingHeader: "Bu fayl Duet Translate lüğət ixracı deyil. Bu sütunlar tələb olunur:"
       importOverflow: "Bu idxal limiti $1 termin aşacaq. Heç nə dəyişdirilmədi."
       importSuccess: "$1 yeni termin idxal edildi, $2 termin yeniləndi."
       importSkipped: "$1 yanlış sətir və $2 təkrar buraxıldı."
@@ -1154,7 +1154,7 @@ options:
           description: "Bütün $1 termin həmişəlik silinəcək. Bu əməliyyatı geri qaytarmaq mümkün deyil."
   contextMenu:
     title: Kontekst menyusu
-    pageDescription: Brauzerin sağ klik menyusundakı Getu Translate elementlərini idarə edin.
+    pageDescription: Brauzerin sağ klik menyusundakı Duet Translate elementlərini idarə edin.
     demoImageAlt: Kontekst menyusu nümunəsi
     enable:
       title: Kontekst menyusunda tərcüməni aktiv et
@@ -1372,9 +1372,9 @@ options:
       noVoicesFound: Səs tapılmadı
       language:
         title: Dil üçün səs
-        description: Əvvəl dili, sonra onu səsləndirəcək səsi seçin. Sıfırlama Getu Translate genişlənməsinin həmin dil üçün seçdiyi səsi bərpa edir.
+        description: Əvvəl dili, sonra onu səsləndirəcək səsi seçin. Sıfırlama Duet Translate genişlənməsinin həmin dil üçün seçdiyi səsi bərpa edir.
         reset: Sıfırla
-        previewSample: Getu Translate sizə salam deyir! Ucadan oxuyarkən səsim belə olacaq.
+        previewSample: Duet Translate sizə salam deyir! Ucadan oxuyarkən səsim belə olacaq.
       fallback:
         title: Ehtiyat səs
         description: Ayrıca səs təyin etmədiyiniz dillər üçün istifadə olunan səs.
@@ -1522,7 +1522,7 @@ options:
   rateUs:
     title: Bizi qiymətləndir
   configMigration:
-    versionTooNew: İdxal edilən konfiqurasiyanın versiyası daha yenidir, Getu Translate genişlənməsini son versiyaya yeniləyin
+    versionTooNew: İdxal edilən konfiqurasiyanın versiyası daha yenidir, Duet Translate genişlənməsini son versiyaya yeniləyin
     validationError: Konfiqurasiyanın yoxlanması alınmadı
 side:
   sourceLang: Mənbə dili
@@ -1579,7 +1579,7 @@ action:
   saveToNotebaseSaving: Yadda saxlanılır...
   saveToNotebaseSuccess: Notebase daxilində yadda saxlanıldı
   saveToNotebaseFailed: Notebase daxilində yadda saxlamaq mümkün olmadı
-  saveToNotebaseLoginRequired: Notebase daxilində yadda saxlamaq üçün Getu Translate saytında daxil olun
+  saveToNotebaseLoginRequired: Notebase daxilində yadda saxlamaq üçün Duet Translate saytında daxil olun
   saveToNotebaseAccessDenied: Bu hesabın seçilmiş Notebase üçün giriş icazəsi yoxdur
   saveToNotebaseLimitExceeded: Daha çox Notebase qeydi saxlamaq üçün abunəliyi yüksəltmək lazımdır
   saveToNotebaseTableUnavailable: Seçilmiş Notebase artıq əlçatan deyil
@@ -1598,13 +1598,13 @@ action:
   saveToNotebaseConnectExisting: Mövcud Notebase ilə əlaqə qur
   saveToNotebaseGoConfigure: Tənzimlə
   saveToNotebaseLoginConnectedTitle: Yadda saxlamaq üçün daxil olunsun?
-  saveToNotebaseLoginConnectedDescription: Bu fərdi əməliyyat aşağıdakı hesaba qoşulub. Daxil olduqdan sonra Getu Translate mümkün olduqda mövcud Notebase daxilində yadda saxlayacaq, əks halda daxil olunmuş hesab üçün yeni Notebase yaradacaq.
+  saveToNotebaseLoginConnectedDescription: Bu fərdi əməliyyat aşağıdakı hesaba qoşulub. Daxil olduqdan sonra Duet Translate mümkün olduqda mövcud Notebase daxilində yadda saxlayacaq, əks halda daxil olunmuş hesab üçün yeni Notebase yaradacaq.
   saveToNotebaseConnectionUnavailableTitle: Notebase qoşulması əlçatan deyil
   saveToNotebaseMissingNotebaseDescription: Əvvəlki Notebase artıq mövcud deyil və ya bu hesab onu aça bilmir. Yeni Notebase yaradıb bu nəticəni saxlayın və ya fərdi süni intellekt əməliyyatlarında mövcud Notebase qoşun.
   saveToNotebaseAccountUnavailableDescription: Daxil olunmuş hesab aşağıdakı qoşulmuş hesabla uyğun gəlmir. Yaratma və saxlama əvvəlki qoşulmanı və sahə uyğunlaşdırmalarını əvəz edəcək. Fərdi süni intellekt əməliyyatlarında mövcud Notebase də qoşa bilərsiniz.
   saveToNotebasePendingLogin: Yadda saxlamanı tamamlamaq üçün daxil olun
-  saveToNotebasePendingLoginDescription: Daxil olduqdan sonra Getu Translate avtomatik olaraq Notebase yaradacaq və bu nəticəni saxlayacaq.
-  saveToNotebasePendingConnectedLoginDescription: Daxil olduqdan sonra Getu Translate mümkün olduqda qoşulmuş Notebase daxilində yadda saxlayacaq. Bu hesab ondan istifadə edə bilməsə, Getu Translate yeni Notebase yaradacaq və bu nəticəni saxlayacaq.
+  saveToNotebasePendingLoginDescription: Daxil olduqdan sonra Duet Translate avtomatik olaraq Notebase yaradacaq və bu nəticəni saxlayacaq.
+  saveToNotebasePendingConnectedLoginDescription: Daxil olduqdan sonra Duet Translate mümkün olduqda qoşulmuş Notebase daxilində yadda saxlayacaq. Bu hesab ondan istifadə edə bilməsə, Duet Translate yeni Notebase yaradacaq və bu nəticəni saxlayacaq.
   upgrade: Abunəliyi yüksəlt
   updatePayment: Ödənişi yenilə
   openCustomActions: Fərdi süni intellekt əməliyyatlarını aç
@@ -1661,7 +1661,7 @@ subtitles:
     downloadTranslatedComplete: Tərcümə edilmiş subtitrlər endirildi
     downloadSource: Orijinal subtitrləri endir
   state:
-    loading: Getu Translate subtitrləri yükləyir
+    loading: Duet Translate subtitrləri yükləyir
     translating: Tərcümə edilir…
     error: Xəta baş verdi
   errors:
