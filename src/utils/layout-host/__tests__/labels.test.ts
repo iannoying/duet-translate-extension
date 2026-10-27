@@ -1,5 +1,5 @@
-import { LANG_CODE_ISO6393_OPTIONS, LOCALE_TO_ISO6393 } from "@read-frog/definitions"
 import { describe, expect, it } from "vitest"
+import { LANG_CODE_ISO6393_OPTIONS, LOCALE_TO_ISO6393 } from "@/definitions"
 import { SUPPORTED_UI_LOCALES } from "@/utils/i18n/locales"
 import {
   contentLocaleFor,

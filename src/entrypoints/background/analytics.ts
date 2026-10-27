@@ -1,15 +1,15 @@
-import type { LangCodeISO6393, NoteSaveSurface } from "@read-frog/definitions"
 import type { CaptureResult } from "posthog-js/dist/module.no-external"
+import type { LangCodeISO6393, NoteSaveSurface } from "@/definitions"
 import type {
   AnalyticsFailureReason,
   AnalyticsFeature,
   FeatureUsedEventProperties,
   SurfaceByFeature,
 } from "@/types/analytics"
-import { langCodeISO6393Schema, NOTE_SAVE_SURFACES } from "@read-frog/definitions"
 import { posthog } from "posthog-js/dist/module.no-external"
 import { match } from "ts-pattern"
 import { storage } from "#imports"
+import { langCodeISO6393Schema, NOTE_SAVE_SURFACES } from "@/definitions"
 import { env } from "@/env"
 import { ANALYTICS_FAILURE_REASONS, ANALYTICS_FEATURE, NOTE_SAVE_PATHS } from "@/types/analytics"
 import { translationModeSchema } from "@/types/config/translate"

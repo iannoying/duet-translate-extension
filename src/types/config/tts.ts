@@ -1,6 +1,6 @@
-import type { LangCodeISO6393 } from "@read-frog/definitions"
-import { LANG_CODE_ISO6393_OPTIONS, langCodeISO6393Schema } from "@read-frog/definitions"
+import type { LangCodeISO6393 } from "@/definitions"
 import { z } from "zod"
+import { LANG_CODE_ISO6393_OPTIONS, langCodeISO6393Schema } from "@/definitions"
 
 export type TTSVoice = string
 

@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
-import type { EbookBridgeSelectionPayload } from "@read-frog/definitions"
+import type { EbookBridgeSelectionPayload } from "@/definitions"
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import {
   EBOOK_BRIDGE_EXTENSION_SOURCE,
   EBOOK_BRIDGE_HANDSHAKE_TYPE,
@@ -7,8 +8,7 @@ import {
   EBOOK_BRIDGE_SELECTION_CHANGED_TYPE,
   EBOOK_BRIDGE_SELECTION_CLEARED_TYPE,
   EBOOK_SELECTION_BRIDGE_PROTOCOL_VERSION,
-} from "@read-frog/definitions"
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
+} from "@/definitions"
 import {
   EXTERNAL_SELECTION_CLEAR_EVENT,
   EXTERNAL_SELECTION_OPEN_EVENT,

@@ -10,7 +10,6 @@ import type { BackgroundTextStreamSnapshot, ThinkingSnapshot } from "@/types/bac
 import type { LLMProviderConfig, TranslateProviderConfig } from "@/types/config/provider"
 import type { PromptableProviderRef } from "@/utils/providers/provider-ref"
 import type { ResolvedProviderRef, SystemProviderRef } from "@/utils/providers/provider-registry"
-import { LANG_CODE_TO_EN_NAME } from "@read-frog/definitions"
 import { useAtomValue, useSetAtom } from "jotai"
 import {
   createContext,
@@ -35,6 +34,7 @@ import { ReviewDueTab } from "@/components/ui/selection-popover/review-due-tab"
 import { SelectionToolbarErrorAlert } from "@/components/ui/selection-popover/selection-toolbar-error-alert"
 import { SelectionToolbarFooterContent } from "@/components/ui/selection-popover/selection-toolbar-footer-content"
 import { SelectionToolbarTitleContent } from "@/components/ui/selection-popover/selection-toolbar-title-content"
+import { LANG_CODE_TO_EN_NAME } from "@/definitions"
 import { ANALYTICS_FEATURE, ANALYTICS_SURFACE } from "@/types/analytics"
 import { isLLMProviderConfig, isTranslateProviderConfig } from "@/types/config/provider"
 import { createFeatureUsageContext, trackFeatureUsed } from "@/utils/analytics"

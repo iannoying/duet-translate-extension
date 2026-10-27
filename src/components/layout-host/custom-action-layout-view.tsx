@@ -1,4 +1,4 @@
-import type { LangCodeISO6393 } from "@read-frog/definitions"
+import type { LangCodeISO6393 } from "@/definitions"
 import type { LayoutStatus } from "@/layout-engine/contract"
 import type { LayoutRenderReport, LayoutWarnCode } from "@/layout-engine/dom"
 import type { SurfaceByFeature } from "@/types/analytics"

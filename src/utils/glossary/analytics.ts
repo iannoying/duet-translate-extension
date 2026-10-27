@@ -1,6 +1,6 @@
-import type { LangCodeISO6393 } from "@read-frog/definitions"
 import type { GlossaryFeatureKey } from "./features"
 import type { MatchedTerm } from "./types"
+import type { LangCodeISO6393 } from "@/definitions"
 import type { AnalyticsSurface, FeatureProviderAnalytics } from "@/types/analytics"
 import type { HostedAiTextStreamRoute } from "@/types/background-stream"
 import { ANALYTICS_FEATURE, ANALYTICS_SURFACE } from "@/types/analytics"

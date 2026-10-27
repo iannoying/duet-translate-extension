@@ -1,6 +1,6 @@
-import type { LangCodeISO6393 } from "@read-frog/definitions"
 import type { ViewId } from "./ui/subtitles-settings-panel/views"
 import type { SectionId } from "./ui/subtitles-sidebar/sections"
+import type { LangCodeISO6393 } from "@/definitions"
 import type { SubtitlesSource } from "@/utils/constants/subtitles"
 import type { StateData, SubtitlesFragment, SubtitlesState } from "@/utils/subtitles/types"
 import { atom, createStore } from "jotai"

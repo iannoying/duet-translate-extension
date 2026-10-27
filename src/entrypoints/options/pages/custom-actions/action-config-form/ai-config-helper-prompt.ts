@@ -1,7 +1,7 @@
-import type { LangCodeISO6393 } from "@read-frog/definitions"
+import type { LangCodeISO6393 } from "@/definitions"
 import type { SelectionToolbarCustomAction } from "@/types/config/selection-toolbar"
 import type { SupportedUiLocale } from "@/utils/i18n/locales"
-import { LANG_CODE_TO_EN_NAME } from "@read-frog/definitions"
+import { LANG_CODE_TO_EN_NAME } from "@/definitions"
 import {
   LAYOUT_ALLOWED_TAGS,
   LAYOUT_ANNOTATE_MAX_ITEMS,

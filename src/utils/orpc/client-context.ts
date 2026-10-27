@@ -1,8 +1,8 @@
 import type { ContractRouterClient } from "@orpc/contract"
 import type { contract } from "@read-frog/api-contract"
-import type { ClientContextHeaderInput } from "@read-frog/definitions"
-import { CLIENT_CONTEXT_HEADER, formatClientContextHeader } from "@read-frog/definitions"
+import type { ClientContextHeaderInput } from "@/definitions"
 import { storage } from "#imports"
+import { CLIENT_CONTEXT_HEADER, formatClientContextHeader } from "@/definitions"
 import {
   ANALYTICS_ENABLED_STORAGE_KEY,
   DEFAULT_ANALYTICS_ENABLED,

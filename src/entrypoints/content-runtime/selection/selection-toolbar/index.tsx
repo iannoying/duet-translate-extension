@@ -1,8 +1,5 @@
-import type {
-  EbookBridgeSelectionDirection,
-  EbookBridgeSelectionPayload,
-} from "@read-frog/definitions"
 import type { ModalDialogHostController } from "./modal-dialog-host"
+import type { EbookBridgeSelectionDirection, EbookBridgeSelectionPayload } from "@/definitions"
 import type { DeferredSelectionOpenDetail } from "@/utils/constants/selection"
 import { useAtom, useAtomValue, useSetAtom } from "jotai"
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"

@@ -1,6 +1,6 @@
-import type { BlogPostType } from "@read-frog/definitions"
 import type { VariantProps } from "class-variance-authority"
 import type { badgeVariants } from "@/components/ui/base-ui/badge"
+import type { BlogPostType } from "@/definitions"
 import { Badge } from "@/components/ui/base-ui/badge"
 import { i18n } from "@/utils/i18n"
 import { cn } from "@/utils/styles/utils"

@@ -1,6 +1,6 @@
 import { HostedAiOutputFieldTypeSchema } from "@read-frog/api-contract"
-import { langCodeISO6393Schema } from "@read-frog/definitions"
 import { z } from "zod"
+import { langCodeISO6393Schema } from "@/definitions"
 import { isBuiltInActionId } from "@/utils/constants/custom-action"
 import { BUILT_IN_AI_PROVIDER_ID } from "@/utils/constants/provider-ids"
 import { shortcutSchema } from "./shortcut"

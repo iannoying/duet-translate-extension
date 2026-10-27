@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import type { EbookBridgeSelectionPayload } from "@read-frog/definitions"
+import type { EbookBridgeSelectionPayload } from "@/definitions"
 import { act, cleanup, render, waitFor } from "@testing-library/react"
 import { atom, getDefaultStore } from "jotai"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"

@@ -1,6 +1,6 @@
 import type { ProxyResponse } from "@/types/proxy-fetch"
-import { AUTH_COOKIE_PATTERNS } from "@read-frog/definitions"
 import { browser, storage } from "#imports"
+import { AUTH_COOKIE_PATTERNS } from "@/definitions"
 import { env } from "@/env"
 import { AUTH_CACHE_GROUP_KEY, DEFAULT_PROXY_CACHE_TTL_MS } from "@/utils/constants/proxy-fetch"
 import { logger } from "@/utils/logger"

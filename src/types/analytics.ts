@@ -1,4 +1,4 @@
-import type { LangCodeISO6393, NoteSaveSurface } from "@read-frog/definitions"
+import type { LangCodeISO6393, NoteSaveSurface } from "@/definitions"
 import type { AllProviderTypes } from "@/types/config/provider"
 import type { TranslationMode } from "@/types/config/translate"
 

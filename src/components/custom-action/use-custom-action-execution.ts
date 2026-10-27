@@ -1,7 +1,7 @@
-import type { LangCodeISO6393 } from "@read-frog/definitions"
 import type { JSONValue } from "ai"
 import type { RefObject } from "react"
 import type { SelectionToolbarInlineError } from "@/components/ui/selection-popover/inline-error"
+import type { LangCodeISO6393 } from "@/definitions"
 import type { FeatureProviderAnalytics, SurfaceByFeature } from "@/types/analytics"
 import type {
   BackgroundStructuredObjectStreamSnapshot,
@@ -19,13 +19,13 @@ export interface SelectionToolbarCustomActionRequestSlice {
   action: SelectionToolbarCustomAction | null
   provider: CustomActionProviderRef | null
 }
-import { LANG_CODE_TO_EN_NAME } from "@read-frog/definitions"
 import { useEffect, useRef, useState } from "react"
 import {
   createSelectionToolbarPrecheckError,
   createSelectionToolbarRuntimeError,
   isAbortError,
 } from "@/components/ui/selection-popover/inline-error"
+import { LANG_CODE_TO_EN_NAME } from "@/definitions"
 import { ANALYTICS_FEATURE } from "@/types/analytics"
 import { createFeatureUsageContext, trackFeatureUsed } from "@/utils/analytics"
 import { classifyFailureReason } from "@/utils/analytics-failure-reason"

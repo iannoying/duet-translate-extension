@@ -1,5 +1,4 @@
 import type { InputTranslationLang } from "@/types/config/config"
-import { langCodeISO6393Schema } from "@read-frog/definitions"
 import {
   Select,
   SelectContent,
@@ -8,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/base-ui/select"
+import { langCodeISO6393Schema } from "@/definitions"
 import { getLanguageLabel } from "@/utils/language-labels"
 import { cn } from "@/utils/styles/utils"
 import { SELECT_CONTENT_PROPS } from "../../../components/select-content-props"

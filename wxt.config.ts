@@ -33,7 +33,6 @@ export default defineConfig({
   // WXT top level alias - will be automatically synced to tsconfig.json paths and Vite alias
   alias: useLocalPackages
     ? {
-        "@read-frog/definitions": path.resolve(monorepoRoot, "packages/definitions/src"),
         "@read-frog/api-contract": path.resolve(monorepoRoot, "packages/api-contract/src"),
       }
     : {},

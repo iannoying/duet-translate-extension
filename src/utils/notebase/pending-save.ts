@@ -1,6 +1,6 @@
 import type { NotebaseCreateInput, NotebaseGetSchemaOutput } from "@read-frog/api-contract"
-import type { NoteSaveSurface } from "@read-frog/definitions"
 import type { z } from "zod"
+import type { NoteSaveSurface } from "@/definitions"
 import type { SurfaceByFeature } from "@/types/analytics"
 import type { Config } from "@/types/config/config"
 import type {
@@ -9,9 +9,9 @@ import type {
   SelectionToolbarCustomActionNotebaseConnection,
   SelectionToolbarCustomActionOutputField,
 } from "@/types/config/selection-toolbar"
-import { NOTE_SAVE_SURFACES, NOTEBASE_COLUMN_TYPE_INFO } from "@read-frog/definitions"
 import { z as zod } from "zod"
 import { storage } from "#imports"
+import { NOTE_SAVE_SURFACES, NOTEBASE_COLUMN_TYPE_INFO } from "@/definitions"
 import { env } from "@/env"
 import { ANALYTICS_SURFACE } from "@/types/analytics"
 import { selectionToolbarCustomActionNotebaseConnectionSchema } from "@/types/config/selection-toolbar"

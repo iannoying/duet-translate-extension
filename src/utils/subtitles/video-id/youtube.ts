@@ -1,4 +1,4 @@
-import { getVideoIdFromUrl } from "@read-frog/definitions"
+import { getVideoIdFromUrl } from "@/definitions"
 
 /**
  * Delegates to the same extractor the server uses to validate

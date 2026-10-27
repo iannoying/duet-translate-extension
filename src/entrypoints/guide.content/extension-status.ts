@@ -1,4 +1,4 @@
-import type { ExtensionStatusResponse as UpstreamExtensionStatusResponse } from "@read-frog/definitions"
+import type { ExtensionStatusResponse as UpstreamExtensionStatusResponse } from "@/definitions"
 import { BRAND } from "@/utils/constants/brand"
 
 // The website's guide pages ask whether the extension is installed with these.
