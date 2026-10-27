@@ -1,5 +1,5 @@
 import type { LangCodeISO6393 } from "@read-frog/definitions"
-import type { LayoutStatus } from "@/layout-engine/contract"
+import type { LayoutStatus } from "@read-frog/layout-engine/contract"
 import type { SurfaceByFeature } from "@/types/analytics"
 import type { ThinkingSnapshot } from "@/types/background-stream"
 import type { SelectionToolbarCustomAction } from "@/types/config/selection-toolbar"

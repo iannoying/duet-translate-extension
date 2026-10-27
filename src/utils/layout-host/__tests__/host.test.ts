@@ -1,6 +1,6 @@
+import { compileLayout, renderLayoutHtml } from "@read-frog/layout-engine/core"
+import { lintLayout } from "@read-frog/layout-engine/editor"
 import { describe, expect, it } from "vitest"
-import { compileLayout, renderLayoutHtml } from "@/layout-engine/core"
-import { lintLayout } from "@/layout-engine/editor"
 import { MAX_CUSTOM_ACTION_LAYOUT_LENGTH } from "@/types/config/selection-toolbar"
 import {
   buildCustomActionLayoutScope,

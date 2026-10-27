@@ -35,6 +35,7 @@ export default defineConfig({
     ? {
         "@read-frog/definitions": path.resolve(monorepoRoot, "packages/definitions/src"),
         "@read-frog/api-contract": path.resolve(monorepoRoot, "packages/api-contract/src"),
+        "@read-frog/layout-engine": path.resolve(monorepoRoot, "packages/layout-engine/src"),
       }
     : {},
   manifest: ({ browser }) => ({
@@ -107,8 +108,8 @@ export default defineConfig({
     excludeSources: ["docs/**/*", "assets/**/*", "repos/**/*", "readmes/**/*"],
   },
   hooks: {
-    // A build made with local packages is for development: it holds whatever
-    // the monorepo checkout happens to contain.
+    // With local packages the bundle holds @read-frog/layout-engine's readable
+    // source, which must never leave this machine.
     "zip:start": () => {
       if (useLocalPackages) throw new Error("Do not zip a build made with local packages")
     },

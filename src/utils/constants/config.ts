@@ -5,7 +5,7 @@ import type {
   SelectionToolbarCustomActionOutputField,
 } from "@/types/config/selection-toolbar"
 import type { PageTranslateRange } from "@/types/config/translate"
-import { DEFAULT_LAYOUT } from "@/layout-engine/presets"
+import { DEFAULT_LAYOUT } from "@read-frog/layout-engine/presets"
 import {
   buildDictionaryActionLayout,
   buildImproveWritingActionLayout,

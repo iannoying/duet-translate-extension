@@ -1,5 +1,5 @@
+import { DEFAULT_LAYOUT } from "@read-frog/layout-engine/presets"
 import { describe, expect, it } from "vitest"
-import { DEFAULT_LAYOUT } from "@/layout-engine/presets"
 import { resolveActionLayout } from "../resolve"
 
 describe("resolveActionLayout", () => {

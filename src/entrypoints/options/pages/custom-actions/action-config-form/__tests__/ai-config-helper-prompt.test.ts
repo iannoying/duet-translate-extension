@@ -1,8 +1,8 @@
 import type { SelectionToolbarCustomAction } from "@/types/config/selection-toolbar"
+import { compileLayout, renderLayoutHtml } from "@read-frog/layout-engine/core"
+import { lintLayout } from "@read-frog/layout-engine/editor"
+import { DEFAULT_LAYOUT } from "@read-frog/layout-engine/presets"
 import { describe, expect, it } from "vitest"
-import { compileLayout, renderLayoutHtml } from "@/layout-engine/core"
-import { lintLayout } from "@/layout-engine/editor"
-import { DEFAULT_LAYOUT } from "@/layout-engine/presets"
 import { buildCustomActionLayoutScope, CUSTOM_ACTION_LAYOUT_HOST } from "@/utils/layout-host/host"
 import {
   buildAiConfigHelperPrompt,

@@ -2,13 +2,13 @@ import type {
   DictionarySlot,
   ImproveWritingSlot,
   SentenceAnalysisSlot,
-} from "@/layout-engine/presets"
+} from "@read-frog/layout-engine/presets"
 import type { SelectionToolbarCustomActionOutputField } from "@/types/config/selection-toolbar"
 import {
   buildDictionaryLayout,
   buildImproveWritingLayout,
   buildSentenceAnalysisLayout,
-} from "@/layout-engine/presets"
+} from "@read-frog/layout-engine/presets"
 
 // Which output fields of a custom action fill the slots of a generated card.
 // Slots are recognized by the field ids the presets create, which copies of

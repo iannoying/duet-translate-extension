@@ -173,7 +173,7 @@ describe("createDefaultDictionaryAction layout", () => {
 
   it("places every field exactly once, leaving the card's tail empty", async () => {
     const { createDefaultDictionaryAction } = await import("../config")
-    const { compileLayout, renderLayoutHtml } = await import("@/layout-engine/core")
+    const { compileLayout, renderLayoutHtml } = await import("@read-frog/layout-engine/core")
     const { buildCustomActionLayoutScope } = await import("@/utils/layout-host/host")
     const { getDictionarySlots } = await import("@/utils/layout-host/slots")
 

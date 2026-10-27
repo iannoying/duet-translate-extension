@@ -1,11 +1,11 @@
 import type { SelectionToolbarCustomActionOutputField } from "@/types/config/selection-toolbar"
-import { describe, expect, it } from "vitest"
-import { compileLayout, renderLayoutHtml } from "@/layout-engine/core"
+import { compileLayout, renderLayoutHtml } from "@read-frog/layout-engine/core"
 import {
   buildDictionaryLayout,
   buildImproveWritingLayout,
   buildSentenceAnalysisLayout,
-} from "@/layout-engine/presets"
+} from "@read-frog/layout-engine/presets"
+import { describe, expect, it } from "vitest"
 import { CUSTOM_ACTION_TEMPLATES } from "@/utils/constants/custom-action-templates"
 import { buildCustomActionLayoutScope } from "../host"
 import {

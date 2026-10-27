@@ -1,6 +1,6 @@
 import type { GeneratedI18nStructure } from "#i18n"
 import type { SelectionToolbarCustomAction } from "@/types/config/selection-toolbar"
-import { DEFAULT_LAYOUT } from "@/layout-engine/presets"
+import { DEFAULT_LAYOUT } from "@read-frog/layout-engine/presets"
 import { getRandomUUID } from "@/utils/crypto-polyfill"
 import { i18n } from "@/utils/i18n"
 import {

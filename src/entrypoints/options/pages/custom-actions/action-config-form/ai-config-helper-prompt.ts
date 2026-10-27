@@ -13,8 +13,8 @@ import {
   LAYOUT_PARSE_JSON_MAX_LENGTH,
   LAYOUT_RESERVED_FIELD_NAMES,
   LAYOUT_THEME_TOKENS,
-} from "@/layout-engine/contract"
-import { DEFAULT_LAYOUT } from "@/layout-engine/presets"
+} from "@read-frog/layout-engine/contract"
+import { DEFAULT_LAYOUT } from "@read-frog/layout-engine/presets"
 import {
   MAX_CUSTOM_ACTION_LAYOUT_LENGTH,
   selectionToolbarCustomActionOutputTypeSchema,

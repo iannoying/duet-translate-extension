@@ -1,7 +1,7 @@
 /**
  * CodeMirror extensions for the custom action Layout editor: the layout
  * engine's Liquid + HTML language, linter and field pills
- * (src/layout-engine/codemirror.ts) in the extension's words, and the
+ * (@read-frog/layout-engine/codemirror) in the extension's words, and the
  * length cap.
  *
  * Only liquid-code-editor.tsx (lazy-loaded on the options page) and its tests
@@ -10,12 +10,12 @@
  */
 
 import type { Extension } from "@codemirror/state"
-import type { LayoutField, LayoutLintCode } from "@/layout-engine/contract"
-import type { LayoutDiagnostic } from "@/layout-engine/editor"
+import type { LayoutField, LayoutLintCode } from "@read-frog/layout-engine/contract"
+import type { LayoutDiagnostic } from "@read-frog/layout-engine/editor"
 import type { SelectionToolbarCustomActionOutputType } from "@/types/config/selection-toolbar"
 import { EditorState } from "@codemirror/state"
+import { fieldPills, layoutLanguage, layoutLinter } from "@read-frog/layout-engine/codemirror"
 import { ExternalChange } from "@uiw/react-codemirror"
-import { fieldPills, layoutLanguage, layoutLinter } from "@/layout-engine/codemirror"
 import { i18n } from "@/utils/i18n"
 import { createCustomActionLayoutHost, CUSTOM_ACTION_LAYOUT_HOST } from "@/utils/layout-host/host"
 

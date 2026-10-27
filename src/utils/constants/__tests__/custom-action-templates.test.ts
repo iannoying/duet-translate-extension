@@ -1,9 +1,9 @@
 import { readFile } from "node:fs/promises"
 import { HostedAiStreamStructuredObjectInputSchema } from "@read-frog/api-contract"
+import { compileLayout } from "@read-frog/layout-engine/core"
+import { lintLayout } from "@read-frog/layout-engine/editor"
+import { DEFAULT_LAYOUT } from "@read-frog/layout-engine/presets"
 import { describe, expect, it } from "vitest"
-import { compileLayout } from "@/layout-engine/core"
-import { lintLayout } from "@/layout-engine/editor"
-import { DEFAULT_LAYOUT } from "@/layout-engine/presets"
 import { selectionToolbarCustomActionsSchema } from "@/types/config/selection-toolbar"
 import {
   buildSelectionToolbarCustomActionSystemPrompt,

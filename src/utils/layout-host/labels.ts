@@ -2,7 +2,7 @@ import type { LangCodeISO6393 } from "@read-frog/definitions"
 import type {
   ImproveWritingLayoutLabels,
   SentenceAnalysisLayoutLabels,
-} from "@/layout-engine/presets"
+} from "@read-frog/layout-engine/presets"
 import type { SupportedUiLocale } from "@/utils/i18n/locales"
 import { getUiLocale, translateIn } from "@/utils/i18n"
 
