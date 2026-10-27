@@ -9,4 +9,4 @@ export const BUILT_IN_AI_PROVIDER_IDS = [
 
 export type BuiltInAiProviderId = (typeof BUILT_IN_AI_PROVIDER_IDS)[number]
 // Re-exported from the contract so a tier added server-side surfaces here.
-export type { HostedAiModelTier } from "@read-frog/api-contract"
+export type { HostedAiModelTier } from "@/api-contract"

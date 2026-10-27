@@ -1,5 +1,5 @@
-import type { NotebaseRowCreateInput, NotebaseRowCreateManyInput } from "@read-frog/api-contract"
 import type { SaveToNotebaseAnalyticsSource } from "./save-to-notebase-dialog-atom"
+import type { NotebaseRowCreateInput, NotebaseRowCreateManyInput } from "@/api-contract"
 import type { NoteSaveSurface } from "@/definitions"
 import type { AnalyticsFailureReason, SurfaceByFeature } from "@/types/analytics"
 import type {

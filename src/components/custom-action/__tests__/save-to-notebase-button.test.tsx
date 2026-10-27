@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import type { NotebaseGetSchemaOutput } from "@read-frog/api-contract"
+import type { NotebaseGetSchemaOutput } from "@/api-contract"
 import type { SurfaceByFeature } from "@/types/analytics"
 import type { Config } from "@/types/config/config"
 import type {

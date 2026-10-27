@@ -24,26 +24,16 @@ function parseResolvedExtensionEnv(
 describe("extension env resolution", () => {
   it("falls back to localhost defaults", () => {
     expect(resolveExtensionEnv({})).toEqual(LOCAL_EXTENSION_ENV_DEFAULTS)
-    expect(
-      resolveExtensionEnv({
-        WXT_USE_LOCAL_PACKAGES: "true",
-      }),
-    ).toMatchObject({
-      ...LOCAL_EXTENSION_ENV_DEFAULTS,
-      WXT_USE_LOCAL_PACKAGES: "true",
-    })
   })
 
   it("lets explicit env vars override the selected defaults", () => {
     expect(
       resolveExtensionEnv({
-        WXT_USE_LOCAL_PACKAGES: "true",
         WXT_API_URL: "https://preview-api.readfrog.app",
         WXT_AUTH_COOKIE_DOMAINS: "preview.readfrog.app",
       }),
     ).toMatchObject({
       ...LOCAL_EXTENSION_ENV_DEFAULTS,
-      WXT_USE_LOCAL_PACKAGES: "true",
       WXT_API_URL: "https://preview-api.readfrog.app",
       WXT_AUTH_COOKIE_DOMAINS: "preview.readfrog.app",
     })
@@ -154,23 +144,6 @@ describe("extension env parsing", () => {
         WXT_AUTH_COOKIE_DOMAINS: "example.com",
       }),
     ).toEqual(["WXT_WEBSITE_URL"])
-  })
-
-  it("parses WXT_USE_LOCAL_PACKAGES strictly with zod stringbool", () => {
-    expect(
-      resolveExtensionEnv({
-        WXT_USE_LOCAL_PACKAGES: true,
-      }),
-    ).toMatchObject({
-      ...LOCAL_EXTENSION_ENV_DEFAULTS,
-      WXT_USE_LOCAL_PACKAGES: true,
-    })
-
-    expect(() =>
-      resolveExtensionEnv({
-        WXT_USE_LOCAL_PACKAGES: "yes",
-      }),
-    ).toThrowError(/Invalid/)
   })
 
   it("parses the analytics daily feature cache flag strictly", () => {

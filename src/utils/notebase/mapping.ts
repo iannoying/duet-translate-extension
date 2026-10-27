@@ -2,7 +2,7 @@ import type {
   NotebaseColumn,
   NotebaseGetSchemaOutput,
   NotebaseRowCreateInput,
-} from "@read-frog/api-contract"
+} from "@/api-contract"
 import type {
   SelectionToolbarCustomAction,
   SelectionToolbarCustomActionNotebaseConnection,

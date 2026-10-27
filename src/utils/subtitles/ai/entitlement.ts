@@ -1,4 +1,4 @@
-import type { VideoTranscriptUsagePool } from "@read-frog/api-contract"
+import type { VideoTranscriptUsagePool } from "@/api-contract"
 
 /**
  * When the quota runs dry, "when does it come back" is the earliest date any

@@ -1,4 +1,4 @@
-import type { NotebaseRowCreateInput } from "@read-frog/api-contract"
+import type { NotebaseRowCreateInput } from "@/api-contract"
 import type { SelectionToolbarCustomAction } from "@/types/config/selection-toolbar"
 import { describe, expect, it } from "vitest"
 import { DEFAULT_CONFIG } from "@/utils/constants/config"

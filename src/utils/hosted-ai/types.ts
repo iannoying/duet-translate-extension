@@ -1,6 +1,6 @@
-import type { HostedAiStatusOutput } from "@read-frog/api-contract"
+import type { HostedAiStatusOutput } from "@/api-contract"
 
-// The wire types live in the contract package; this module only aliases the
+// The wire types live in @/api-contract; this module only aliases the
 // response type to the extension's historical name. Type-only imports are
 // erased at build, so no zod code reaches content scripts through this path.
 export type {
@@ -12,7 +12,7 @@ export type {
   HostedAiTierStatus,
   HostedAiUnavailableReason,
   HostedAiUpgradePlan,
-} from "@read-frog/api-contract"
+} from "@/api-contract"
 
 /**
  * TODO(2026-11-07): `pools` is optional only because a server that predates it

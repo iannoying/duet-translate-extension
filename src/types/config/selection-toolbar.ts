@@ -1,5 +1,5 @@
-import { HostedAiOutputFieldTypeSchema } from "@read-frog/api-contract"
 import { z } from "zod"
+import { HostedAiOutputFieldTypeSchema } from "@/api-contract"
 import { langCodeISO6393Schema } from "@/definitions"
 import { isBuiltInActionId } from "@/utils/constants/custom-action"
 import { BUILT_IN_AI_PROVIDER_ID } from "@/utils/constants/provider-ids"

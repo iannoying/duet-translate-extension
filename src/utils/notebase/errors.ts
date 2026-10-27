@@ -1,4 +1,4 @@
-import type { PublicAppErrorCode } from "@read-frog/api-contract"
+import type { PublicAppErrorCode } from "@/api-contract"
 import { ORPCError } from "@orpc/client"
 
 export function isORPCPublicAppError(error: unknown, code: PublicAppErrorCode) {

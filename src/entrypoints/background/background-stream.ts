@@ -1,5 +1,5 @@
-import type { HostedAiRateLimitErrorData, PublicAppErrorCode } from "@read-frog/api-contract"
 import type { Browser } from "#imports"
+import type { HostedAiRateLimitErrorData, PublicAppErrorCode } from "@/api-contract"
 import type { BackgroundGenerateTextPayload } from "@/types/background-generate-text"
 import type {
   BackgroundNoteSuggestionStreamSnapshot,
@@ -22,6 +22,8 @@ import type {
 } from "@/types/background-stream"
 import type { TranslateProviderConfig } from "@/types/config/provider"
 import type { ErrorAction } from "@/utils/error-action"
+import { generateText, Output, parsePartialJson, streamText } from "ai"
+import { z } from "zod"
 import {
   HostedAiNoteSuggestionObjectSchema,
   HostedAiNoteSuggestionStreamInputSchema,
@@ -31,9 +33,7 @@ import {
   HostedAiStreamStructuredObjectInputSchema,
   HostedAiStreamTextInputSchema,
   HostedAiTierRestrictedDataSchema,
-} from "@read-frog/api-contract"
-import { generateText, Output, parsePartialJson, streamText } from "ai"
-import { z } from "zod"
+} from "@/api-contract"
 import { BACKGROUND_STREAM_PORTS } from "@/types/background-stream"
 import { isLLMProviderConfig, llmProviderConfigItemSchema } from "@/types/config/provider"
 import { createStructuredObjectSchema } from "@/utils/ai/structured-object-schema"

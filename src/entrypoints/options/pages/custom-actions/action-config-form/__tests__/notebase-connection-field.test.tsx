@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import type { NotebaseGetSchemaOutput } from "@read-frog/api-contract"
+import type { NotebaseGetSchemaOutput } from "@/api-contract"
 import type { SelectionToolbarCustomAction } from "@/types/config/selection-toolbar"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { act, render, screen, waitFor } from "@testing-library/react"
