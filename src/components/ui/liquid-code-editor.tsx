@@ -17,10 +17,10 @@ import type { ReactCodeMirrorRef } from "@uiw/react-codemirror"
 import type { LiquidEditorField } from "./liquid-code-editor-extensions"
 import { forceLinting, lintGutter } from "@codemirror/lint"
 import { EditorView } from "@codemirror/view"
-import { refreshFieldPills } from "@read-frog/layout-engine/codemirror"
 import CodeMirror, { ExternalChange } from "@uiw/react-codemirror"
 import { useEffect, useImperativeHandle, useLayoutEffect, useRef, useState } from "react"
 import { useTheme } from "@/components/providers/theme-provider"
+import { refreshFieldPills } from "@/layout-engine/codemirror"
 import { cn } from "@/utils/styles/utils"
 import {
   layoutLengthLimit,

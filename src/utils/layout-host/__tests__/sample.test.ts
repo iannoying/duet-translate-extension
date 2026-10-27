@@ -1,15 +1,15 @@
 import type { LangCodeISO6393 } from "@read-frog/definitions"
 import type { SelectionToolbarCustomActionOutputField } from "@/types/config/selection-toolbar"
 import type { SupportedUiLocale } from "@/utils/i18n/locales"
-import { compileLayout, renderLayoutHtml } from "@read-frog/layout-engine/core"
+import { describe, expect, it } from "vitest"
+import { compileLayout, renderLayoutHtml } from "@/layout-engine/core"
 import {
   IMPROVE_WRITING_TYPES,
   SENTENCE_ANALYSIS_FORMS,
   SENTENCE_ANALYSIS_OBSTACLES,
   SENTENCE_ANALYSIS_ROLES,
   SENTENCE_ANALYSIS_SENSES,
-} from "@read-frog/layout-engine/presets"
-import { describe, expect, it } from "vitest"
+} from "@/layout-engine/presets"
 import { CUSTOM_ACTION_TEMPLATES } from "@/utils/constants/custom-action-templates"
 import { SUPPORTED_UI_LOCALES } from "@/utils/i18n/locales"
 import { buildCustomActionLayoutScope } from "../host"
