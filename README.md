@@ -1,4 +1,4 @@
-# Getu Translate（懂你翻译）
+# Duet Translate（懂你翻译）
 
 AI bilingual translation for web pages and YouTube, Netflix and X subtitles, with word saving and flashcard review.
 

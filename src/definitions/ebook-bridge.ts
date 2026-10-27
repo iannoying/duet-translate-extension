@@ -13,8 +13,8 @@ import { z } from "zod"
  */
 
 export const EBOOK_SELECTION_BRIDGE_PROTOCOL_VERSION = 1
-export const EBOOK_BRIDGE_PAGE_SOURCE = "getu-translate-ebook-page"
-export const EBOOK_BRIDGE_EXTENSION_SOURCE = "getu-translate-ebook-extension"
+export const EBOOK_BRIDGE_PAGE_SOURCE = "duet-translate-ebook-page"
+export const EBOOK_BRIDGE_EXTENSION_SOURCE = "duet-translate-ebook-extension"
 export const EBOOK_BRIDGE_HANDSHAKE_TYPE = "handshake"
 export const EBOOK_BRIDGE_SELECTION_CHANGED_TYPE = "selectionChanged"
 export const EBOOK_BRIDGE_SELECTION_CLEARED_TYPE = "selectionCleared"

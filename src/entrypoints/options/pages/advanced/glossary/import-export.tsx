@@ -123,7 +123,7 @@ export function GlossaryImportExport({
       .trim()
       .replace(/[^\p{L}\p{N}_-]+/gu, "-")
       .replace(/^-+|-+$/g, "")
-    anchor.download = slug ? `getu-translate-glossary-${slug}.csv` : "getu-translate-glossary.csv"
+    anchor.download = slug ? `duet-translate-glossary-${slug}.csv` : "duet-translate-glossary.csv"
     anchor.click()
     URL.revokeObjectURL(url)
   }

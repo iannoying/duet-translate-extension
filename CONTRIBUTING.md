@@ -1,4 +1,4 @@
-# Contributing to Getu Translate
+# Contributing to Duet Translate
 
 Thank you for your interest in contributing!
 

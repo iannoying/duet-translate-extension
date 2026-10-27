@@ -3,9 +3,9 @@
  * channel undefined until it exists: the UI that links to it hides itself.
  */
 export const BRAND = {
-  name: "Getu Translate",
+  name: "Duet Translate",
   /** Used in file names and in messages exchanged with the website. */
-  slug: "getu-translate",
+  slug: "duet-translate",
   /** Required by the GPL: where users get this extension's source. */
   sourceRepoUrl: "https://github.com/iannoying/translate",
   supportEmail: undefined as string | undefined,
