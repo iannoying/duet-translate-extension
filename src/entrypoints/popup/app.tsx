@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react"
 import { UserAccountMenuPopup } from "@/components/user-account-menu"
+import { BRAND } from "@/utils/constants/brand"
 import { i18n } from "@/utils/i18n"
 import { openOptionsPage } from "@/utils/navigation"
 import { version } from "../../../package.json"
@@ -30,7 +31,7 @@ function App() {
             <UserAccountMenuPopup />
             <div className="flex shrink-0 items-center">
               <TranslationHubButton />
-              <DiscordButton />
+              {BRAND.discordInviteUrl && <DiscordButton url={BRAND.discordInviteUrl} />}
               <BlogNotification />
             </div>
           </div>

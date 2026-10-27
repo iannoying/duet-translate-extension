@@ -1,5 +1,6 @@
 import { PromptManager } from "@/components/prompt-configurator"
 import { getBuiltInSubtitleTranslatePrompts } from "@/components/prompt-configurator/built-in-prompts"
+import { env } from "@/env"
 import { getTokenCellText, SUBTITLE_PROMPT_TOKENS } from "@/utils/constants/prompt"
 import { i18n } from "@/utils/i18n"
 import { ConfigDetailSection } from "../../../../components/config-detail-section"
@@ -37,7 +38,7 @@ export function SubtitlesCustomPromptsPage() {
           builtInPrompts={getBuiltInSubtitleTranslatePrompts()}
           toolbarStart={
             <a
-              href={i18n.t("options.translation.personalizedPrompts.variableReferenceUrl")}
+              href={`${env.WXT_WEBSITE_URL}/docs/page-translation/prompts/variables`}
               target="_blank"
               rel="noreferrer noopener"
               className="text-sm text-link hover:opacity-90"

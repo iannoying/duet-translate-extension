@@ -26,15 +26,17 @@ export function ProductNav() {
       <SidebarGroupLabel>{i18n.t("options.sidebar.product")}</SidebarGroupLabel>
       <SidebarGroupContent>
         <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              render={<a href={roadmapHref} target="_blank" rel="noopener noreferrer" />}
-              tooltip={i18n.t("options.product.roadmap")}
-            >
-              <Icon icon="tabler:route" />
-              <span>{i18n.t("options.product.roadmap")}</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
+          {roadmapHref && (
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                render={<a href={roadmapHref} target="_blank" rel="noopener noreferrer" />}
+                tooltip={i18n.t("options.product.roadmap")}
+              >
+                <Icon icon="tabler:route" />
+                <span>{i18n.t("options.product.roadmap")}</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          )}
 
           {/* Feedback used to leave for the portal; it is a page now, and the portal is one
               of the ways to reach us listed on it. */}

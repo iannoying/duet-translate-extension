@@ -1,3 +1,4 @@
+import { env } from "@/env"
 import { i18n } from "@/utils/i18n"
 import { sendMessage } from "@/utils/message"
 import { cn } from "@/utils/styles/utils"
@@ -12,7 +13,7 @@ export function APIConfigWarning({ className }: { className?: string }) {
     >
       {i18n.t("noAPIKeyConfig.warningWithLink.youMust")}{" "}
       <a
-        href="https://readfrog.app/docs/providers/overview"
+        href={`${env.WXT_WEBSITE_URL}/docs/providers/overview`}
         target="_blank"
         rel="noreferrer"
         className="underline"

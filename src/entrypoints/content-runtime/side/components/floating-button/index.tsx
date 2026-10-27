@@ -3,7 +3,7 @@ import { IconLock, IconLockOpen, IconMessageCircle, IconSettings, IconX } from "
 import { useAtom, useAtomValue } from "jotai"
 import { useEffect, useRef, useState } from "react"
 import { browser } from "#imports"
-import readFrogLogo from "@/assets/icons/read-frog.png?url&no-inline"
+import readFrogLogo from "@/assets/icons/app-logo.png?url&no-inline"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,6 +16,7 @@ import { ANALYTICS_FEATURE, ANALYTICS_SURFACE } from "@/types/analytics"
 import { createFeatureUsageContext } from "@/utils/analytics"
 import { configFieldsAtomMap } from "@/utils/atoms/config"
 import { APP_NAME } from "@/utils/constants/app"
+import { BRAND } from "@/utils/constants/brand"
 import { buildFeaturebaseFeedbackMetadata, buildFeaturebasePortalUrl } from "@/utils/featurebase"
 import { i18n } from "@/utils/i18n"
 import { resolveUiLocale } from "@/utils/i18n/locale-map"
@@ -228,7 +229,7 @@ export default function FloatingButton() {
       }),
     })
 
-    void sendMessage("openPage", { url, active: true })
+    if (url) void sendMessage("openPage", { url, active: true })
   }
 
   const startActiveDrag = () => {
@@ -465,7 +466,7 @@ export default function FloatingButton() {
           }}
         />
       )}
-      {!isDraggingButton && (
+      {!isDraggingButton && BRAND.feedbackPortalOrigin && (
         <HiddenButton
           side={floatingButtonSide}
           expanded={isFloatingButtonExpanded}

@@ -59,6 +59,12 @@ vi.mock("../../../main", () => ({
   shadowWrapper: document.body,
 }))
 
+// The feedback control only shows once a portal is configured.
+vi.mock("@/utils/constants/brand", async (importOriginal) => {
+  const { BRAND } = await importOriginal<typeof import("@/utils/constants/brand")>()
+  return { BRAND: { ...BRAND, feedbackPortalOrigin: "https://feedback.example.com" } }
+})
+
 vi.mock("@/utils/message", () => ({
   sendMessage: vi.fn<(...args: any[]) => any>(),
 }))
@@ -342,7 +348,7 @@ describe("floatingButton controls", () => {
     expect(openPagePayload).toBeDefined()
     const openedUrl = new URL(openPagePayload!.url)
 
-    expect(openedUrl.origin).toBe("https://feedback.readfrog.app")
+    expect(openedUrl.origin).toBe("https://feedback.example.com")
     expect(openedUrl.pathname).toBe("/en")
     expect(JSON.parse(openedUrl.searchParams.get("metaData")!)).toEqual({
       browser: "chrome",

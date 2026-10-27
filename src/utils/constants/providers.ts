@@ -9,7 +9,6 @@ import type {
   ProviderSponsorConfig,
 } from "@/types/config/provider"
 import type { Theme } from "@/types/config/theme"
-import { APP_NAME } from "@read-frog/definitions"
 import { camelCase } from "case-anything"
 import customProviderLogo from "@/assets/providers/custom-provider.svg?url&no-inline"
 import customResponsesLogo from "@/assets/providers/custom-responses.svg?url&no-inline"
@@ -31,6 +30,7 @@ import {
   isCustomModelOnlyProvider,
 } from "@/types/config/provider"
 import { omit, pick } from "@/types/utils"
+import { BRAND } from "@/utils/constants/brand"
 import { i18n } from "@/utils/i18n"
 import { getLobeIconsCDNUrlFn } from "../logo"
 
@@ -220,21 +220,14 @@ export const PROVIDER_ITEMS: Record<
   jalapenocloud: {
     logo: () => jalapenoCloudLogo,
     name: "Jalapeno Cloud",
-    website: "https://www.jalapeno-cloud.ai/readfrog",
-    apiKeyUrl: "https://www.jalapeno-cloud.ai/readfrog",
-    sponsor: {
-      sponsoring: true,
-      referUrl: "https://www.jalapeno-cloud.ai/readfrog",
-      // Both default to the generic sponsor wording; Jalapeno names its actual offer instead.
-      badgeI18nKey: "options.apiProviders.badges.sponsorJalapenoCloud",
-      ctaI18nKey: "options.apiProviders.sponsorCtaJalapenoCloud",
-    },
+    website: "https://www.jalapeno-cloud.ai",
+    apiKeyUrl: "https://www.jalapeno-cloud.ai",
   },
   atlascloud: {
     logo: getLobeIconsCDNUrlFn("atlascloud"),
     name: "Atlas Cloud",
-    website: "https://readfrog.s.gy/altas",
-    apiKeyUrl: "https://readfrog.s.gy/altas",
+    website: "https://www.atlascloud.ai",
+    apiKeyUrl: "https://www.atlascloud.ai",
   },
   "openai-compatible": {
     logo: () => customProviderLogo,
@@ -650,11 +643,11 @@ export const MICROSOFT_TRANSLATE_PROVIDER_ID = DEFAULT_PROVIDER_CONFIG["microsof
 export const FORCED_PROVIDER_HEADERS: Partial<Record<LLMProviderTypes, Record<string, string>>> = {
   jalapenocloud: {
     "HTTP-Referer": env.WXT_WEBSITE_URL,
-    "X-Jalapeno-Title": APP_NAME,
+    "X-Jalapeno-Title": BRAND.name,
   },
   openrouter: {
     "HTTP-Referer": env.WXT_WEBSITE_URL,
-    "X-OpenRouter-Title": APP_NAME,
+    "X-OpenRouter-Title": BRAND.name,
   },
   // Anthropic's API refuses direct browser calls without this, so it is not a default the user
   // can outgrow — it used to sit with the editable ones, where adding any header of your own

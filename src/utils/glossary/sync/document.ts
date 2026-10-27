@@ -1,7 +1,7 @@
 import { z } from "zod"
 
 /**
- * The glossary travels in its OWN Drive file, beside `read-frog-config.json`.
+ * The glossary travels in its OWN Drive file, beside `getu-translate-config.json`.
  *
  * Not inside the config, for three reasons that are all properties of the config
  * sync rather than opinions: it treats every array as one atomic value
@@ -14,7 +14,7 @@ import { z } from "zod"
  * scope is granted per folder rather than per file, so a second file costs no
  * code there and no new consent from the user.
  */
-export const GLOSSARY_SYNC_FILENAME = "read-frog-glossary.json"
+export const GLOSSARY_SYNC_FILENAME = "getu-translate-glossary.json"
 
 /**
  * Bumped only for a change a previous version could not read correctly.

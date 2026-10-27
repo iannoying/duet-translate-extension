@@ -1,5 +1,5 @@
-name: Read Frog
-extName: "Read Frog - Dịch AI và thẻ ghi nhớ"
+name: Getu Translate
+extName: "Getu Translate - Dịch AI và thẻ ghi nhớ"
 extDescription: "Dịch song ngữ bằng AI cho trang web và phụ đề YouTube, Netflix, X. Lưu từ mới và ôn tập bằng thẻ ghi nhớ."
 account:
   login: Đăng nhập
@@ -7,7 +7,7 @@ account:
   logout: Đăng xuất
   logoutError: Đăng xuất thất bại. Vui lòng thử lại.
   grantAccess: Cấp quyền truy cập
-  grantAccessHint: Cần quyền truy cập readfrog.app
+  grantAccessHint: Cần quyền truy cập Getu Translate
   grantAccessError: Không thể cấp quyền truy cập. Vui lòng thử lại.
 dataTypes:
   string: Văn bản
@@ -18,7 +18,7 @@ contextMenu:
   readAloudSelection: Đọc to "%s"
   showOriginal: Hiển thị bản gốc
 sidePanel:
-  firefoxUserActionHint: Trong Firefox, hãy mở Read Frog từ thanh bên của trình duyệt.
+  firefoxUserActionHint: Trong Firefox, hãy mở Getu Translate từ thanh bên của trình duyệt.
   firefoxUserActionHelpText: Xem cách mở thanh bên Firefox
   firefoxUserActionHelpUrl: https://support.mozilla.org/vi/kb/use-sidebar-access-tools-and-vertical-tabs
 popup:
@@ -53,11 +53,11 @@ popup:
   discord:
     tooltip: Tham gia Discord để kết nối với các nhà phát triển và truy cập sớm các tính năng mới
   blog:
-    notification: Có gì mới trong Read Frog
+    notification: Có gì mới trong Getu Translate
   aiSmartContext: Ngữ cảnh thông minh AI
   aiSmartContextDescription: Sử dụng ngữ cảnh trang web để cải thiện chất lượng dịch. Yêu cầu nhà cung cấp dịch LLM.
   storeReview:
-    title: Bạn thấy Read Frog thế nào?
+    title: Bạn thấy Getu Translate thế nào?
     description: Một đánh giá trên cửa hàng sẽ giúp nhiều người đọc khác tìm thấy nó.
     action: Viết đánh giá
     dismiss: Đóng
@@ -118,15 +118,15 @@ options:
     roadmap: Lộ trình
   helpAndCommunity:
     title: Trợ giúp và cộng đồng
-    pageDescription: Tìm hiểu cách dùng Read Frog, nhờ nhóm hỗ trợ, hoặc tham gia cộng đồng cùng những người dùng khác.
+    pageDescription: Tìm hiểu cách dùng Getu Translate, nhờ nhóm hỗ trợ, hoặc tham gia cộng đồng cùng những người dùng khác.
     help:
       title: Trợ giúp
     tutorial:
       title: Hướng dẫn
-      description: Đọc tài liệu để biết cách sử dụng Read Frog
+      description: Đọc tài liệu để biết cách sử dụng Getu Translate
     email:
       title: Gửi email cho chúng tôi
-      description: Liên hệ trực tiếp với nhóm qua contact@readfrog.app
+      description: Liên hệ trực tiếp với nhóm qua $1
     featureRequest:
       title: Đề xuất tính năng
       description: Đề xuất ý tưởng và bình chọn cho tính năng nhóm sẽ làm tiếp theo
@@ -144,8 +144,8 @@ options:
       qrCodeAlt: Mã QR WeChat
   apiProviders:
     title: Nhà cung cấp API
-    pageDescription: Kết nối các dịch vụ AI mà Read Frog sử dụng và chọn dịch vụ cho từng tính năng.
-    description: Thêm các nhà cung cấp mà Read Frog có thể gọi. Hơn 20 nhà cung cấp được tích hợp sẵn; bạn cũng có thể thêm API tùy chỉnh tương thích Chat Completions và API Open Responses.
+    pageDescription: Kết nối các dịch vụ AI mà Getu Translate sử dụng và chọn dịch vụ cho từng tính năng.
+    description: Thêm các nhà cung cấp mà Getu Translate có thể gọi. Hơn 20 nhà cung cấp được tích hợp sẵn; bạn cũng có thể thêm API tùy chỉnh tương thích Chat Completions và API Open Responses.
     configTitle: Cấu hình nhà cung cấp
     addProvider: Thêm nhà cung cấp
     builtInProvider: Nhà cung cấp tích hợp
@@ -252,8 +252,8 @@ options:
         customChatComplete: Tùy chỉnh Chat Complete
         customResponses: Tùy chỉnh Responses
       attribution:
-        builtInAi: Mô hình tiêu chuẩn do Read Frog lưu trữ. Người dùng không có Ultra chỉ dùng được trong hành động AI tùy chỉnh; người dùng Ultra dùng được ở nhiều tính năng hơn.
-        builtInAiAdvance: Mô hình nâng cao do Read Frog lưu trữ, dành riêng cho thành viên Ultra. Dùng được ở mọi tính năng AI tích hợp — dịch trang, hành động AI tùy chỉnh và hơn nữa — với hạn mức tuần dùng chung. Tiêu hao hạn mức nhanh hơn mô hình tiêu chuẩn.
+        builtInAi: Mô hình tiêu chuẩn do Getu Translate lưu trữ. Người dùng không có Ultra chỉ dùng được trong hành động AI tùy chỉnh; người dùng Ultra dùng được ở nhiều tính năng hơn.
+        builtInAiAdvance: Mô hình nâng cao do Getu Translate lưu trữ, dành riêng cho thành viên Ultra. Dùng được ở mọi tính năng AI tích hợp — dịch trang, hành động AI tùy chỉnh và hơn nữa — với hạn mức tuần dùng chung. Tiêu hao hạn mức nhanh hơn mô hình tiêu chuẩn.
       description:
         openai: Cung cấp các mô hình như GPT-4o
         azure: Mô hình OpenAI lưu trữ trên Azure qua các bản triển khai của bạn
@@ -335,15 +335,15 @@ options:
   patterns:
     duplicate: Mẫu này đã có trong danh sách
     gluedWildcard: Dấu "*" phải thay cho trọn một phần của địa chỉ, ví dụ *.example.com hoặc example.*
-    unsupported: Read Frog không khớp được địa chỉ này. Cổng và các giao thức ngoài http, https đều không được hỗ trợ.
+    unsupported: Getu Translate không khớp được địa chỉ này. Cổng và các giao thức ngoài http, https đều không được hỗ trợ.
   preference:
     title: Tùy chọn
-    pageDescription: Đặt giao diện của Read Frog, nơi tiện ích hoạt động và cách cấu hình được đồng bộ, sao lưu.
+    pageDescription: Đặt giao diện của Getu Translate, nơi tiện ích hoạt động và cách cấu hình được đồng bộ, sao lưu.
     appearanceAndLanguage:
       title: Giao diện & ngôn ngữ
       theme:
         title: Chủ đề
-        description: Chọn chủ đề cho Read Frog.
+        description: Chọn chủ đề cho Getu Translate.
         system: Hệ thống
         light: Sáng
         dark: Tối
@@ -437,7 +437,7 @@ options:
           accountChangedRetry: Tài khoản Google đã đăng nhập thay đổi trong khi hộp thoại đang mở. Chưa tải lên gì cả — hãy đồng bộ lại.
           busy: Một thẻ khác đang đồng bộ bảng thuật ngữ của bạn.
           malformed: Không đọc được tệp bảng thuật ngữ trên Drive, nên không có gì thay đổi.
-          versionTooNew: Tệp bảng thuật ngữ đó do một phiên bản Read Frog mới hơn ghi. Hãy cập nhật tiện ích trước.
+          versionTooNew: Tệp bảng thuật ngữ đó do một phiên bản Getu Translate mới hơn ghi. Hãy cập nhật tiện ích trước.
           duplicateFiles: Drive của bạn có nhiều hơn một tệp bảng thuật ngữ. Không có gì thay đổi - hãy xóa tệp thừa.
           capExceeded: "Hợp nhất sẽ vượt giới hạn bảng thuật ngữ $1 mục. Không có gì thay đổi."
           failed: Đồng bộ bảng thuật ngữ thất bại
@@ -464,7 +464,7 @@ options:
         glossaryUndone: Bảng thuật ngữ đã trở lại như trước khi nhập
         glossaryUndoUnavailable: Không thể hoàn tác nữa — bộ thuật ngữ của bạn đã thay đổi kể từ đó.
         glossaryMalformed: Không đọc được bảng thuật ngữ trong tệp đó. Không có gì thay đổi.
-        glossaryVersionTooNew: Bảng thuật ngữ trong tệp đó do một phiên bản Read Frog mới hơn ghi. Hãy cập nhật tiện ích trước.
+        glossaryVersionTooNew: Bảng thuật ngữ trong tệp đó do một phiên bản Getu Translate mới hơn ghi. Hãy cập nhật tiện ích trước.
         glossaryCapExceeded: "Tệp đó có nhiều hơn giới hạn $2 dòng bảng thuật ngữ $1 dòng. Không có gì thay đổi."
         exportOptions:
           title: Chọn tùy chọn xuất
@@ -518,8 +518,8 @@ options:
         description: Bật các tính năng thử nghiệm có thể chưa ổn định
       analytics:
         title: Giúp cải thiện trải nghiệm người dùng
-        tooltip: Khi bật, Read Frog sẽ gửi các tín hiệu sử dụng ẩn danh để phát hiện lỗi, xác minh tính ổn định của tính năng, tối ưu hiệu năng và độ tinh chỉnh UX, đồng thời giúp chúng tôi ưu tiên những gì cần xây tiếp theo.
-        description: Cải thiện Read Frog bằng cách giúp chúng tôi tìm lỗi, tinh chỉnh giao diện và hơn thế nữa
+        tooltip: Khi bật, Getu Translate sẽ gửi các tín hiệu sử dụng ẩn danh để phát hiện lỗi, xác minh tính ổn định của tính năng, tối ưu hiệu năng và độ tinh chỉnh UX, đồng thời giúp chúng tôi ưu tiên những gì cần xây tiếp theo.
+        description: Cải thiện Getu Translate bằng cách giúp chúng tôi tìm lỗi, tinh chỉnh giao diện và hơn thế nữa
   shortcuts:
     title: Phím tắt
     pageDescription: Đặt các phím để dịch, đọc to và chạy hành động AI khi bạn đọc.
@@ -583,7 +583,7 @@ options:
     demoImageAlt: Demo nút nổi
     enable:
       title: Bật nút nổi
-      description: Hiển thị nút nổi trên các trang web để truy cập nhanh các tính năng Read Frog
+      description: Hiển thị nút nổi trên các trang web để truy cập nhanh các tính năng Getu Translate
     display:
       title: Hiển thị
       side:
@@ -788,7 +788,7 @@ options:
           title: Kết nối Notebase
           description: Lưu kết quả có cấu trúc của hành động này vào Notebase từ xa.
           loginRequiredTitle: Đăng nhập để cấu hình Notebase
-          loginRequiredDescription: Hãy đăng nhập trên readfrog.app trước khi chọn notebase hoặc chỉnh sửa ánh xạ.
+          loginRequiredDescription: Hãy đăng nhập trên Getu Translate trước khi chọn notebase hoặc chỉnh sửa ánh xạ.
           loginRequiredConnectedDescription: Kết nối này được tạo bởi tài khoản bên dưới. Nếu đăng nhập bằng cùng tài khoản, ánh xạ trường sẽ được khôi phục. Nếu đăng nhập bằng tài khoản khác, các ánh xạ cũ sẽ bị xóa khi bạn tạo hoặc kết nối Notebase.
           loginAction: Đăng nhập
           connectedAccountLabel: Tài khoản đã kết nối
@@ -800,7 +800,7 @@ options:
           clearConnectionAction: Xóa kết nối
           refreshAction: Làm mới
           emptyTitle: Chưa có Notebase nào
-          emptyDescription: Hãy tạo một notebase trên readfrog.app rồi quay lại đây để ánh xạ các trường.
+          emptyDescription: Hãy tạo một notebase trên Getu Translate rồi quay lại đây để ánh xạ các trường.
           openNotebaseAction: Mở Notebase
           accessDeniedTitle: Không thể truy cập Notebase
           accessDeniedDescription: Tài khoản này không có quyền tải dữ liệu Notebase.
@@ -1127,7 +1127,7 @@ options:
       importModeMerge: Thêm vào danh sách
       importModeReplace: Thay thế danh sách
       importEmpty: Không tìm thấy thuật ngữ nào trong tệp đó.
-      importMissingHeader: "Tệp đó không phải là tệp xuất bộ thuật ngữ của Read Frog. Nó cần các cột sau:"
+      importMissingHeader: "Tệp đó không phải là tệp xuất bộ thuật ngữ của Getu Translate. Nó cần các cột sau:"
       importOverflow: "Lần nhập này sẽ vượt giới hạn $1 thuật ngữ. Không có gì thay đổi."
       importSuccess: "Đã nhập $1 thuật ngữ mới và cập nhật $2 thuật ngữ."
       importSkipped: "Đã bỏ qua $1 dòng không hợp lệ và $2 mục trùng lặp."
@@ -1149,7 +1149,7 @@ options:
           description: "Toàn bộ $1 thuật ngữ sẽ bị xóa vĩnh viễn. Hành động này không thể hoàn tác."
   contextMenu:
     title: Menu ngữ cảnh
-    pageDescription: Kiểm soát các mục Read Frog trong menu chuột phải của trình duyệt.
+    pageDescription: Kiểm soát các mục Getu Translate trong menu chuột phải của trình duyệt.
     demoImageAlt: Demo menu ngữ cảnh
     enable:
       title: Bật dịch menu ngữ cảnh
@@ -1228,10 +1228,7 @@ options:
       title: Lời nhắc trang tùy chỉnh
       description: Tùy chỉnh các loại Prompt khác nhau cho phép bạn tự điều chỉnh loại Prompt trong quá trình dịch. Prompt là văn bản mà người dùng gửi cho LLM.
       managePrompts: Quản lý prompt
-      communityPrompts: Nhận hoặc chia sẻ prompt từ cộng đồng
-      communityPromptsUrl: https://github.com/mengxi-ream/read-frog/discussions/821
       variableReference: Tham chiếu biến
-      variableReferenceUrl: https://readfrog.app/vi/docs/page-translation/prompts/variables
       addPrompt: Thêm Prompt
       default: Mặc định
       builtIn: Tích hợp sẵn
@@ -1370,9 +1367,9 @@ options:
       noVoicesFound: Không tìm thấy giọng nói
       language:
         title: Giọng nói theo ngôn ngữ
-        description: Chọn một ngôn ngữ, rồi chọn giọng đọc ngôn ngữ đó. Đặt lại sẽ trả về giọng mà Read Frog chọn cho ngôn ngữ này.
+        description: Chọn một ngôn ngữ, rồi chọn giọng đọc ngôn ngữ đó. Đặt lại sẽ trả về giọng mà Getu Translate chọn cho ngôn ngữ này.
         reset: Đặt lại
-        previewSample: Xin chào từ Read Frog! Đây là cách tôi sẽ phát âm khi đọc to.
+        previewSample: Xin chào từ Getu Translate! Đây là cách tôi sẽ phát âm khi đọc to.
       fallback:
         title: Giọng dự phòng
         description: Ngôn ngữ nào bạn chưa gán giọng riêng sẽ được đọc bằng giọng này.
@@ -1520,7 +1517,7 @@ options:
   rateUs:
     title: Đánh giá chúng tôi
   configMigration:
-    versionTooNew: Phiên bản cấu hình đã nhập mới hơn, vui lòng nâng cấp Read Frog lên phiên bản mới nhất
+    versionTooNew: Phiên bản cấu hình đã nhập mới hơn, vui lòng nâng cấp Getu Translate lên phiên bản mới nhất
     validationError: Xác thực cấu hình thất bại
 side:
   sourceLang: Ngôn ngữ nguồn
@@ -1577,7 +1574,7 @@ action:
   saveToNotebaseSaving: Đang lưu...
   saveToNotebaseSuccess: Đã lưu vào Notebase
   saveToNotebaseFailed: Không thể lưu vào Notebase
-  saveToNotebaseLoginRequired: Hãy đăng nhập trên readfrog.app để lưu vào Notebase
+  saveToNotebaseLoginRequired: Hãy đăng nhập trên Getu Translate để lưu vào Notebase
   saveToNotebaseAccessDenied: Tài khoản này không thể truy cập Notebase đã chọn
   saveToNotebaseLimitExceeded: Cần nâng cấp để lưu thêm ghi chú Notebase
   saveToNotebaseTableUnavailable: Notebase đã chọn không còn khả dụng
@@ -1596,13 +1593,13 @@ action:
   saveToNotebaseConnectExisting: Kết nối Notebase hiện có
   saveToNotebaseGoConfigure: Cấu hình
   saveToNotebaseLoginConnectedTitle: Đăng nhập để lưu?
-  saveToNotebaseLoginConnectedDescription: Custom Action này đang kết nối với tài khoản bên dưới. Sau khi đăng nhập, Read Frog sẽ lưu vào Notebase hiện có nếu có thể, hoặc tạo Notebase mới cho tài khoản đã đăng nhập.
+  saveToNotebaseLoginConnectedDescription: Custom Action này đang kết nối với tài khoản bên dưới. Sau khi đăng nhập, Getu Translate sẽ lưu vào Notebase hiện có nếu có thể, hoặc tạo Notebase mới cho tài khoản đã đăng nhập.
   saveToNotebaseConnectionUnavailableTitle: Kết nối Notebase không khả dụng
   saveToNotebaseMissingNotebaseDescription: Notebase cũ không còn tồn tại hoặc tài khoản này không mở được. Hãy tạo Notebase mới và lưu kết quả này, hoặc kết nối Notebase hiện có trong Custom AI Actions.
   saveToNotebaseAccountUnavailableDescription: Tài khoản đã đăng nhập không khớp với tài khoản đã kết nối bên dưới. Tạo và lưu sẽ thay thế kết nối trước đó cùng các ánh xạ trường. Bạn cũng có thể kết nối Notebase hiện có trong Custom AI Actions.
   saveToNotebasePendingLogin: Đăng nhập để hoàn tất lưu
-  saveToNotebasePendingLoginDescription: Sau khi đăng nhập, Read Frog sẽ tự động tạo Notebase và lưu kết quả này.
-  saveToNotebasePendingConnectedLoginDescription: Sau khi đăng nhập, Read Frog sẽ lưu vào Notebase đã kết nối nếu có thể. Nếu tài khoản này không dùng được, Read Frog sẽ tạo Notebase mới và lưu kết quả này.
+  saveToNotebasePendingLoginDescription: Sau khi đăng nhập, Getu Translate sẽ tự động tạo Notebase và lưu kết quả này.
+  saveToNotebasePendingConnectedLoginDescription: Sau khi đăng nhập, Getu Translate sẽ lưu vào Notebase đã kết nối nếu có thể. Nếu tài khoản này không dùng được, Getu Translate sẽ tạo Notebase mới và lưu kết quả này.
   upgrade: Nâng cấp
   updatePayment: Cập nhật thanh toán
   openCustomActions: Mở Custom AI Actions
@@ -1666,7 +1663,7 @@ subtitles:
     downloadTranslatedComplete: Đã tải phụ đề đã dịch
     downloadSource: Tải phụ đề gốc
   state:
-    loading: Read Frog đang tải phụ đề
+    loading: Getu Translate đang tải phụ đề
     translating: Đang dịch…
     error: Đã xảy ra lỗi
   errors:

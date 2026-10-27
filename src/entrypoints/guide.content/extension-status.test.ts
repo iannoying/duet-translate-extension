@@ -23,7 +23,7 @@ describe("extension status bridge", () => {
         "1.33.12",
       ),
     ).toEqual({
-      source: "read-frog-ext",
+      source: "getu-translate-ext",
       type: "extensionStatus",
       requestId: "request-1",
       data: { version: "1.33.12" },

@@ -1,15 +1,16 @@
 import { describe, expect, it } from "vitest"
 import { buildFeaturebaseFeedbackMetadata, buildFeaturebasePortalUrl } from "@/utils/featurebase"
 
+const ORIGIN = "https://feedback.example.com"
 const SUPPORTED_UI_LOCALES = ["en", "es", "ja", "ko", "ru", "tr", "vi", "zh-CN", "zh-TW"] as const
 
 describe("buildFeaturebasePortalUrl", () => {
   it.each(SUPPORTED_UI_LOCALES)("builds locale-prefixed portal URLs for %s", (locale) => {
-    expect(buildFeaturebasePortalUrl({ destination: "feedback", locale })).toBe(
-      `https://feedback.readfrog.app/${locale}`,
+    expect(buildFeaturebasePortalUrl({ destination: "feedback", locale, origin: ORIGIN })).toBe(
+      `https://feedback.example.com/${locale}`,
     )
-    expect(buildFeaturebasePortalUrl({ destination: "roadmap", locale })).toBe(
-      `https://feedback.readfrog.app/${locale}/roadmap`,
+    expect(buildFeaturebasePortalUrl({ destination: "roadmap", locale, origin: ORIGIN })).toBe(
+      `https://feedback.example.com/${locale}/roadmap`,
     )
   })
 
@@ -17,13 +18,14 @@ describe("buildFeaturebasePortalUrl", () => {
     const result = buildFeaturebasePortalUrl({
       destination: "feedback",
       locale: "zh-CN",
+      origin: ORIGIN,
       metadata: {
         browser: "edge",
         extension_version: "1.43.3",
         page_url: "https://example.com/private/path",
       },
     })
-    const url = new URL(result)
+    const url = new URL(result!)
 
     expect(url.pathname).toBe("/zh-CN")
     expect(JSON.parse(url.searchParams.get("metaData")!)).toEqual({
@@ -31,6 +33,12 @@ describe("buildFeaturebasePortalUrl", () => {
       extension_version: "1.43.3",
       page_url: "https://example.com/private/path",
     })
+  })
+
+  it("is undefined while no portal is configured", () => {
+    expect(
+      buildFeaturebasePortalUrl({ destination: "feedback", locale: "en", origin: undefined }),
+    ).toBeUndefined()
   })
 })
 
