@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises"
-import { HostedAiStreamStructuredObjectInputSchema } from "@read-frog/api-contract"
 import { describe, expect, it } from "vitest"
+import { HostedAiStreamStructuredObjectInputSchema } from "@/api-contract"
 import { compileLayout } from "@/layout-engine/core"
 import { lintLayout } from "@/layout-engine/editor"
 import { DEFAULT_LAYOUT } from "@/layout-engine/presets"

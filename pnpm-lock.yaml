@@ -295,9 +295,6 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.4.0
         version: 1.4.0(@types/react@19.3.0)(react@19.3.0)
-      '@read-frog/api-contract':
-        specifier: 0.23.0
-        version: 0.23.0(@opentelemetry/api@1.9.1)
       '@remixicon/react':
         specifier: ^4.9.0
         version: 4.9.0(react@19.3.0)
@@ -2470,12 +2467,6 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
-
-  '@read-frog/api-contract@0.23.0':
-    resolution: {integrity: sha512-PV2fBGnagT0js7kVkbmThWlZYT4kR6aPNanW2VXgPKYRJvKV0jIKZqkPdVD0UFmDh7vDsC0qBRgYlQG3EtSTTQ==}
-
-  '@read-frog/definitions@0.11.0':
-    resolution: {integrity: sha512-wzW9QA0NgtHfAjn+LiePl8GCVPaqIgDpqtegzn+eOHoBxiEZKtvAR56hfb8tCNPiMaPLHEoN7BiquRFJqinTiA==}
 
   '@remix-run/route-pattern@0.22.1':
     resolution: {integrity: sha512-czdGJWh09Lapvcqt7Vb09KlrU2PhRJ8xQaI+AItTuD9aDJ5MAgxnS38lnys6Ll+6RJEqPiaUqTwIQhVLwFvv+w==}
@@ -6657,15 +6648,6 @@ packages:
     resolution: {integrity: sha512-GLNEdf5qBWux3adbOxFus4jlds8nCdEIkkKq99m/4GGTfqnsjlVlK/i371Ux7yYSg/WNmOyAkNT/GJlZoJ0v+w==}
     engines: {node: '>=18.13.0'}
 
-  temporal-polyfill@1.0.5:
-    resolution: {integrity: sha512-+H/mmY74i6wXCMcjIhGuSnODcyZnc4eois2myhOyX0UqRAKNXQY5m9iB1en5jQ/n4SXtjLXo1ElBI5bmn8tZwQ==}
-
-  temporal-spec@1.0.1:
-    resolution: {integrity: sha512-wxVoanmDeavXie1vu2JaQ3WIc3JZnWAOYFBsJyATaVsXsycKYUflGsyBmrRSnoCpZJpwPyr38VpgSUlQ8CbFxg==}
-
-  temporal-utils@1.0.3:
-    resolution: {integrity: sha512-9jbTSX3HvkOWvDpNpFzwX/d1mkCrgQgwLmVTOEiuocZGKHsrQJtttGZFmybJ2zYP5zCSZuU5ZyeS8+eOEPABiQ==}
-
   thread-stream@4.2.0:
     resolution: {integrity: sha512-e2zZ96wSChazBsbENf/Pcm/4swHt2cEKQ92rhUjkL9GCKiTDJIaTBenjE/m9DXi0QBmTMDkFDdOomUy20A1tDQ==}
     engines: {node: '>=20'}
@@ -9112,19 +9094,6 @@ snapshots:
       react: 19.3.0
     optionalDependencies:
       '@types/react': 19.3.0
-
-  '@read-frog/api-contract@0.23.0(@opentelemetry/api@1.9.1)':
-    dependencies:
-      '@orpc/contract': 1.15.5(@opentelemetry/api@1.9.1)
-      '@read-frog/definitions': 0.11.0
-      zod: 4.6.5
-    transitivePeerDependencies:
-      - '@opentelemetry/api'
-
-  '@read-frog/definitions@0.11.0':
-    dependencies:
-      temporal-polyfill: 1.0.5
-      zod: 4.6.5
 
   '@remix-run/route-pattern@0.22.1': {}
 
@@ -13203,15 +13172,6 @@ snapshots:
 
   temml@0.13.3:
     optional: true
-
-  temporal-polyfill@1.0.5:
-    dependencies:
-      temporal-spec: 1.0.1
-      temporal-utils: 1.0.3
-
-  temporal-spec@1.0.1: {}
-
-  temporal-utils@1.0.3: {}
 
   thread-stream@4.2.0:
     dependencies:

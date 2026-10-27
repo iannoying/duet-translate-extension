@@ -4,7 +4,7 @@ import type {
   NotebaseListOutput,
   NotebaseRowCreateInput,
   NotebaseRowCreateManyInput,
-} from "@read-frog/api-contract"
+} from "@/api-contract"
 import type { AnalyticsFailureReason } from "@/types/analytics"
 import type { Config } from "@/types/config/config"
 import type { SelectionToolbarCustomActionNotebaseAccount } from "@/types/config/selection-toolbar"

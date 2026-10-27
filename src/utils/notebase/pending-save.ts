@@ -1,5 +1,5 @@
-import type { NotebaseCreateInput, NotebaseGetSchemaOutput } from "@read-frog/api-contract"
 import type { z } from "zod"
+import type { NotebaseCreateInput, NotebaseGetSchemaOutput } from "@/api-contract"
 import type { NoteSaveSurface } from "@/definitions"
 import type { SurfaceByFeature } from "@/types/analytics"
 import type { Config } from "@/types/config/config"

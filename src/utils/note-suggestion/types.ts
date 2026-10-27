@@ -1,5 +1,5 @@
-import { HOSTED_AI_NOTE_SUGGESTION_MAX_NOTES } from "@read-frog/api-contract"
 import { z } from "zod"
+import { HOSTED_AI_NOTE_SUGGESTION_MAX_NOTES } from "@/api-contract"
 
 // The BYOK envelope diverged from the hosted noteSuggestion contract on
 // purpose (flat summaryFieldName, no action object), but the note budget is a

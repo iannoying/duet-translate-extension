@@ -1,6 +1,6 @@
-import type { HostedAiFeature } from "@read-frog/api-contract"
 import type { JSONValue, StreamTextOnErrorCallback } from "ai"
 import type { Browser } from "#imports"
+import type { HostedAiFeature } from "@/api-contract"
 import type { AnalyticsFailureReason } from "@/types/analytics"
 import type { AISDKReasoning, LLMProviderConfig } from "@/types/config/provider"
 import type { SelectionToolbarCustomActionOutputType } from "@/types/config/selection-toolbar"

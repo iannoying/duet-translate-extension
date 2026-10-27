@@ -79,29 +79,7 @@ function parseCommaSeparatedEntries(
   return parsedEntries
 }
 
-export function isLocalPackagesEnabled(rawEnv: RawExtensionEnv) {
-  return rawBooleanSchema.parse(rawEnv.WXT_USE_LOCAL_PACKAGES) ?? false
-}
-
-// With local packages, the aliased layout engine source lives in the monorepo
-// and imports these (its peer dependencies) from there. Vite must resolve them
-// from here instead, or the bundle and the tests get a second React or
-// CodeMirror.
-export const LOCAL_PACKAGES_DEDUPE = [
-  "react",
-  "react-dom",
-  "liquidjs",
-  "dompurify",
-  "morphdom",
-  "@codemirror/lang-liquid",
-  "@codemirror/lint",
-  "@codemirror/state",
-  "@codemirror/view",
-]
-
 export function resolveExtensionEnv(rawEnv: RawExtensionEnv) {
-  // Still parsed so a malformed WXT_USE_LOCAL_PACKAGES fails early.
-  isLocalPackagesEnabled(rawEnv)
   const defaults = LOCAL_EXTENSION_ENV_DEFAULTS
 
   return {

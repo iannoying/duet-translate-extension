@@ -1,4 +1,4 @@
-import type { NotebaseGetSchemaOutput } from "@read-frog/api-contract"
+import type { NotebaseGetSchemaOutput } from "@/api-contract"
 import type { Config } from "@/types/config/config"
 import type { SelectionToolbarCustomAction } from "@/types/config/selection-toolbar"
 import type { PendingCreateNotebaseSave, PendingNotebaseSave } from "@/utils/notebase/pending-save"

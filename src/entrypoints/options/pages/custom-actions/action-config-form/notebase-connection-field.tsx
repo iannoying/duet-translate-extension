@@ -1,4 +1,4 @@
-import type { NotebaseGetSchemaOutput, NotebaseListOutput } from "@read-frog/api-contract"
+import type { NotebaseGetSchemaOutput, NotebaseListOutput } from "@/api-contract"
 import type {
   SelectionToolbarCustomAction,
   SelectionToolbarCustomActionNotebaseAccount,

@@ -1,5 +1,5 @@
 import type { ContractRouterClient } from "@orpc/contract"
-import type { contract } from "@read-frog/api-contract"
+import type { contract } from "@/api-contract"
 import type { ClientContextHeaderInput } from "@/definitions"
 import { storage } from "#imports"
 import { CLIENT_CONTEXT_HEADER, formatClientContextHeader } from "@/definitions"

@@ -1,4 +1,3 @@
-import path from "node:path"
 import process from "node:process"
 import ViteYaml from "@modyfi/vite-plugin-yaml"
 import { defineConfig } from "wxt"
@@ -6,8 +5,6 @@ import { z } from "zod"
 import {
   createExtensionClientEnvSchema,
   findMissingProductionEnv,
-  isLocalPackagesEnabled,
-  LOCAL_PACKAGES_DEDUPE,
   resolveExtensionEnv,
 } from "./src/env/shared"
 
@@ -15,27 +12,13 @@ const WXT_API_KEY_PATTERN = /^WXT_.*API_KEY/
 // entrypoints/content-runtime, the ES module behind every page's content scripts
 const CONTENT_RUNTIME_NAME = "content-runtime"
 const ALLOWED_BUNDLED_API_KEYS = new Set(["WXT_POSTHOG_API_KEY"])
-const useLocalPackages = isLocalPackagesEnabled(process.env)
 const shouldSkipEnvValidation = process.env.WXT_SKIP_ENV_VALIDATION === "true"
-// Root of the read-frog monorepo whose source is aliased in when developing
-// with local packages. Defaults to the sibling checkout; override with
-// WXT_MONOREPO_PATH to point at a git worktree (relative or absolute).
-const monorepoRoot = process.env.WXT_MONOREPO_PATH
-  ? path.resolve(process.env.WXT_MONOREPO_PATH)
-  : path.resolve(__dirname, "../read-frog-monorepo")
-
 // See https://wxt.dev/api/config.html
 export default defineConfig({
   srcDir: "src",
   imports: false,
   modules: ["@wxt-dev/module-react", "@wxt-dev/i18n/module"],
   manifestVersion: 3,
-  // WXT top level alias - will be automatically synced to tsconfig.json paths and Vite alias
-  alias: useLocalPackages
-    ? {
-        "@read-frog/api-contract": path.resolve(monorepoRoot, "packages/api-contract/src"),
-      }
-    : {},
   manifest: ({ browser }) => ({
     name: "__MSG_extName__",
     description: "__MSG_extDescription__",
@@ -106,11 +89,6 @@ export default defineConfig({
     excludeSources: ["docs/**/*", "assets/**/*", "repos/**/*", "readmes/**/*"],
   },
   hooks: {
-    // A build made with local packages is for development: it holds whatever
-    // the monorepo checkout happens to contain.
-    "zip:start": () => {
-      if (useLocalPackages) throw new Error("Do not zip a build made with local packages")
-    },
     "vite:build:extendConfig": (entrypoints, viteConfig) => {
       const entrypoint = entrypoints.length === 1 ? entrypoints[0] : undefined
       if (entrypoint?.type === "unlisted-script" && entrypoint.name === CONTENT_RUNTIME_NAME) {
@@ -168,7 +146,6 @@ export default defineConfig({
         // @codemirror/lang-liquid's parser and highlighting share these with the other languages.
         "@lezer/highlight",
         "@lezer/lr",
-        ...(useLocalPackages ? LOCAL_PACKAGES_DEDUPE : []),
       ],
     },
     plugins: [

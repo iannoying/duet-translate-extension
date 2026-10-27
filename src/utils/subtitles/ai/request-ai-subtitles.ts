@@ -1,4 +1,4 @@
-import type { VideoTranscriptStatus } from "@read-frog/api-contract"
+import type { VideoTranscriptStatus } from "@/api-contract"
 import type { SubtitlesError } from "@/utils/subtitles/errors"
 import type { SubtitlesFragment } from "@/utils/subtitles/types"
 import { safe } from "@orpc/client"

@@ -1,5 +1,5 @@
-import type { VideoTranscriptUsage, VideoTranscriptUsagePool } from "@read-frog/api-contract"
 import type { ReactNode } from "react"
+import type { VideoTranscriptUsage, VideoTranscriptUsagePool } from "@/api-contract"
 import { ORPCError } from "@orpc/client"
 import { useQuery } from "@tanstack/react-query"
 import { Button } from "@/components/ui/base-ui/button"
