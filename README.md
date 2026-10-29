@@ -14,7 +14,9 @@ pnpm test
 pnpm lint
 ```
 
-A production build needs your own backend. Set these before `pnpm build` (see `.env.example`):
+A production build needs a backend. The release workflows point it at ours
+(`api.duettranslate.com`, backend repo `iannoying/duet-translate-api`); for a
+local build, set these before `pnpm build` (see `.env.example`):
 
 - `WXT_API_URL`, `WXT_WEBSITE_URL`, `WXT_OFFICIAL_SITE_ORIGINS`, `WXT_AUTH_COOKIE_DOMAINS`
 - `WXT_GOOGLE_CLIENT_ID`

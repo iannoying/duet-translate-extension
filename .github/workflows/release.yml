@@ -12,6 +12,11 @@ on:
         type: string
 
 env:
+  # Our backend and website. Public values, so they live here, not in secrets.
+  WXT_API_URL: https://api.duettranslate.com
+  WXT_WEBSITE_URL: https://duettranslate.com
+  WXT_OFFICIAL_SITE_ORIGINS: https://duettranslate.com,https://www.duettranslate.com
+  WXT_AUTH_COOKIE_DOMAINS: duettranslate.com
   WXT_GOOGLE_CLIENT_ID: ${{ secrets.WXT_GOOGLE_CLIENT_ID || vars.WXT_GOOGLE_CLIENT_ID }}
   WXT_POSTHOG_API_KEY: ${{ secrets.WXT_POSTHOG_API_KEY || vars.WXT_POSTHOG_API_KEY }}
   WXT_POSTHOG_HOST: ${{ secrets.WXT_POSTHOG_HOST || vars.WXT_POSTHOG_HOST }}
