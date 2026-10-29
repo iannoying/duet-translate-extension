@@ -17,5 +17,7 @@ allowBuilds:
   nx: true
   spawn-sync: true
 
+# Patches are pinned to exact versions. Redo or drop them when upgrading;
+# see "Dependency Patches" in AGENTS.md.
 patchedDependencies:
   "@webext-core/messaging@4.0.0": patches/@webext-core__messaging@4.0.0.patch
