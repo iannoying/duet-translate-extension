@@ -2,4 +2,4 @@
 "duet-translate": patch
 ---
 
-fix(messaging): handle missing Chrome message receivers
+fix(messaging): handle missing receivers and invalidated content scripts
