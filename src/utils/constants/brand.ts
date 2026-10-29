@@ -7,7 +7,7 @@ export const BRAND = {
   /** Used in file names and in messages exchanged with the website. */
   slug: "duet-translate",
   /** Required by the GPL: where users get this extension's source. */
-  sourceRepoUrl: "https://github.com/iannoying/translate",
+  sourceRepoUrl: "https://github.com/iannoying/duet-translate-extension",
   supportEmail: undefined as string | undefined,
   discordInviteUrl: undefined as string | undefined,
   /** Origin of the Featurebase portal for feedback, roadmap and tickets. */
