@@ -65,13 +65,22 @@ export async function bootstrapHostContent(
   const cleanupTranslationHubShortcut = await bindTranslationHubShortcutKey()
 
   const detectAndReportPageLanguage = async (url: string) => {
+    if (ctx.isInvalid) return
     const generation = ++detectionGeneration
     detectedPageLanguage = undefined
-    const { detectedCodeOrUnd } = await detectPageLanguageLightweight()
-    if (generation === detectionGeneration && url === window.location.href) {
-      detectedPageLanguage = { url, code: detectedCodeOrUnd }
+    try {
+      const { detectedCodeOrUnd } = await detectPageLanguageLightweight()
+      // A reload can invalidate the content script while detection is pending.
+      if (ctx.isInvalid) return
+      if (generation === detectionGeneration && url === window.location.href) {
+        detectedPageLanguage = { url, code: detectedCodeOrUnd }
+      }
+      await sendMessage("reportDetectedPageLanguage", { url, detectedCodeOrUnd })
+    } catch (error) {
+      if (!ctx.isInvalid) {
+        logger.warn("Failed to detect or report page language:", error)
+      }
     }
-    void sendMessage("reportDetectedPageLanguage", { url, detectedCodeOrUnd })
   }
 
   // For late-loading iframes: check if translation is already enabled for this tab
@@ -87,6 +96,7 @@ export async function bootstrapHostContent(
   }
 
   const handleUrlChange = async (from: string, to: string) => {
+    if (ctx.isInvalid) return
     if (from !== to) {
       detectionGeneration += 1
       detectedPageLanguage = undefined

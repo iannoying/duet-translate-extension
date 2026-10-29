@@ -6,6 +6,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest"
 import { storage } from "#imports"
 import { toastManager } from "@/components/ui/base-ui/toast"
 import { CONFIG_STORAGE_KEY, DEFAULT_CONFIG } from "@/utils/constants/config"
+import { logger } from "@/utils/logger"
 import { bootstrapHostContent } from "../runtime"
 
 const {
@@ -106,14 +107,19 @@ vi.mock("../translation-control/page-translation", () => ({
 
 function createContentScriptContext() {
   const invalidationCallbacks: Array<() => void> = []
+  let invalidated = false
 
   return {
     ctx: {
+      get isInvalid() {
+        return invalidated
+      },
       onInvalidated: (callback: () => void) => {
         invalidationCallbacks.push(callback)
       },
     } as ContentScriptContext,
     invalidate: () => {
+      invalidated = true
       for (const callback of invalidationCallbacks) {
         callback()
       }
@@ -237,6 +243,75 @@ describe("bootstrapHostContent URL changes", () => {
     })
 
     invalidate()
+  })
+
+  it.each(["throw", "reject"])("handles a language report that fails with %s", async (failure) => {
+    const error = new Error("Extension context invalidated.")
+    mockSendMessage.mockImplementation((name: string) => {
+      if (name !== "reportDetectedPageLanguage") return Promise.resolve(false)
+      if (failure === "throw") throw error
+      return Promise.reject(error)
+    })
+    const { ctx, invalidate } = createContentScriptContext()
+    try {
+      await expect(bootstrapHostContent(ctx, null)).resolves.toBeUndefined()
+      expect(logger.warn).toHaveBeenCalledWith("Failed to detect or report page language:", error)
+    } finally {
+      invalidate()
+    }
+  })
+
+  it("handles a rejected language report after SPA navigation", async () => {
+    const { ctx, invalidate } = createContentScriptContext()
+    await bootstrapHostContent(ctx, null)
+    const error = new Error("Extension context invalidated.")
+    mockSendMessage.mockRejectedValueOnce(error)
+    try {
+      window.dispatchEvent(
+        new CustomEvent("extension:URLChange", {
+          detail: { from: "https://example.com/one", to: "https://example.com/two" },
+        }),
+      )
+      await flushAsyncWork()
+      expect(logger.warn).toHaveBeenCalledWith("Failed to detect or report page language:", error)
+    } finally {
+      invalidate()
+    }
+  })
+
+  it("does not start language detection from a stale callback after invalidation", async () => {
+    const { ctx, invalidate } = createContentScriptContext()
+    await bootstrapHostContent(ctx, null)
+    const refreshHandler = messageHandlers.get("refreshDetectedPageLanguage")!
+    mockDetectPageLanguageLightweight.mockClear()
+    mockSendMessage.mockClear()
+
+    invalidate()
+    refreshHandler()
+    await flushAsyncWork()
+
+    expect(mockDetectPageLanguageLightweight).not.toHaveBeenCalled()
+    expect(mockSendMessage).not.toHaveBeenCalled()
+  })
+
+  it("discards language detection that finishes after invalidation", async () => {
+    const { ctx, invalidate } = createContentScriptContext()
+    await bootstrapHostContent(ctx, null)
+    let resolveDetection!: (result: { detectedCodeOrUnd: string }) => void
+    mockDetectPageLanguageLightweight.mockImplementationOnce(
+      () =>
+        new Promise((resolve) => {
+          resolveDetection = resolve
+        }),
+    )
+    mockSendMessage.mockClear()
+    messageHandlers.get("refreshDetectedPageLanguage")!()
+    invalidate()
+    resolveDetection({ detectedCodeOrUnd: "jpn" })
+    await flushAsyncWork()
+
+    expect(mockSendMessage).not.toHaveBeenCalled()
+    expect(managerInstances[0]?.getDetectedPageLanguage?.(window.location.href)).toBeUndefined()
   })
 
   it("refreshes and reports detected language when background requests active-tab refresh", async () => {

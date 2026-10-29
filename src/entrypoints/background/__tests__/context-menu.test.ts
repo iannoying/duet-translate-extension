@@ -2,6 +2,7 @@ import type { Config } from "@/types/config/config"
 import { beforeEach, describe, expect, it, vi } from "vitest"
 import { browser, storage } from "#imports"
 import { i18n } from "@/utils/i18n"
+import { logger } from "@/utils/logger"
 import {
   initializeContextMenu,
   MENU_ID_SELECTION_CUSTOM_ACTION_PREFIX,
@@ -53,6 +54,7 @@ describe("background context menu", () => {
   beforeEach(() => {
     contextMenuClickListeners.length = 0
     vi.clearAllMocks()
+    sendMessageMock.mockResolvedValue(undefined)
 
     browser.contextMenus.create = vi.fn<(...args: any[]) => any>()
     browser.contextMenus.removeAll = vi.fn<(...args: any[]) => any>().mockResolvedValue(undefined)
@@ -83,6 +85,23 @@ describe("background context menu", () => {
             "Sentence Analysis",
         })[key] ?? key,
     ) as typeof i18n.t
+  })
+
+  it.each([
+    MENU_ID_TRANSLATE,
+    MENU_ID_SELECTION_TRANSLATE,
+    MENU_ID_SELECTION_READ_ALOUD,
+    `${MENU_ID_SELECTION_CUSTOM_ACTION_PREFIX}dictionary`,
+  ])("handles missing content scripts for %s", async (menuItemId) => {
+    const error = new Error("Could not establish connection. Receiving end does not exist.")
+    sendMessageMock.mockRejectedValue(error)
+    const warn = vi.spyOn(logger, "warn")
+    registerContextMenuListeners()
+
+    await contextMenuClickListeners[0]!({ menuItemId, selectionText: "Hello" }, { id: 5 })
+
+    expect(warn).toHaveBeenCalledWith(expect.stringContaining("[ContextMenu] Failed"), error)
+    warn.mockRestore()
   })
 
   it("creates page and selection menu items when the context menu is enabled", async () => {
