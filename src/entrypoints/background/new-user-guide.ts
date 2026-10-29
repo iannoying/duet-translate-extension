@@ -36,7 +36,12 @@ async function checkPinnedAndNotify() {
     { url: env.WXT_OFFICIAL_SITE_ORIGINS.map((origin: string) => `${origin}/*`) },
     (tabs) => {
       for (const tab of tabs) {
-        void sendMessage("pinStateChanged", { isPinned: isOnToolbar }, tab.id)
+        if (tab.id === undefined) continue
+
+        // Existing tabs may not have the guide content script after an install/reload.
+        void sendMessage("pinStateChanged", { isPinned: isOnToolbar }, tab.id).catch((error) => {
+          logger.warn("[NewUserGuide] Failed to notify pin state", error)
+        })
       }
     },
   )
