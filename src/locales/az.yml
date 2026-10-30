@@ -1,6 +1,6 @@
 name: Duet Translate
-extName: "Duet Translate - Sİ tərcüməsi və söz kartları"
-extDescription: "Veb-səhifələr və YouTube, Netflix, X altyazıları üçün Sİ ilə ikidilli tərcümə. Yeni sözləri saxlayın, kartlarla təkrarlayın."
+extName: "Duet Translate - Sİ ilə ikidilli tərcümə və altyazılar"
+extDescription: "Veb-səhifələr və YouTube, Netflix, X altyazıları üçün Sİ ilə ikidilli tərcümə. Seçdiyiniz və yazdığınız mətni də tərcümə edin."
 account:
   login: Daxil ol
   webApp: Veb tətbiqi

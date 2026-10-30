@@ -1,6 +1,6 @@
 name: Duet Translate
-extName: "Duet Translate - Dịch AI và thẻ ghi nhớ"
-extDescription: "Dịch song ngữ bằng AI cho trang web và phụ đề YouTube, Netflix, X. Lưu từ mới và ôn tập bằng thẻ ghi nhớ."
+extName: "Duet Translate - Dịch song ngữ AI và phụ đề"
+extDescription: "Dịch song ngữ bằng AI cho trang web và phụ đề YouTube, Netflix, X. Dịch ngay văn bản bạn chọn hoặc đang gõ."
 account:
   login: Đăng nhập
   webApp: Ứng dụng web

@@ -1,6 +1,6 @@
 name: Duet Translate
-extName: "Duet Translate - ИИ-перевод и карточки"
-extDescription: "Двуязычный ИИ-перевод веб-страниц и субтитров YouTube, Netflix и X. Сохраняйте новые слова и повторяйте их на карточках."
+extName: "Duet Translate - двуязычный ИИ-перевод и субтитры"
+extDescription: "Двуязычный ИИ-перевод веб-страниц и субтитров YouTube, Netflix и X. Переводите выделенный и набираемый текст."
 account:
   login: Войти
   webApp: Веб-приложение

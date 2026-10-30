@@ -1,6 +1,6 @@
 name: Duet Translate
-extName: "Duet Translate - AI Translation & Flashcards"
-extDescription: "Bilingual AI translation for web pages and YouTube, Netflix and X subtitles. Save new words and review them as flashcards."
+extName: "Duet Translate - AI Bilingual Translation & Subtitles"
+extDescription: "Bilingual AI translation for web pages and YouTube, Netflix and X subtitles. Translate any text you select or type."
 account:
   login: Log in
   webApp: Web app

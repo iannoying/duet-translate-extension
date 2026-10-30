@@ -1,6 +1,6 @@
 name: 懂你翻譯
-extName: "懂你翻譯 - AI 雙語翻譯、影片字幕與背單字"
-extDescription: "用 AI 雙語對照翻譯網頁，以及 YouTube、Netflix、X 的影片字幕。遇到生字一鍵儲存，用閃卡複習。"
+extName: "懂你翻譯 - AI 雙語對照翻譯與影片字幕"
+extDescription: "用 AI 雙語對照翻譯網頁，以及 YouTube、Netflix、X 的影片字幕。劃詞即譯，輸入框裡打的字也能直接翻譯。"
 account:
   login: 登入
   webApp: 網頁應用程式
