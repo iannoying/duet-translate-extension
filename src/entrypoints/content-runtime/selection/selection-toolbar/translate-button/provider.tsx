@@ -42,6 +42,7 @@ import { classifyFailureReason } from "@/utils/analytics-failure-reason"
 import { classifyProviderConfig, classifyResolvedProvider } from "@/utils/analytics-provider"
 import { configFieldsAtomMap, writeConfigAtom } from "@/utils/atoms/config"
 import { buildFeatureProviderPatch } from "@/utils/constants/feature-providers"
+import { NOTEBASE_ENABLED } from "@/utils/constants/notebase"
 import { streamBackgroundText } from "@/utils/content-script/background-stream-client"
 import { getSourceDocumentTitle } from "@/utils/content/document-title"
 import { getRandomUUID } from "@/utils/crypto-polyfill"
@@ -659,6 +660,7 @@ export function SelectionTranslationProvider({ children }: { children: ReactNode
     const preparedText = prepareTranslationText(selectionText)
     const suggestionProvider = noteSuggestionProvider
     if (
+      NOTEBASE_ENABLED &&
       preparedText !== "" &&
       suggestionProvider &&
       (suggestionProvider.kind === "system" ||
@@ -907,7 +909,7 @@ export function SelectionTranslationProvider({ children }: { children: ReactNode
               )}
             <SelectionToolbarErrorAlert error={error} className="-mt-3" />
           </SelectionPopover.Body>
-          <ReviewDueTab source="extension_selection_translation" />
+          {NOTEBASE_ENABLED && <ReviewDueTab source="extension_selection_translation" />}
           <TranslateFooterContent
             paragraphsText={paragraphsText}
             providers={translateProviders}

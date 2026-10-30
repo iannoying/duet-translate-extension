@@ -23,6 +23,7 @@ import {
   FEATURE_PROVIDER_DEFS,
   getFeatureLabelI18nKey,
 } from "@/utils/constants/feature-providers"
+import { isFeatureVisible } from "@/utils/constants/notebase"
 import { BUILT_IN_AI_PROVIDER_IDS, type BuiltInAiProviderId } from "@/utils/constants/provider-ids"
 import { API_PROVIDER_ITEMS } from "@/utils/constants/providers"
 import { getSelectionToolbarActions } from "@/utils/custom-actions"
@@ -229,7 +230,7 @@ function ProviderCard({ providerConfig }: { providerConfig: APIProviderConfig })
   const switchRef = useRef<HTMLButtonElement>(null)
 
   const assignedFeatures = FEATURE_KEYS.filter(
-    (key) => FEATURE_PROVIDER_DEFS[key].getProviderId(config) === id,
+    (key) => isFeatureVisible(key) && FEATURE_PROVIDER_DEFS[key].getProviderId(config) === id,
   )
   const assignedCustomActions = getSelectionToolbarActions(config.selectionToolbar).filter(
     (action) => action.providerId === id,
@@ -434,7 +435,7 @@ function BuiltInProviderPanel({ providerId }: { providerId: BuiltInAiProviderId 
             </ProviderEditor.Attribution>
           </div>
           <ProviderEditor.Assignments defaultOpen>
-            {BUILT_IN_FEATURE_KEYS.map((featureKey) => (
+            {BUILT_IN_FEATURE_KEYS.filter(isFeatureVisible).map((featureKey) => (
               <ProviderEditor.FeatureAssignment
                 key={featureKey}
                 featureKey={featureKey}

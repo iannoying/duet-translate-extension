@@ -37,6 +37,7 @@ import {
   FEATURE_PROVIDER_DEFS,
   getFeatureLabelI18nKey,
 } from "@/utils/constants/feature-providers"
+import { isFeatureVisible } from "@/utils/constants/notebase"
 import { API_PROVIDER_ITEMS } from "@/utils/constants/providers"
 import { getSelectionToolbarActions, patchSelectionToolbarAction } from "@/utils/custom-actions"
 import { i18n } from "@/utils/i18n"
@@ -420,6 +421,7 @@ function CompatibleFeatureAssignments() {
 
   return FEATURE_KEYS.filter(
     (featureKey) =>
+      isFeatureVisible(featureKey) &&
       FEATURE_PROVIDER_DEFS[featureKey].isProvider(providerType) &&
       // While translationOnly page mode is active, providers without markup
       // support cannot take the page-translate assignment (translation-only-gate.ts).
