@@ -1,6 +1,6 @@
 name: Duet Translate
-extName: "Duet Translate - AI 이중 번역·동영상 자막·단어장"
-extDescription: "웹페이지와 YouTube·Netflix·X 동영상 자막을 AI로 이중 번역합니다. 모르는 단어는 저장해 플래시카드로 복습하세요."
+extName: "Duet Translate - AI 이중 번역·동영상 자막"
+extDescription: "웹페이지와 YouTube·Netflix·X 동영상 자막을 AI로 이중 번역합니다. 선택하거나 입력한 텍스트도 바로 번역하세요."
 account:
   login: 로그인
   webApp: 웹 앱

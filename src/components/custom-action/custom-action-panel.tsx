@@ -11,6 +11,7 @@ import { ANALYTICS_FEATURE, ANALYTICS_SURFACE } from "@/types/analytics"
 import { createFeatureUsageContext, trackFeatureUsed } from "@/utils/analytics"
 import { classifyResolvedProvider } from "@/utils/analytics-provider"
 import { configFieldsAtomMap, writeConfigAtom } from "@/utils/atoms/config"
+import { NOTEBASE_ENABLED } from "@/utils/constants/notebase"
 import { getSourceDocumentTitle } from "@/utils/content/document-title"
 import { findSelectionToolbarAction, patchSelectionToolbarAction } from "@/utils/custom-actions"
 import {
@@ -163,7 +164,7 @@ export function CustomActionPanel() {
         />
         <SelectionToolbarErrorAlert error={error} />
       </SelectionPopover.Body>
-      <ReviewDueTab source="extension_custom_ai_action" />
+      {NOTEBASE_ENABLED && <ReviewDueTab source="extension_custom_ai_action" />}
       <CustomActionFooterContent
         paragraphsText={request.contextText}
         providers={providers}
@@ -174,13 +175,15 @@ export function CustomActionPanel() {
       >
         {action && (
           <>
-            <SaveToNotebaseButton
-              action={action}
-              failed={!!error}
-              isRunning={isRunning}
-              result={result}
-              surface={cardSurface}
-            />
+            {NOTEBASE_ENABLED && (
+              <SaveToNotebaseButton
+                action={action}
+                failed={!!error}
+                isRunning={isRunning}
+                result={result}
+                surface={cardSurface}
+              />
+            )}
             <CustomActionToolButton action={action} />
           </>
         )}

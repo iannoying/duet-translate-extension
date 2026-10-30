@@ -1,4 +1,5 @@
 import type { GeneratedI18nStructure } from "#i18n"
+import { NOTEBASE_ENABLED } from "@/utils/constants/notebase"
 import {
   CUSTOM_ACTION_LAYOUT_SECTION_ID,
   CUSTOM_ACTION_NOTEBASE_SECTION_ID,
@@ -20,7 +21,7 @@ type SearchItemDefinition = Omit<SearchItem, "titleKey" | "descriptionKey" | "pa
   pageKey: I18nKey
 }
 
-export const SEARCH_ITEMS: SearchItem[] = [
+const ALL_SEARCH_ITEMS: SearchItem[] = [
   // Advanced page
   {
     sectionId: "glossary-enabled",
@@ -588,3 +589,13 @@ export const SEARCH_ITEMS: SearchItem[] = [
     pageKey: "options.tts.title",
   },
 ] satisfies SearchItemDefinition[]
+
+// Settings that only exist to fill a Notebase, hidden while it is (see NOTEBASE_ENABLED).
+const NOTEBASE_SECTION_IDS = new Set<string>([
+  CUSTOM_ACTION_NOTEBASE_SECTION_ID,
+  "selection-toolbar-note-suggestion",
+])
+
+export const SEARCH_ITEMS = ALL_SEARCH_ITEMS.filter(
+  (item) => NOTEBASE_ENABLED || !NOTEBASE_SECTION_IDS.has(item.sectionId),
+)

@@ -13,6 +13,7 @@ import {
   getFeatureDescriptionI18nKey,
   getFeatureLabelI18nKey,
 } from "@/utils/constants/feature-providers"
+import { isFeatureVisible } from "@/utils/constants/notebase"
 import { i18n } from "@/utils/i18n"
 import { ConfigItem } from "../../../components/config-item"
 import { ConfigSection } from "../../../components/config-section"
@@ -128,7 +129,7 @@ export function FeatureProvidersConfig() {
       id="feature-providers"
       title={i18n.t("options.apiProviders.featureProviders.title")}
     >
-      {FEATURE_KEYS.map((featureKey) => (
+      {FEATURE_KEYS.filter(isFeatureVisible).map((featureKey) => (
         <FeatureProviderItem key={featureKey} featureKey={featureKey} />
       ))}
       <CustomActionProviderItems />

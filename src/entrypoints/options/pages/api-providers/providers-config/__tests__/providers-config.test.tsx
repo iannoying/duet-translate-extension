@@ -47,6 +47,12 @@ const config = {
   selectionToolbar: { customActions: [] },
 }
 
+// These tests cover the Notebase features, which ship hidden until the API supports them.
+vi.mock("@/utils/constants/notebase", () => ({
+  NOTEBASE_ENABLED: true,
+  isFeatureVisible: () => true,
+}))
+
 vi.mock("jotai", () => ({
   useAtom: (atom: object) => {
     if (atom === providersAtom) return [[providerConfig], vi.fn<(value: unknown) => void>()]

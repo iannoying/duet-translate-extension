@@ -19,7 +19,8 @@ env:
   WXT_WEBSITE_URL: https://duettranslate.com
   WXT_OFFICIAL_SITE_ORIGINS: https://duettranslate.com,https://www.duettranslate.com
   WXT_AUTH_COOKIE_DOMAINS: duettranslate.com
-  WXT_GOOGLE_CLIENT_ID: ${{ secrets.WXT_GOOGLE_CLIENT_ID || vars.WXT_GOOGLE_CLIENT_ID }}
+  # OAuth client for Google Drive sync. Client ids are public, like the URLs above.
+  WXT_GOOGLE_CLIENT_ID: 9505688594-ng5gcarkss7pbba398ndlc51iht50suf.apps.googleusercontent.com
   WXT_POSTHOG_API_KEY: ${{ secrets.WXT_POSTHOG_API_KEY || vars.WXT_POSTHOG_API_KEY }}
   WXT_POSTHOG_HOST: ${{ secrets.WXT_POSTHOG_HOST || vars.WXT_POSTHOG_HOST }}
   WXT_ANALYTICS_DAILY_FEATURE_CACHE_ENABLED: "true"

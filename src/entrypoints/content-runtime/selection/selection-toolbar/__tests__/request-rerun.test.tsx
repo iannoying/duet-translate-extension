@@ -36,6 +36,12 @@ const maybeFireNoteSuggestionMock = vi.fn<(...args: any[]) => any>()
 const originalGetSelection = window.getSelection
 const DEFAULT_DICTIONARY_ACTION = getBuiltInDictionaryAction(DEFAULT_CONFIG.selectionToolbar)
 
+// These tests cover the Notebase features, which ship hidden until the API supports them.
+vi.mock("@/utils/constants/notebase", () => ({
+  NOTEBASE_ENABLED: true,
+  isFeatureVisible: () => true,
+}))
+
 vi.mock("@/utils/auth/auth-client", () => ({
   authClient: {
     useSession: () => ({

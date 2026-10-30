@@ -1,6 +1,7 @@
 import { useAtom } from "jotai"
 import { Switch } from "@/components/ui/base-ui/switch"
 import { configFieldsAtomMap } from "@/utils/atoms/config"
+import { NOTEBASE_ENABLED } from "@/utils/constants/notebase"
 import { i18n } from "@/utils/i18n"
 import { ConfigItem } from "../../../components/config-item"
 import { ConfigSection } from "../../../components/config-section"
@@ -57,7 +58,7 @@ export function ActionsSection() {
           onCheckedChange={(checked) => setFeatureEnabled("speak", checked)}
         />
       </ConfigItem>
-      <NoteSuggestionItems />
+      {NOTEBASE_ENABLED && <NoteSuggestionItems />}
     </ConfigSection>
   )
 }

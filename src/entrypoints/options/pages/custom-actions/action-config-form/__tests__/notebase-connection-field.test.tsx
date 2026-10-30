@@ -17,6 +17,12 @@ import { customActionEditorTabAtom, selectedCustomActionIdAtom } from "../../ato
 
 // The connection field, the form and its autosave are real; the session and the
 // Notebase API are stubbed, and fields unrelated to the connection render nothing.
+// These tests cover the Notebase features, which ship hidden until the API supports them.
+vi.mock("@/utils/constants/notebase", () => ({
+  NOTEBASE_ENABLED: true,
+  isFeatureVisible: () => true,
+}))
+
 vi.mock("../provider-field", () => ({ ProviderField: () => null }))
 vi.mock("../layout-field", () => ({ LayoutField: () => null, ReadOnlyLayoutField: () => null }))
 

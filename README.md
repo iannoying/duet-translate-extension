@@ -1,8 +1,8 @@
 # Duet Translate（懂你翻译）
 
-AI bilingual translation for web pages and YouTube, Netflix and X subtitles, with word saving and flashcard review.
+AI bilingual translation for web pages and YouTube, Netflix and X subtitles, plus selection and input translation.
 
-用 AI 双语对照翻译网页，以及 YouTube、Netflix、X 的视频字幕；遇到生词一键保存，用闪卡复习。
+用 AI 双语对照翻译网页，以及 YouTube、Netflix、X 的视频字幕，还有划词翻译和输入翻译。
 
 ## Development
 
