@@ -253,8 +253,8 @@ options:
         customChatComplete: Custom Chat Complete
         customResponses: Custom Responses
       attribution:
-        builtInAi: Duet Translate's hosted standard model. Non-Ultra users can use it only for Custom AI Actions; Ultra members can use it on more features.
-        builtInAiAdvance: Duet Translate's hosted advanced model, exclusive to Ultra members. Runs page translation, Custom AI Actions, and every other Built-in AI feature on a shared weekly quota. Uses up the quota faster than the standard model.
+        builtInAi: Duet Translate's hosted standard model. Free accounts can use it for Custom AI Actions; Pro and Max members can use it on every feature.
+        builtInAiAdvance: Duet Translate's hosted advanced model, exclusive to Max members. Runs page translation, Custom AI Actions, and every other Built-in AI feature on a shared weekly quota. Uses up the quota faster than the standard model.
       description:
         openai: Provides models like GPT-4o
         azure: Azure-hosted OpenAI models through your deployments
@@ -1554,7 +1554,7 @@ options:
       description: AI speech recognition gets you accurate subtitles for any video
       launchBonusPromo: Subscribe before $1 for an extra 300 transcription minutes
       loginRequired: Log in to view your AI subtitles quota
-      upgradeRequired: AI subtitles require a Pro or Ultra subscription
+      upgradeRequired: AI subtitles require a Pro or Max subscription
       pools:
         subscription: Monthly quota
         launchBonus: Launch gift
@@ -1833,7 +1833,7 @@ subtitles:
     aiQuotaExceeded: Monthly AI subtitle quota used up
     aiQuotaExceededWithReset: Monthly AI subtitle quota used up · resets on $1
     aiLoginRequired: Log in to view your AI subtitles quota
-    aiSubscriptionRequired: AI subtitles require a Pro or Ultra subscription
+    aiSubscriptionRequired: AI subtitles require a Pro or Max subscription
     aiPaymentRequired: Update your payment method to keep generating AI subtitles
     aiVideoTooLong: This video is too long for AI subtitles
     aiLiveReplayUnsupported: AI subtitles aren't available for live stream replays yet
@@ -1845,12 +1845,12 @@ subtitles:
     translatedExportSameLanguage: Source and target languages are the same
 hostedAi:
   planBadge:
-    pro: Requires the Pro or Ultra plan · Click the badge to get it
-    ultra: Requires the Ultra plan · Click the badge to get it
+    pro: Requires the Pro or Max plan · Click the badge to get it
+    ultra: Requires the Max plan · Click the badge to get it
   availability:
     authenticationRequired: Log in to use this provider
-    ultraRequired: Ultra plan required
-    proRequired: Pro or Ultra plan required
+    ultraRequired: Max plan required
+    proRequired: Pro or Max plan required
     quotaExhausted: Quota used up
     serviceUnavailable: Temporarily unavailable
     usedPercent: "Quota used: $1%"

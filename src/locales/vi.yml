@@ -252,8 +252,8 @@ options:
         customChatComplete: Tùy chỉnh Chat Complete
         customResponses: Tùy chỉnh Responses
       attribution:
-        builtInAi: Mô hình tiêu chuẩn do Duet Translate lưu trữ. Người dùng không có Ultra chỉ dùng được trong hành động AI tùy chỉnh; người dùng Ultra dùng được ở nhiều tính năng hơn.
-        builtInAiAdvance: Mô hình nâng cao do Duet Translate lưu trữ, dành riêng cho thành viên Ultra. Dùng được ở mọi tính năng AI tích hợp — dịch trang, hành động AI tùy chỉnh và hơn nữa — với hạn mức tuần dùng chung. Tiêu hao hạn mức nhanh hơn mô hình tiêu chuẩn.
+        builtInAi: Mô hình tiêu chuẩn do Duet Translate lưu trữ. Tài khoản miễn phí dùng được trong hành động AI tùy chỉnh; thành viên Pro và Max dùng được ở mọi tính năng.
+        builtInAiAdvance: Mô hình nâng cao do Duet Translate lưu trữ, dành riêng cho thành viên Max. Dùng được ở mọi tính năng AI tích hợp — dịch trang, hành động AI tùy chỉnh và hơn nữa — với hạn mức tuần dùng chung. Tiêu hao hạn mức nhanh hơn mô hình tiêu chuẩn.
       description:
         openai: Cung cấp các mô hình như GPT-4o
         azure: Mô hình OpenAI lưu trữ trên Azure qua các bản triển khai của bạn
@@ -1407,7 +1407,7 @@ options:
       description: AI dùng công nghệ nhận dạng giọng nói để tạo phụ đề chính xác cho mọi video
       launchBonusPromo: Đăng ký trước $1 để nhận thêm 300 phút chuyển lời nói thành văn bản
       loginRequired: Đăng nhập để xem hạn mức phụ đề AI của bạn
-      upgradeRequired: Phụ đề AI cần gói Pro hoặc Ultra
+      upgradeRequired: Phụ đề AI cần gói Pro hoặc Max
       pools:
         subscription: Hạn mức hằng tháng
         launchBonus: Quà ra mắt
@@ -1686,7 +1686,7 @@ subtitles:
     aiQuotaExceeded: Đã dùng hết hạn mức phụ đề AI trong tháng
     aiQuotaExceededWithReset: Đã dùng hết hạn mức phụ đề AI trong tháng · đặt lại vào $1
     aiLoginRequired: Đăng nhập để xem hạn mức phụ đề AI của bạn
-    aiSubscriptionRequired: Phụ đề AI cần gói Pro hoặc Ultra
+    aiSubscriptionRequired: Phụ đề AI cần gói Pro hoặc Max
     aiPaymentRequired: Cập nhật phương thức thanh toán để tiếp tục tạo phụ đề AI
     aiVideoTooLong: Video này quá dài để tạo phụ đề AI
     aiLiveReplayUnsupported: Phụ đề AI chưa hỗ trợ bản phát lại của buổi phát trực tiếp
@@ -1698,12 +1698,12 @@ subtitles:
     translatedExportSameLanguage: Ngôn ngữ nguồn và ngôn ngữ đích giống nhau
 hostedAi:
   planBadge:
-    pro: Yêu cầu gói Pro hoặc Ultra · Nhấp vào huy hiệu để nhận gói
-    ultra: Yêu cầu gói Ultra · Nhấp vào huy hiệu để nhận gói
+    pro: Yêu cầu gói Pro hoặc Max · Nhấp vào huy hiệu để nhận gói
+    ultra: Yêu cầu gói Max · Nhấp vào huy hiệu để nhận gói
   availability:
     authenticationRequired: Đăng nhập để sử dụng nhà cung cấp này
-    ultraRequired: Yêu cầu gói Ultra
-    proRequired: Yêu cầu gói Pro hoặc Ultra
+    ultraRequired: Yêu cầu gói Max
+    proRequired: Yêu cầu gói Pro hoặc Max
     quotaExhausted: Đã hết hạn mức
     serviceUnavailable: Tạm thời không khả dụng
     usedPercent: "Đã dùng hạn mức: $1%"

@@ -252,8 +252,8 @@ options:
         customChatComplete: Özel Chat Complete
         customResponses: Özel Responses
       attribution:
-        builtInAi: Duet Translate tarafından barındırılan standart model. Ultra olmayan kullanıcılar yalnızca özel AI eylemlerinde kullanabilir; Ultra kullanıcıları daha fazla özellikte kullanabilir.
-        builtInAiAdvance: Duet Translate tarafından barındırılan gelişmiş model, yalnızca Ultra üyelerine özeldir. Sayfa çevirisi, özel AI eylemleri ve diğer tüm yerleşik AI özelliklerinde çalışır; haftalık kota ortaktır. Kotayı standart modelden daha hızlı tüketir.
+        builtInAi: Duet Translate tarafından barındırılan standart model. Ücretsiz hesaplar özel AI eylemlerinde, Pro ve Max üyeleri tüm özelliklerde kullanabilir.
+        builtInAiAdvance: Duet Translate tarafından barındırılan gelişmiş model, yalnızca Max üyelerine özeldir. Sayfa çevirisi, özel AI eylemleri ve diğer tüm yerleşik AI özelliklerinde çalışır; haftalık kota ortaktır. Kotayı standart modelden daha hızlı tüketir.
       description:
         openai: GPT-4o gibi modeller sağlar
         azure: Azure dağıtımlarınız üzerinden OpenAI modelleri
@@ -1407,7 +1407,7 @@ options:
       description: Yapay zeka konuşma tanıma ile her video için doğru altyazı üretir
       launchBonusPromo: $1 tarihinden önce abone olun, 300 dakika ek deşifre hediyesi kazanın
       loginRequired: Yapay zeka altyazı kotanızı görmek için giriş yapın
-      upgradeRequired: Yapay zeka altyazıları için Pro veya Ultra aboneliği gerekir
+      upgradeRequired: Yapay zeka altyazıları için Pro veya Max aboneliği gerekir
       pools:
         subscription: Aylık kota
         launchBonus: Lansman hediyesi
@@ -1686,7 +1686,7 @@ subtitles:
     aiQuotaExceeded: Aylık yapay zeka altyazı kotanız doldu
     aiQuotaExceededWithReset: Aylık yapay zeka altyazı kotanız doldu · $1 tarihinde sıfırlanır
     aiLoginRequired: Yapay zeka altyazı kotanızı görmek için giriş yapın
-    aiSubscriptionRequired: Yapay zeka altyazıları için Pro veya Ultra aboneliği gerekir
+    aiSubscriptionRequired: Yapay zeka altyazıları için Pro veya Max aboneliği gerekir
     aiPaymentRequired: Yapay zeka altyazıları oluşturmaya devam etmek için ödeme yönteminizi güncelleyin
     aiVideoTooLong: Bu video yapay zeka altyazıları için çok uzun
     aiLiveReplayUnsupported: Canlı yayın tekrarları için yapay zeka altyazıları henüz kullanılamıyor
@@ -1698,12 +1698,12 @@ subtitles:
     translatedExportSameLanguage: Kaynak ve hedef diller aynı
 hostedAi:
   planBadge:
-    pro: Pro veya Ultra plan gerektirir · Planı almak için rozete tıklayın
-    ultra: Ultra plan gerektirir · Planı almak için rozete tıklayın
+    pro: Pro veya Max plan gerektirir · Planı almak için rozete tıklayın
+    ultra: Max plan gerektirir · Planı almak için rozete tıklayın
   availability:
     authenticationRequired: Bu sağlayıcıyı kullanmak için giriş yapın
-    ultraRequired: Ultra plan gerekli
-    proRequired: Pro veya Ultra plan gerekli
+    ultraRequired: Max plan gerekli
+    proRequired: Pro veya Max plan gerekli
     quotaExhausted: Kota tükendi
     serviceUnavailable: Geçici olarak kullanılamıyor
     usedPercent: "Kota kullanımı: %$1"

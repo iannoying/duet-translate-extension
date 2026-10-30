@@ -253,8 +253,8 @@ options:
         customChatComplete: 自定义 Chat Complete
         customResponses: 自定义 Responses
       attribution:
-        builtInAi: 由 懂你翻译 托管的普通模型。非 Ultra 用户仅支持在自定义 AI 指令使用，Ultra 用户支持在更多功能上使用。
-        builtInAiAdvance: 由 懂你翻译 托管的高级模型，Ultra 会员专属。网页翻译、自定义 AI 指令等全部内置 AI 功能均可使用，共享每周额度，额度消耗比标准模型更快。
+        builtInAi: 由 懂你翻译 托管的普通模型。免费用户可在自定义 AI 指令中使用，Pro 和 Max 用户可在所有功能上使用。
+        builtInAiAdvance: 由 懂你翻译 托管的高级模型，Max 会员专属。网页翻译、自定义 AI 指令等全部内置 AI 功能均可使用，共享每周额度，额度消耗比标准模型更快。
       description:
         openai: 提供 GPT-4o 等模型
         azure: 通过 Azure 部署使用 OpenAI 模型
@@ -1417,7 +1417,7 @@ options:
       description: AI 利用语音转文字技术获取任何视频的准确字幕
       launchBonusPromo: $1 之前购买会员额外赠送 300 分钟转录额度
       loginRequired: 登录后查看你的 AI 字幕额度
-      upgradeRequired: AI 字幕需要 Pro 或 Ultra 订阅
+      upgradeRequired: AI 字幕需要 Pro 或 Max 订阅
       pools:
         subscription: 每月额度
         launchBonus: 上线赠送
@@ -1696,7 +1696,7 @@ subtitles:
     aiQuotaExceeded: 本月 AI 字幕额度已用完
     aiQuotaExceededWithReset: 本月 AI 字幕额度已用完，$1 重置
     aiLoginRequired: 登录后查看你的 AI 字幕额度
-    aiSubscriptionRequired: AI 字幕需要 Pro 或 Ultra 订阅
+    aiSubscriptionRequired: AI 字幕需要 Pro 或 Max 订阅
     aiPaymentRequired: 请更新支付方式后继续生成 AI 字幕
     aiVideoTooLong: 视频过长，暂不支持生成 AI 字幕
     aiLiveReplayUnsupported: 暂不支持为直播回放生成 AI 字幕
@@ -1708,12 +1708,12 @@ subtitles:
     translatedExportSameLanguage: 源语言和目标语言相同
 hostedAi:
   planBadge:
-    pro: 需开通 Pro 或 Ultra 套餐 · 点击徽章获取套餐
-    ultra: 需开通 Ultra 套餐 · 点击徽章获取套餐
+    pro: 需开通 Pro 或 Max 套餐 · 点击徽章获取套餐
+    ultra: 需开通 Max 套餐 · 点击徽章获取套餐
   availability:
     authenticationRequired: 登录后可使用
-    ultraRequired: 需要 Ultra 套餐
-    proRequired: 需要 Pro 或 Ultra 套餐
+    ultraRequired: 需要 Max 套餐
+    proRequired: 需要 Pro 或 Max 套餐
     quotaExhausted: 额度已用完
     serviceUnavailable: 暂时不可用
     usedPercent: "额度已使用 $1%"
