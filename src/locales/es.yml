@@ -253,8 +253,8 @@ options:
         customChatComplete: Personalizado Chat Complete
         customResponses: Personalizado Responses
       attribution:
-        builtInAi: Modelo estándar alojado por Duet Translate. Los usuarios sin Ultra solo pueden usarlo en las acciones de IA personalizadas; los usuarios Ultra pueden usarlo en más funciones.
-        builtInAiAdvance: Modelo avanzado alojado por Duet Translate, exclusivo para miembros Ultra. Funciona en todas las funciones de IA integrada — traducción de página, acciones de IA personalizadas y más — con una cuota semanal compartida. Consume la cuota más rápido que el modelo estándar.
+        builtInAi: Modelo estándar alojado por Duet Translate. Las cuentas gratuitas pueden usarlo en las acciones de IA personalizadas; los miembros Pro y Max, en todas las funciones.
+        builtInAiAdvance: Modelo avanzado alojado por Duet Translate, exclusivo para miembros Max. Funciona en todas las funciones de IA integrada — traducción de página, acciones de IA personalizadas y más — con una cuota semanal compartida. Consume la cuota más rápido que el modelo estándar.
       description:
         openai: Proporciona modelos como GPT-4o
         azure: Modelos OpenAI hospedados en Azure mediante tus implementaciones
@@ -1412,7 +1412,7 @@ options:
       description: El reconocimiento de voz con IA te da subtítulos precisos para cualquier vídeo
       launchBonusPromo: Suscríbete antes del $1 y obtén 300 minutos de transcripción adicionales
       loginRequired: Inicia sesión para ver tu cuota de subtítulos con IA
-      upgradeRequired: Los subtítulos con IA requieren una suscripción Pro o Ultra
+      upgradeRequired: Los subtítulos con IA requieren una suscripción Pro o Max
       pools:
         subscription: Cuota mensual
         launchBonus: Regalo de lanzamiento
@@ -1691,7 +1691,7 @@ subtitles:
     aiQuotaExceeded: Cuota mensual de subtítulos con IA agotada
     aiQuotaExceededWithReset: Cuota mensual de subtítulos con IA agotada · se restablece el $1
     aiLoginRequired: Inicia sesión para ver tu cuota de subtítulos con IA
-    aiSubscriptionRequired: Los subtítulos con IA requieren una suscripción Pro o Ultra
+    aiSubscriptionRequired: Los subtítulos con IA requieren una suscripción Pro o Max
     aiPaymentRequired: Actualiza tu método de pago para seguir generando subtítulos con IA
     aiVideoTooLong: Este video es demasiado largo para los subtítulos con IA
     aiLiveReplayUnsupported: Los subtítulos con IA aún no están disponibles para repeticiones de transmisiones en vivo
@@ -1703,12 +1703,12 @@ subtitles:
     translatedExportSameLanguage: El idioma de origen y el de destino son iguales
 hostedAi:
   planBadge:
-    pro: Requiere el plan Pro o Ultra · Haz clic en la insignia para obtenerlo
-    ultra: Requiere el plan Ultra · Haz clic en la insignia para obtenerlo
+    pro: Requiere el plan Pro o Max · Haz clic en la insignia para obtenerlo
+    ultra: Requiere el plan Max · Haz clic en la insignia para obtenerlo
   availability:
     authenticationRequired: Inicia sesión para usar este proveedor
-    ultraRequired: Se requiere el plan Ultra
-    proRequired: Se requiere el plan Pro o Ultra
+    ultraRequired: Se requiere el plan Max
+    proRequired: Se requiere el plan Pro o Max
     quotaExhausted: Cuota agotada
     serviceUnavailable: No disponible temporalmente
     usedPercent: "Cuota utilizada: $1%"

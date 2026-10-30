@@ -253,8 +253,8 @@ options:
         customChatComplete: Fərdi Chat Complete
         customResponses: Fərdi Responses
       attribution:
-        builtInAi: Duet Translate serverlərində işləyən standart model. Ultra abunəliyi olmayan istifadəçilər ondan yalnız fərdi süni intellekt əməliyyatlarında, Ultra üzvləri isə daha çox funksiyada istifadə edə bilər.
-        builtInAiAdvance: Yalnız Ultra üzvləri üçün Duet Translate serverlərində işləyən təkmil model. Səhifə tərcüməsini, fərdi süni intellekt əməliyyatlarını və bütün digər daxili süni intellekt funksiyalarını ortaq həftəlik kvota ilə icra edir. Kvotanı standart modeldən daha sürətli sərf edir.
+        builtInAi: Duet Translate serverlərində işləyən standart model. Pulsuz hesablar ondan fərdi süni intellekt əməliyyatlarında, Pro və Max üzvləri isə bütün funksiyalarda istifadə edə bilər.
+        builtInAiAdvance: Yalnız Max üzvləri üçün Duet Translate serverlərində işləyən təkmil model. Səhifə tərcüməsini, fərdi süni intellekt əməliyyatlarını və bütün digər daxili süni intellekt funksiyalarını ortaq həftəlik kvota ilə icra edir. Kvotanı standart modeldən daha sürətli sərf edir.
       description:
         openai: GPT-4o kimi modellər təqdim edir
         azure: Azure üzərində yerləşdirdiyiniz OpenAI modelləri
@@ -1412,7 +1412,7 @@ options:
       description: Süni intellektlə nitqin tanınması istənilən video üçün dəqiq subtitrlər yaradır
       launchBonusPromo: Əlavə 300 dəqiqə transkripsiya üçün $1 tarixindən əvvəl abunə olun
       loginRequired: Süni intellekt subtitrlərinin kvotasını görmək üçün daxil olun
-      upgradeRequired: Süni intellekt subtitrləri üçün Pro və ya Ultra abunəliyi tələb olunur
+      upgradeRequired: Süni intellekt subtitrləri üçün Pro və ya Max abunəliyi tələb olunur
       pools:
         subscription: Aylıq kvota
         launchBonus: İlk buraxılış hədiyyəsi
@@ -1684,7 +1684,7 @@ subtitles:
     aiQuotaExceeded: Aylıq süni intellekt subtitr kvotası bitib
     aiQuotaExceededWithReset: Aylıq süni intellekt subtitr kvotası bitib · $1 tarixində yenilənir
     aiLoginRequired: Süni intellekt subtitrlərinin kvotasını görmək üçün daxil olun
-    aiSubscriptionRequired: Süni intellekt subtitrləri üçün Pro və ya Ultra abunəliyi tələb olunur
+    aiSubscriptionRequired: Süni intellekt subtitrləri üçün Pro və ya Max abunəliyi tələb olunur
     aiPaymentRequired: Süni intellekt subtitrləri yaratmağa davam etmək üçün ödəniş üsulunuzu yeniləyin
     aiVideoTooLong: Bu video süni intellekt subtitrləri üçün həddindən artıq uzundur
     aiLiveReplayUnsupported: Canlı yayım yazıları üçün süni intellekt subtitrləri hələ əlçatan deyil
@@ -1696,12 +1696,12 @@ subtitles:
     translatedExportSameLanguage: Mənbə və hədəf dilləri eynidir
 hostedAi:
   planBadge:
-    pro: Pro və ya Ultra planı tələb olunur · Əldə etmək üçün nişana klikləyin
-    ultra: Ultra planı tələb olunur · Əldə etmək üçün nişana klikləyin
+    pro: Pro və ya Max planı tələb olunur · Əldə etmək üçün nişana klikləyin
+    ultra: Max planı tələb olunur · Əldə etmək üçün nişana klikləyin
   availability:
     authenticationRequired: Bu provayderdən istifadə etmək üçün daxil olun
-    ultraRequired: Ultra planı tələb olunur
-    proRequired: Pro və ya Ultra planı tələb olunur
+    ultraRequired: Max planı tələb olunur
+    proRequired: Pro və ya Max planı tələb olunur
     quotaExhausted: Kvota bitib
     serviceUnavailable: Müvəqqəti olaraq əlçatan deyil
     usedPercent: "İstifadə edilmiş kvota: $1%"

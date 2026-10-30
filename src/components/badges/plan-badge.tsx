@@ -20,7 +20,7 @@ export type Plan = (typeof PLANS)[number]
 const PLAN_LABEL: Record<Plan, string> = {
   free: "Free",
   pro: "Pro",
-  ultra: "Ultra",
+  ultra: "Max",
 }
 
 /**
