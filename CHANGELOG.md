@@ -1,5 +1,19 @@
 # @read-frog/extension
 
+## 1.55.0
+
+### Minor Changes
+
+- 1a8f5a3: chore(brand): rename the extension to Duet Translate (懂你翻译)
+
+### Patch Changes
+
+- 7dd0141: Hide word saving, note suggestions and flashcard review until the Duet Translate API supports Notebase
+- 0f17d4d: Call the Ultra plan Max and describe which plans can use the built-in AI
+- 04bab05: chore(brand): point the source-code link at the renamed iannoying/duet-translate-extension repo
+- 369cdaf: Store name and description describe translation and subtitles only, without word saving or flashcards
+- 77bf7fb: fix(messaging): handle missing receivers and invalidated content scripts
+
 ## 1.54.0
 
 ### Minor Changes
