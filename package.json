@@ -1,6 +1,6 @@
 {
   "name": "duet-translate",
-  "version": "1.54.0",
+  "version": "1.55.0",
   "private": true,
   "description": "Duet Translate (懂你翻译) browser extension for AI translation and language learning",
   "type": "module",
