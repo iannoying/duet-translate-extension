@@ -3548,7 +3548,8 @@ describe("translate", () => {
           await removeOrShowPageTranslation("bilingual", true)
 
           expect(translateTextForPage).toHaveBeenCalledWith(
-            "perf(main): drop localhost label routes when a worktree is removed by @taiiiyang in #7557",
+            // The links travel as markers so the translation keeps them.
+            "perf(main): drop localhost label routes when a worktree is removed by <a0>@taiiiyang</a0> in <a1>#7557</a1>",
             "plain",
             DEFAULT_PAGE_TRANSLATION_OPTIONS,
           )
@@ -3598,7 +3599,7 @@ describe("translate", () => {
           await removeOrShowPageTranslation("bilingual", true)
 
           expect(translateTextForPage).toHaveBeenCalledWith(
-            "#1837 feat(translate): return a NO_TRANSLATION_NEEDED sentinel",
+            "<a0>#1837</a0> feat(translate): return a NO_TRANSLATION_NEEDED sentinel",
             "plain",
             DEFAULT_PAGE_TRANSLATION_OPTIONS,
           )

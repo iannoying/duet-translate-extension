@@ -12,6 +12,7 @@ import {
   hasInlineAtomTokens,
   INLINE_ATOM_TOKEN_SYSTEM_PROMPT,
 } from "@/utils/host/translate/inline-atom-tokens"
+import { hasLinkMarkers, LINK_MARKER_SYSTEM_PROMPT } from "@/utils/host/translate/link-markers"
 import { DEFAULT_CONFIG } from "../constants/config"
 import {
   BATCH_SEPARATOR,
@@ -109,6 +110,14 @@ ${HTML_ATTRIBUTE_MARKER_SYSTEM_PROMPT}`
     systemPrompt = `${systemPrompt}
 
 ${INLINE_ATOM_TOKEN_SYSTEM_PROMPT}`
+  }
+
+  // Link markers (<aN>…</aN>) wrap a source link's words so the translation
+  // can keep the link. Same gating as above: only inputs that carry a pair.
+  if (hasLinkMarkers(input)) {
+    systemPrompt = `${systemPrompt}
+
+${LINK_MARKER_SYSTEM_PROMPT}`
   }
 
   // Build title and summary replacement values

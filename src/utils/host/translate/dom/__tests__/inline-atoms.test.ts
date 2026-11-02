@@ -405,3 +405,95 @@ describe("containsInlineAtomOutsideWrappers", () => {
     expect(containsInlineAtomOutsideWrappers(p, DEFAULT_CONFIG)).toBe(false)
   })
 })
+
+describe("links in bilingual translation", () => {
+  function extractWithLinks(markup: string) {
+    const p = paragraph(markup)
+    return { p, extraction: extractInlineAtomText([p], DEFAULT_CONFIG, { preserveLinks: true }) }
+  }
+
+  it("leaves links alone unless asked", () => {
+    const p = paragraph('<p>Read the <a href="/docs">docs</a>.</p>')
+    const result = extractInlineAtomText([p], DEFAULT_CONFIG)
+    expect(result.requestText).toBe("Read the docs.")
+    expect(result.links).toEqual([])
+  })
+
+  it("wraps each link's words in a numbered pair, whitespace outside", () => {
+    const { p, extraction } = extractWithLinks(
+      '<p>Read the <a href="/docs"> official <b>docs</b> </a>before the <a href="https://x.test/ext">extension</a>.</p>',
+    )
+    // Same spacing as the legacy extraction (its double space included).
+    expect(extraction.requestText).toBe(
+      "Read the  <a0>official docs</a0> before the <a1>extension</a1>.",
+    )
+    expect(extraction.filterText).toBe(extractTextContent(p, DEFAULT_CONFIG))
+    expect(extraction.links).toEqual([...p.querySelectorAll("a")])
+  })
+
+  it("skips script links, bare # links and empty links", () => {
+    const { extraction } = extractWithLinks(
+      '<p>Click <a href="javascript:void(0)">here</a> or <a href="#">there</a> <a href="/x"><img src="i.png"></a>now.</p>',
+    )
+    expect(extraction.requestText).toBe("Click here or there now.")
+    expect(extraction.links).toEqual([])
+  })
+
+  it("falls back to plain text when the page prints a marker literal", () => {
+    const { extraction } = extractWithLinks('<p>The tag &lt;a0&gt; and <a href="/x">this</a>.</p>')
+    expect(extraction.requestText).toBe("The tag <a0> and this.")
+    expect(extraction.links).toEqual([])
+  })
+
+  it("keeps formulas and links together", () => {
+    const { extraction } = extractWithLinks(
+      '<p>Let <math><mi>x</mi></math> be the <a href="/v">value of <math><mi>y</mi></math></a>.</p>',
+    )
+    expect(extraction.requestText).toBe("Let {{0}} be the <a0>value of {{1}}</a0>.")
+    expect(extraction.filterText).toBe("Let  be the value of .")
+
+    const container = document.createElement("span")
+    renderInlineAtomTranslation(container, "设 {{0}} 为<a0>{{1}} 的值</a0>。", extraction)
+    const link = container.querySelector("a")!
+    expect(link.textContent).toBe("y 的值")
+    expect(link.querySelector("math")).not.toBeNull()
+    expect(container.textContent).toBe("设 x 为y 的值。")
+  })
+
+  it("wraps translated words in a sanitized copy of the source link", () => {
+    const { p, extraction } = extractWithLinks(
+      '<p>Read the <a id="doc" class="external" href="/docs" target="_blank" rel="noopener" onclick="steal()" data-track="1">docs</a> before the <a href="https://x.test/ext">extension</a>.</p>',
+    )
+    const container = document.createElement("span")
+    renderInlineAtomTranslation(container, "安装<a1>扩展</a1>之前先读<a0>文档</a0>。", extraction)
+
+    expect(container.textContent).toBe("安装扩展之前先读文档。")
+    const [ext, docs] = [...container.querySelectorAll("a")]
+    expect(ext!.textContent).toBe("扩展")
+    expect(ext!.getAttribute("href")).toBe("https://x.test/ext")
+    expect(docs!.textContent).toBe("文档")
+    expect(docs!.getAttribute("href")).toBe("https://neutral-test.example/docs")
+    expect(docs!.className).toBe("external")
+    expect(docs!.getAttribute("target")).toBe("_blank")
+    expect(docs!.getAttribute("rel")).toBe("noopener")
+    for (const name of ["id", "onclick", "data-track"]) {
+      expect(docs!.hasAttribute(name)).toBe(false)
+    }
+    // Source untouched.
+    expect(p.querySelector("a")!.textContent).toBe("docs")
+  })
+
+  it("renders words plain when links are off or the markers are broken", () => {
+    const { extraction } = extractWithLinks('<p>Read the <a href="/docs">docs</a>.</p>')
+
+    const off = document.createElement("span")
+    renderInlineAtomTranslation(off, "阅读<a0>文档</a0>。", extraction, { renderLinks: false })
+    expect(off.querySelector("a")).toBeNull()
+    expect(off.textContent).toBe("阅读文档。")
+
+    const broken = document.createElement("span")
+    renderInlineAtomTranslation(broken, "阅读<a0>文档。", extraction)
+    expect(broken.querySelector("a")).toBeNull()
+    expect(broken.textContent).toBe("阅读文档。")
+  })
+})

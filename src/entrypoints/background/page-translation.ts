@@ -14,6 +14,7 @@ import {
   auditInlineAtomTokens,
   hasInlineAtomTokens,
 } from "@/utils/host/translate/inline-atom-tokens"
+import { areLinkMarkersIntact, hasLinkMarkers } from "@/utils/host/translate/link-markers"
 import { normalizePromptContextValue } from "@/utils/host/translate/translate-text"
 import { validateProviderHostedFeature } from "@/utils/hosted-ai/routing"
 import { logger } from "@/utils/logger"
@@ -160,9 +161,16 @@ export function setupPageTranslationHandlers(): void {
     if (result && !inlineAtomTokensIntact) {
       logger.warn("Inline atom placeholders were not preserved; result not cached")
     }
+    // Same for link markers: a broken pair renders the paragraph's links as
+    // plain text, so give the next visit a fresh attempt.
+    const linkMarkersIntact =
+      !hasLinkMarkers(text) || isNoTranslationSentinel(result) || areLinkMarkersIntact(text, result)
+    if (result && !linkMarkersIntact) {
+      logger.warn("Link markers were not preserved; result not cached")
+    }
 
     // Cache the translation result if successful
-    if (result && hash && inlineAtomTokensIntact) {
+    if (result && hash && inlineAtomTokensIntact && linkMarkersIntact) {
       await db.translationCache.put({
         key: hash,
         translation: result,
