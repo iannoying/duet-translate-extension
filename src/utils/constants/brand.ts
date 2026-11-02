@@ -13,7 +13,7 @@ export const BRAND = {
   /** Origin of the Featurebase portal for feedback, roadmap and tickets. */
   feedbackPortalOrigin: undefined as string | undefined,
   /** Store listings, used for "rate us" links. */
-  chromeWebStoreId: undefined as string | undefined,
+  chromeWebStoreId: "eckpfehlhghmimnjikldiddajldhgcdk" as string | undefined,
   edgeAddOnsId: undefined as string | undefined,
   firefoxAddOnSlug: undefined as string | undefined,
 } as const
