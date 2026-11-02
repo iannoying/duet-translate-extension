@@ -7,13 +7,24 @@ import {
 } from "@/utils/constants/dom-labels"
 import { logger } from "@/utils/logger"
 import { getEffectiveSiteRule } from "@/utils/site-rules/effective"
-import { isDontWalkIntoAndDontTranslateAsChildElement, isInlineAtomElement } from "../../dom/filter"
+import {
+  isDontWalkIntoAndDontTranslateAsChildElement,
+  isHTMLElement,
+  isInlineAtomElement,
+  isTextNode,
+} from "../../dom/filter"
 import { extractTextContent } from "../../dom/traversal"
 import {
   decodeInlineAtomTokens,
   encodeInlineAtomToken,
   nextFreeInlineAtomIndex,
 } from "../inline-atom-tokens"
+import {
+  containsLinkMarkerLiteral,
+  decodeLinkMarkers,
+  encodeLinkCloseMarker,
+  encodeLinkOpenMarker,
+} from "../link-markers"
 
 /**
  * Inline atoms for bilingual page translation.
@@ -39,13 +50,53 @@ export interface InlineAtomExtraction {
   baseIndex: number
   /** Whether `filterText` contains any letter — token-only runs must not be sent. */
   hasProse: boolean
+  /**
+   * Source links in marker order (`<a0>` is `links[0]`). Empty unless the
+   * caller asked to preserve links; `requestText` then carries one
+   * `<aN>…</aN>` pair around each link's words.
+   */
+  links: readonly HTMLAnchorElement[]
+}
+
+export interface InlineExtractionOptions {
+  /**
+   * Wrap each source link's words in `<aN>…</aN>` so the translation can keep
+   * the link. Only bilingual mode asks for it, and only when its translation
+   * will not itself sit inside a link.
+   */
+  preserveLinks?: boolean
 }
 
 // OBJECT REPLACEMENT CHARACTER: an in-band marker for the single extraction
 // pass, swapped for real tokens once the collision offset is known.
 const ATOM_SENTINEL = "￼"
 const ATOM_SENTINEL_RE = /￼/g
+// INTERLINEAR ANNOTATION ANCHOR / TERMINATOR: in-band link boundaries, swapped
+// for `<aN>` / `</aN>` once the extraction is known to be unambiguous.
+const LINK_OPEN_SENTINEL = "\uFFF9"
+const LINK_CLOSE_SENTINEL = "\uFFFB"
+const LINK_SENTINEL_RE = /[\uFFF9\uFFFB]/g
 const PROSE_RE = /\p{L}/u
+const LEADING_WHITESPACE_RE = /^\s*/
+const TRAILING_WHITESPACE_RE = /\s*$/
+
+/**
+ * A link worth carrying into the translation: a real HTML anchor with a
+ * navigable href. `javascript:` links and the bare `#` placeholder that
+ * script-driven buttons use would lose their behavior in a copy, so their
+ * words stay plain text.
+ */
+function isPreservableLink(element: HTMLElement): element is HTMLAnchorElement {
+  if (element.localName !== "a" || typeof (element as HTMLAnchorElement).href !== "string") {
+    return false
+  }
+  const href = element.getAttribute("href")?.trim()
+  return !!href && href !== "#" && !/^javascript:/i.test(href)
+}
+
+function countOccurrences(text: string, needle: string): number {
+  return text.split(needle).length - 1
+}
 
 /**
  * An atom worth a placeholder must render something. MathJax v2 leaves an
@@ -59,11 +110,13 @@ export function isRenderableInlineAtom(element: HTMLElement): boolean {
 export function extractInlineAtomText(
   nodes: readonly TransNode[],
   config: Config,
+  options: InlineExtractionOptions = {},
 ): InlineAtomExtraction {
   const atoms: HTMLElement[] = []
+  const links: HTMLAnchorElement[] = []
+  let insideLink = false
 
-  const replaceElement = (element: HTMLElement): string | undefined => {
-    if (!isInlineAtomElement(element, config)) return undefined
+  const replaceAtom = (element: HTMLElement): string | undefined => {
     if (element.localName === "math") {
       // A <math> nested inside a renderer wrapper the walk already treats as
       // one unit (KaTeX's .katex-mathml, MathJax's assistive MathML) is the
@@ -85,9 +138,74 @@ export function extractInlineAtomText(
     return ATOM_SENTINEL
   }
 
-  const raw = nodes.map((node) => extractTextContent(node, config, { replaceElement })).join("")
+  const replaceLink = (element: HTMLAnchorElement): string => {
+    // Links never nest in a valid document; a script-built nested anchor's
+    // words simply join the outer link.
+    insideLink = true
+    let inner = ""
+    try {
+      for (const child of element.childNodes) {
+        if (isTextNode(child) || isHTMLElement(child)) {
+          inner += extractTextContent(child, config, { replaceElement })
+        }
+      }
+    } finally {
+      insideLink = false
+    }
+    const words = inner.trim()
+    // An image-only or empty link has no words to carry.
+    if (words === "") return inner
+    links.push(element)
+    const leading = LEADING_WHITESPACE_RE.exec(inner)?.[0] ?? ""
+    const trailing = TRAILING_WHITESPACE_RE.exec(inner)?.[0] ?? ""
+    return `${leading}${LINK_OPEN_SENTINEL}${words}${LINK_CLOSE_SENTINEL}${trailing}`
+  }
+
+  const replaceElement = (element: HTMLElement): string | undefined => {
+    if (isInlineAtomElement(element, config)) return replaceAtom(element)
+    if (
+      options.preserveLinks &&
+      !insideLink &&
+      isPreservableLink(element) &&
+      !isDontWalkIntoAndDontTranslateAsChildElement(element, config)
+    ) {
+      return replaceLink(element)
+    }
+    return undefined
+  }
+
+  let raw = nodes.map((node) => extractTextContent(node, config, { replaceElement })).join("")
+
+  if (links.length > 0) {
+    const prose = raw.replace(LINK_SENTINEL_RE, "")
+    if (
+      countOccurrences(raw, LINK_OPEN_SENTINEL) !== links.length ||
+      countOccurrences(raw, LINK_CLOSE_SENTINEL) !== links.length ||
+      containsLinkMarkerLiteral(prose)
+    ) {
+      // The page text itself contains a link sentinel or a marker-shaped
+      // literal, so markers could not be told apart from it. Send the
+      // paragraph without links rather than guess.
+      return extractInlineAtomText(nodes, config, { ...options, preserveLinks: false })
+    }
+    let nextLink = 0
+    raw = raw.replace(LINK_SENTINEL_RE, (sentinel) =>
+      sentinel === LINK_OPEN_SENTINEL
+        ? encodeLinkOpenMarker(nextLink)
+        : encodeLinkCloseMarker(nextLink++),
+    )
+  }
+
   if (atoms.length === 0) {
-    return { filterText: raw, requestText: raw, atoms, baseIndex: 0, hasProse: PROSE_RE.test(raw) }
+    const filterText = links.length > 0 ? stripOwnLinkMarkers(raw, links.length) : raw
+    return {
+      filterText,
+      requestText: raw,
+      atoms,
+      baseIndex: 0,
+      hasProse: PROSE_RE.test(filterText),
+      links,
+    }
   }
 
   const sentinelCount = raw.split(ATOM_SENTINEL).length - 1
@@ -101,15 +219,31 @@ export function extractInlineAtomText(
       atoms: [],
       baseIndex: 0,
       hasProse: PROSE_RE.test(legacy),
+      links: [],
     }
   }
 
-  const filterText = raw.replace(ATOM_SENTINEL_RE, "")
+  const filterText = stripOwnLinkMarkers(raw.replace(ATOM_SENTINEL_RE, ""), links.length)
   const baseIndex = nextFreeInlineAtomIndex(filterText)
   let nextIndex = baseIndex
   const requestText = raw.replace(ATOM_SENTINEL_RE, () => encodeInlineAtomToken(nextIndex++))
 
-  return { filterText, requestText, atoms, baseIndex, hasProse: PROSE_RE.test(filterText) }
+  return {
+    filterText,
+    requestText,
+    atoms,
+    baseIndex,
+    hasProse: PROSE_RE.test(filterText),
+    links,
+  }
+}
+
+/** Remove the `<aN>` / `</aN>` markers this extraction issued (N < linkCount). */
+function stripOwnLinkMarkers(text: string, linkCount: number): string {
+  if (linkCount === 0) return text
+  return text.replace(/<\/?a(\d+)>/g, (marker, index: string) =>
+    Number.parseInt(index, 10) < linkCount ? "" : marker,
+  )
 }
 
 // Subtrees a clone must not carry: executable or resource-loading elements,
@@ -233,6 +367,34 @@ export function sanitizeInlineAtomClone(source: HTMLElement): HTMLElement {
   return clone
 }
 
+// Anchor attributes worth carrying into the translation's copy of a link:
+// where it goes and how it opens, plus `class` so the page's link styling
+// (color, underline, external-link icons) applies to the translated words.
+const COPIED_LINK_ATTRIBUTE_NAMES = [
+  "target",
+  "rel",
+  "title",
+  "class",
+  "hreflang",
+  "referrerpolicy",
+]
+
+/**
+ * A fresh anchor for translated words, copied from a source link. Never a
+ * clone: the source's children are the original words, and its ids, event
+ * attributes and data hooks belong to the page. `href` is the resolved URL,
+ * so a relative link keeps pointing at the same place.
+ */
+export function createTranslatedLink(source: HTMLAnchorElement, ownerDoc: Document): HTMLElement {
+  const link = ownerDoc.createElement("a")
+  link.setAttribute("href", source.href)
+  for (const name of COPIED_LINK_ATTRIBUTE_NAMES) {
+    const value = source.getAttribute(name)
+    if (value !== null) link.setAttribute(name, value)
+  }
+  return link
+}
+
 /**
  * Rebuild the translated span from the provider's text: literal runs become
  * text nodes and every placeholder becomes a clone of its atom, in the order
@@ -240,31 +402,56 @@ export function sanitizeInlineAtomClone(source: HTMLElement): HTMLElement {
  * a repeated index renders once (first wins), an index we never issued stays
  * as literal text (never eat page content), and atoms whose placeholder was
  * dropped are appended after the text so the formula is never lost.
+ *
+ * Words the provider returned inside a `<aN>…</aN>` pair are wrapped in a copy
+ * of source link N. With `renderLinks: false` (the translation itself sits
+ * inside a link) or a broken pair, the markers are dropped and the words stay.
  */
 export function renderInlineAtomTranslation(
   container: HTMLElement,
   translatedText: string,
-  extraction: Pick<InlineAtomExtraction, "atoms" | "baseIndex">,
+  extraction: Pick<InlineAtomExtraction, "atoms" | "baseIndex"> &
+    Partial<Pick<InlineAtomExtraction, "links">>,
+  options: { renderLinks?: boolean } = {},
 ): void {
   const { atoms, baseIndex } = extraction
+  const links = extraction.links ?? []
+  const renderLinks = options.renderLinks ?? true
   const ownerDoc = container.ownerDocument
   const fragment = ownerDoc.createDocumentFragment()
   const inserted = new Set<number>()
 
-  for (const part of decodeInlineAtomTokens(translatedText)) {
-    if (part.kind === "text") {
-      fragment.append(ownerDoc.createTextNode(part.text))
+  const appendText = (target: Node, text: string) => {
+    for (const part of decodeInlineAtomTokens(text)) {
+      if (part.kind === "text") {
+        target.appendChild(ownerDoc.createTextNode(part.text))
+        continue
+      }
+      const atomIndex = part.index - baseIndex
+      const source = atomIndex >= 0 && atomIndex < atoms.length ? atoms[atomIndex] : undefined
+      if (!source) {
+        target.appendChild(ownerDoc.createTextNode(part.raw))
+        continue
+      }
+      if (inserted.has(atomIndex)) continue
+      inserted.add(atomIndex)
+      target.appendChild(sanitizeInlineAtomClone(source))
+    }
+  }
+
+  const segments =
+    links.length > 0
+      ? decodeLinkMarkers(translatedText, links.length)
+      : [{ text: translatedText, linkIndex: null }]
+  for (const segment of segments) {
+    const source = segment.linkIndex === null ? undefined : links[segment.linkIndex]
+    if (!renderLinks || !source) {
+      appendText(fragment, segment.text)
       continue
     }
-    const atomIndex = part.index - baseIndex
-    const source = atomIndex >= 0 && atomIndex < atoms.length ? atoms[atomIndex] : undefined
-    if (!source) {
-      fragment.append(ownerDoc.createTextNode(part.raw))
-      continue
-    }
-    if (inserted.has(atomIndex)) continue
-    inserted.add(atomIndex)
-    fragment.append(sanitizeInlineAtomClone(source))
+    const link = createTranslatedLink(source, ownerDoc)
+    appendText(link, segment.text)
+    fragment.append(link)
   }
 
   const missing = atoms.map((_, index) => index).filter((index) => !inserted.has(index))

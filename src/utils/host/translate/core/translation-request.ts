@@ -1,4 +1,4 @@
-import type { InlineAtomExtraction } from "../dom/inline-atoms"
+import type { InlineAtomExtraction, InlineExtractionOptions } from "../dom/inline-atoms"
 import type { PageTranslationRequestOptions } from "../translate-variants"
 import type { Config } from "@/types/config/config"
 import type { TranslationTextFormat } from "@/types/config/translate"
@@ -30,8 +30,9 @@ interface PageTranslationRequest {
 export function preparePageTranslationSource(
   nodes: readonly TransNode[],
   config: Config,
+  options: InlineExtractionOptions = {},
 ): PageTranslationSource | null {
-  const extraction = extractInlineAtomText(nodes, config)
+  const extraction = extractInlineAtomText(nodes, config, options)
   const filterText = extraction.filterText.trim()
   if (!filterText || isNumericContent(filterText)) return null
   if (extraction.atoms.length > 0 && !extraction.hasProse) return null

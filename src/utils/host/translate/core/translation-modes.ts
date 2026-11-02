@@ -57,6 +57,7 @@ import {
   insertVirtualParagraphWrappers,
   materializeVirtualParagraphUnitRuns,
 } from "../dom/virtual-paragraph-insertion"
+import { stripLinkMarkers } from "../link-markers"
 import { translateTextForPage } from "../translate-variants"
 import { setTranslationDirAndLang } from "../translation-attributes"
 import { createSpinnerInside, getTranslatedTextAndRemoveSpinner } from "../ui/spinner"
@@ -437,9 +438,25 @@ export async function translateNodesBilingualMode(
     const sourceTextBeforeFilter = isHTMLElement(layoutSource)
       ? collectSourceTextExcludingWrappers(layoutSource)
       : null
-    const atomExtraction = preparePageTranslationSource(transNodes, config)
+    // Links in the source keep their words linked in the translation, unless
+    // the translation will itself be inserted inside a link (a paragraph that
+    // is one big link): a link inside a link is invalid and already clickable.
+    // Mirrors the insertion branches below: a single element hosts the
+    // wrapper, anything else gets it as a sibling.
+    const wrapperHost =
+      transNodes.length === 1 && isHTMLElement(insertionTarget)
+        ? insertionTarget
+        : insertionTarget.parentElement
+    const atomExtraction = preparePageTranslationSource(transNodes, config, {
+      preserveLinks: !wrapperHost?.closest("a"),
+    })
     if (!atomExtraction) return
-    const requestText = atomExtraction.requestText
+    // Link markers are not visible text: keep them out of the short-inline
+    // layout heuristic.
+    const requestText =
+      atomExtraction.links.length > 0
+        ? stripLinkMarkers(atomExtraction.requestText)
+        : atomExtraction.requestText
 
     let bilingualState: BilingualTranslationState | undefined
     if (isHTMLElement(layoutSource) && sourceTextBeforeFilter !== null) {
@@ -592,10 +609,14 @@ export async function translateNodesBilingualMode(
         // Inline atoms are cloned into the translated span at their
         // placeholder positions; the tokenized text also stands in for the
         // formulas' visible width in the short-inline layout heuristic.
+        // Linked words are wrapped in copies of their source links the same
+        // way; a wrapper that ended up inside a link renders them plain.
         renderTranslatedContent:
-          atomExtraction.atoms.length > 0
+          atomExtraction.atoms.length > 0 || atomExtraction.links.length > 0
             ? (translatedNode, text) =>
-                renderInlineAtomTranslation(translatedNode, text, atomExtraction)
+                renderInlineAtomTranslation(translatedNode, text, atomExtraction, {
+                  renderLinks: !translatedWrapperNode.parentElement?.closest("a"),
+                })
             : undefined,
         sourceText: requestText,
       },

@@ -1,6 +1,7 @@
 import type { TranslationTextFormat } from "@/types/config/translate"
 import { escapeText } from "entities"
 import { attachRequestErrorMeta } from "@/utils/request/retry-policy"
+import { hasLinkMarkers, restoreEscapedLinkMarkers } from "../link-markers"
 
 // Unauthenticated successor to the api-edge.cognitive.microsofttranslator.com
 // flow, whose token endpoint (edge.microsoft.com/translate/auth) was removed
@@ -50,7 +51,11 @@ export async function microsoftTranslate(
   // "<" in page text fuses into a pseudo-tag ("a < b and c > d" comes back as
   // "<B和C> d"). Escape like google.ts does; escaped entities round-trip
   // verbatim and normalizeTranslationOutput decodes exactly once.
-  const requestTexts = texts.map((text) => escapeText(text))
+  // Bilingual page links travel as `<aN>…</aN>` markers; put those back as raw
+  // tags after escaping so the aligner moves them with the words they wrap.
+  const requestTexts = texts.map((text) =>
+    hasLinkMarkers(text) ? restoreEscapedLinkMarkers(escapeText(text)) : escapeText(text),
+  )
 
   const resp = await fetch(
     `${MICROSOFT_TRANSLATE_URL}?from=${encodeURIComponent(effectiveFromLang)}&to=${encodeURIComponent(toLang)}&isEnterpriseClient=false`,

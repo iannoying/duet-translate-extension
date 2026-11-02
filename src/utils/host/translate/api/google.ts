@@ -1,6 +1,7 @@
 import type { TranslationTextFormat } from "@/types/config/translate"
 import { escapeText } from "entities"
 import { attachRequestErrorMeta } from "@/utils/request/retry-policy"
+import { hasLinkMarkers, linkMarkersFromGoogleHtml, linkMarkersToGoogleHtml } from "../link-markers"
 
 /**
  * Upper bound for the install-time reachability probe. Where Google is blocked the request
@@ -154,6 +155,10 @@ export async function googleTranslate(
       .map((line) => escapeText(line.content))
       .join(GOOGLE_LINE_BREAK_MARKER_PAIR)
   }
+  // Bilingual page links travel as `<aN>…</aN>` markers; this endpoint only
+  // aligns real anchors, so swap them for `<a id="N">` on the wire and back.
+  const carriesLinkMarkers = options?.textFormat !== "html" && hasLinkMarkers(sourceText)
+  if (carriesLinkMarkers) requestText = linkMarkersToGoogleHtml(requestText)
   const resp = await fetch(GOOGLE_TRANSLATE_HTML_URL, {
     method: "POST",
     headers: {
@@ -190,7 +195,10 @@ export async function googleTranslate(
     if (!Array.isArray(result) || !Array.isArray(result[0]) || typeof result[0][0] !== "string") {
       throw new TypeError("Unexpected response format from translation API")
     }
-    const translatedText: string = result[0][0]
+    const rawTranslatedText: string = result[0][0]
+    const translatedText = carriesLinkMarkers
+      ? linkMarkersFromGoogleHtml(rawTranslatedText)
+      : rawTranslatedText
 
     if (!preservedLines) {
       return translatedText
