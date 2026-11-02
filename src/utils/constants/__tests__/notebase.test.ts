@@ -3,13 +3,11 @@ import { FEATURE_KEYS } from "../feature-providers"
 import { NOTEBASE_ENABLED, isFeatureVisible } from "../notebase"
 
 describe("notebase visibility", () => {
-  it("ships with the Notebase features hidden", () => {
-    expect(NOTEBASE_ENABLED).toBe(false)
+  it("ships with the Notebase features shown", () => {
+    expect(NOTEBASE_ENABLED).toBe(true)
   })
 
-  it("hides note suggestions from the feature lists and keeps every other feature", () => {
-    expect(FEATURE_KEYS.filter(isFeatureVisible)).toEqual(
-      FEATURE_KEYS.filter((key) => key !== "noteSuggestion"),
-    )
+  it("lists every feature, note suggestions included", () => {
+    expect(FEATURE_KEYS.filter(isFeatureVisible)).toEqual(FEATURE_KEYS)
   })
 })
