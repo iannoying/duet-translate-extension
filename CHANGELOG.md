@@ -1,5 +1,11 @@
 # @read-frog/extension
 
+## 1.57.0
+
+### Minor Changes
+
+- 0dcd5e8: Show translations in the page's own text color by default, and keep links in bilingual translations: words that were linked in the original stay clickable, with the page's link color, in the translation
+
 ## 1.56.0
 
 ### Minor Changes
