@@ -1,5 +1,15 @@
 # @read-frog/extension
 
+## 1.56.0
+
+### Minor Changes
+
+- c833133: Save words to your notebook and review them as flashcards: the Save to Notebase button, note suggestions after selection translation, and the "cards to review" tab are back, now that the Duet Translate API supports notebooks
+
+### Patch Changes
+
+- 7141f12: Link "Rate us" in the popup to the Chrome Web Store reviews page
+
 ## 1.55.0
 
 ### Minor Changes
