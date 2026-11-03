@@ -61,7 +61,7 @@ describe("llm-generate-text", () => {
       providerRef: {
         kind: "system" as const,
         providerId: "read-frog-advance-ai" as const,
-        modelTier: "advance" as const,
+        hostedModel: "claude-sonnet-5-5" as const,
         modelRevision: "advance-r1",
       },
       requestId: "123e4567-e89b-42d3-a456-426614174000",
@@ -99,7 +99,7 @@ describe("llm-generate-text", () => {
             providerRef: {
               kind: "system",
               providerId: "read-frog-free-ai",
-              modelTier: "normal",
+              hostedModel: "gpt-6.1-terra",
               modelRevision: "r1",
             },
             hostedFeature,

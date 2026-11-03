@@ -57,11 +57,11 @@ describe("hosted AI status presentation", () => {
 
     const credit = getHostedAiCreditForFeature(status, "pageTranslation")
     const normalDescription = getHostedAiTierDescription(
-      getHostedAiTierStatus(status, "pageTranslation", "normal"),
+      getHostedAiTierStatus(status, "pageTranslation", "gpt-6.1-terra"),
       { credit },
     )
     const ultraDescription = getHostedAiTierDescription(
-      getHostedAiTierStatus(status, "pageTranslation", "advance"),
+      getHostedAiTierStatus(status, "pageTranslation", "claude-sonnet-5-5"),
       { credit },
     )
 
@@ -76,6 +76,36 @@ describe("hosted AI status presentation", () => {
     expect(ultraDescription).toBe(normalDescription)
     // One pool shared by every feature resolves to the same entry each time.
     expect(getHostedAiCreditForFeature(status, "customAction")).toBe(credit)
+  })
+
+  it("reads a model's status from models, and from its plan's tier on an older server", () => {
+    const legacy: HostedAiStatus = {
+      credits: [],
+      features: featureMap(() => ({
+        normal: tier(),
+        advance: tier({ modelRevision: "advance-r4" }),
+      })),
+    }
+    expect(
+      getHostedAiTierStatus(legacy, "pageTranslation", "claude-sonnet-5-5")?.modelRevision,
+    ).toBe("advance-r4")
+    expect(getHostedAiTierStatus(legacy, "pageTranslation", "gpt-6-astra")?.modelRevision).toBe(
+      "advance-r4",
+    )
+
+    const current: HostedAiStatus = {
+      ...legacy,
+      models: Object.fromEntries(
+        ALL_FEATURES.map((feature) => [
+          feature,
+          { "gpt-6-astra": tier({ modelRevision: "openai:gpt-6-astra" }) },
+        ]),
+      ) as unknown as HostedAiStatus["models"],
+    }
+    expect(getHostedAiTierStatus(current, "pageTranslation", "gpt-6-astra")?.modelRevision).toBe(
+      "openai:gpt-6-astra",
+    )
+    expect(getHostedAiTierStatus(current, "pageTranslation", "glm-5.3")).toBeUndefined()
   })
 
   it("shows service unavailability without inventing credit for an unfunded page feature", () => {
@@ -116,14 +146,20 @@ describe("hosted AI status presentation", () => {
     expect(credit).toBeUndefined()
 
     expect(
-      getHostedAiTierDescription(getHostedAiTierStatus(status, "pageTranslation", "normal"), {
-        credit,
-      }),
+      getHostedAiTierDescription(
+        getHostedAiTierStatus(status, "pageTranslation", "gpt-6.1-terra"),
+        {
+          credit,
+        },
+      ),
     ).toBe("hostedAi.availability.serviceUnavailable")
     expect(
-      getHostedAiTierDescription(getHostedAiTierStatus(status, "pageTranslation", "advance"), {
-        credit,
-      }),
+      getHostedAiTierDescription(
+        getHostedAiTierStatus(status, "pageTranslation", "claude-sonnet-5-5"),
+        {
+          credit,
+        },
+      ),
     ).toBe("hostedAi.availability.ultraRequired")
   })
 

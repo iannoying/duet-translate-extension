@@ -85,7 +85,7 @@ describe("feature provider refs", () => {
     expect(store.get(featureProviderRefAtom("pageTranslation"))).toMatchObject({
       kind: "system",
       id: BUILT_IN_AI_PROVIDER_ID,
-      modelTier: "normal",
+      hostedModel: "gpt-6.1-terra",
     })
   })
 

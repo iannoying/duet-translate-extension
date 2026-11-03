@@ -148,7 +148,10 @@ options:
     description: Добавьте провайдеров, которых может вызывать Duet Translate. Более 20 встроено; также можно добавить пользовательские API, совместимые с Chat Completions, и API Open Responses.
     configTitle: Настройка провайдеров
     addProvider: Добавить провайдера
-    builtInProvider: Встроенный провайдер
+    builtInProvider: Модели, включённые в тариф
+    builtInModelGroups:
+      pro: "Pro и Max"
+      max: "Только Max"
     builtInAiUsage:
       title: Квота встроенного ИИ
       remaining: "Осталось $1%"
@@ -247,13 +250,12 @@ options:
       invalidJson: Неверный формат JSON
     providers:
       name:
-        builtInAi: Встроенный ИИ
-        builtInAiAdvance: Продвинутый встроенный ИИ
         customChatComplete: Пользовательский Chat Complete
         customResponses: Пользовательский Responses
       attribution:
-        builtInAi: Стандартная модель, размещённая Duet Translate. Бесплатные аккаунты могут использовать её в пользовательских ИИ-действиях, подписчики Pro и Max — во всех функциях.
-        builtInAiAdvance: Продвинутая модель, размещённая Duet Translate, — только для подписчиков Max. Работает во всех функциях встроенного ИИ — переводе страниц, пользовательских AI-действиях и других — с общей недельной квотой. Расходует квоту быстрее, чем стандартная модель.
+        builtInAi: "GPT-6.1 Terra от OpenAI, предоставляется Duet Translate, API-ключ не нужен. Бесплатные аккаунты могут использовать её в пользовательских ИИ-действиях, подписчики Pro и Max — во всех функциях. Расходует квоту в $1 раз быстрее, чем DeepSeek V4.1 Flash."
+        builtInAiPro: "$2 от $1, предоставляется Duet Translate, API-ключ не нужен. Подписчики Pro и Max могут использовать её во всех функциях. Расходует квоту в $3 раза быстрее, чем DeepSeek V4.1 Flash."
+        builtInAiMax: "$2 от $1, предоставляется Duet Translate, API-ключ не нужен. Только для подписчиков Max, работает во всех функциях. Расходует квоту в $3 раза быстрее, чем DeepSeek V4.1 Flash."
       description:
         openai: Предоставляет модели, такие как GPT-4o
         azure: Модели OpenAI в Azure через ваши развертывания
@@ -1526,7 +1528,7 @@ side:
 translateService:
   title: Сервис перевода
   description: Только для перевода веб-страницы
-  builtInModels: Built-in Models
+  builtInModels: Модели, включённые в тариф
   llmModels: LLM Models
   normalTranslator: Обычный переводчик
   selectServices: Выберите сервисы

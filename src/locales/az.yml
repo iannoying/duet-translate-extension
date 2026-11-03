@@ -148,7 +148,10 @@ options:
     description: Duet Translate genişlənməsinin müraciət edə biləcəyi provayderləri əlavə edin. 20-dən çox hazır seçim, həmçinin Chat Completions ilə uyğun API-lər və Open Responses API-ləri üçün fərdi qoşulma dəstəyi var.
     configTitle: Provayder konfiqurasiyası
     addProvider: Provayder əlavə et
-    builtInProvider: Daxili provayder
+    builtInProvider: Plana daxil olan modellər
+    builtInModelGroups:
+      pro: "Pro və Max"
+      max: "Yalnız Max"
     builtInAiUsage:
       title: Daxili süni intellekt kvotası
       remaining: "$1% qalıb"
@@ -248,13 +251,12 @@ options:
       invalidJson: Yanlış JSON formatı
     providers:
       name:
-        builtInAi: Daxili süni intellekt
-        builtInAiAdvance: Təkmil daxili süni intellekt
         customChatComplete: Fərdi Chat Complete
         customResponses: Fərdi Responses
       attribution:
-        builtInAi: Duet Translate serverlərində işləyən standart model. Pulsuz hesablar ondan fərdi süni intellekt əməliyyatlarında, Pro və Max üzvləri isə bütün funksiyalarda istifadə edə bilər.
-        builtInAiAdvance: Yalnız Max üzvləri üçün Duet Translate serverlərində işləyən təkmil model. Səhifə tərcüməsini, fərdi süni intellekt əməliyyatlarını və bütün digər daxili süni intellekt funksiyalarını ortaq həftəlik kvota ilə icra edir. Kvotanı standart modeldən daha sürətli sərf edir.
+        builtInAi: "OpenAI-ın GPT-6.1 Terra modeli, Duet Translate tərəfindən təqdim olunur, API açarı lazım deyil. Pulsuz hesablar ondan fərdi süni intellekt əməliyyatlarında, Pro və Max üzvləri isə bütün funksiyalarda istifadə edə bilər. Kvotanı DeepSeek V4.1 Flash-dan $1 dəfə sürətli sərf edir."
+        builtInAiPro: "$1 şirkətinin $2 modeli, Duet Translate tərəfindən təqdim olunur, API açarı lazım deyil. Pro və Max üzvləri bütün funksiyalarda istifadə edə bilər. Kvotanı DeepSeek V4.1 Flash-dan $3 dəfə sürətli sərf edir."
+        builtInAiMax: "$1 şirkətinin $2 modeli, Duet Translate tərəfindən təqdim olunur, API açarı lazım deyil. Yalnız Max üzvləri üçündür və bütün funksiyalarda işləyir. Kvotanı DeepSeek V4.1 Flash-dan $3 dəfə sürətli sərf edir."
       description:
         openai: GPT-4o kimi modellər təqdim edir
         azure: Azure üzərində yerləşdirdiyiniz OpenAI modelləri
@@ -1531,7 +1533,7 @@ side:
 translateService:
   title: Tərcümə xidməti
   description: Yalnız veb səhifənin tərcüməsi üçün
-  builtInModels: Daxili modellər
+  builtInModels: Plana daxil olan modellər
   llmModels: LLM modelləri
   normalTranslator: Adi tərcüməçilər
   selectServices: Xidmətləri seçin

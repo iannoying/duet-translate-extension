@@ -21,6 +21,83 @@ export type HostedAiFeature = z.infer<typeof HostedAiFeatureSchema>
 export const HostedAiModelTierSchema = z.enum(["normal", "advance"])
 export type HostedAiModelTier = z.infer<typeof HostedAiModelTierSchema>
 
+/**
+ * The models users can pick, by the relay's model id. `plan` is the cheapest
+ * plan that includes the model: "pro" models come with Pro and Max, "ultra"
+ * ones (sold as Max) with Max only. The free plan gets GPT-6.1 Terra for
+ * custom AI actions. `credits` is how fast the model spends a plan's credit
+ * next to DeepSeek V4.1 Flash, from the relay's prices: 2 spends it twice as
+ * fast.
+ * The backend checks the plan on every call; the list is here so the
+ * extension and the website name the same models.
+ */
+export const HOSTED_AI_MODELS = [
+  { id: "gpt-6.1-terra", name: "GPT-6.1 Terra", vendor: "OpenAI", plan: "pro", credits: 9 },
+  {
+    id: "gemini-3.8-flash",
+    name: "Gemini 3.8 Flash",
+    vendor: "Google",
+    plan: "pro",
+    credits: 7,
+  },
+  {
+    id: "deepseek-flash",
+    name: "DeepSeek V4.1 Flash",
+    vendor: "DeepSeek",
+    plan: "pro",
+    credits: 1,
+  },
+  {
+    id: "minimax-m3.1-flash",
+    name: "MiniMax M3.1 Flash",
+    vendor: "MiniMax",
+    plan: "pro",
+    credits: 1,
+  },
+  {
+    id: "claude-sonnet-5-5",
+    name: "Claude Sonnet 5.5",
+    vendor: "Anthropic",
+    plan: "ultra",
+    credits: 18,
+  },
+  {
+    id: "claude-opus-5-5",
+    name: "Claude Opus 5.5",
+    vendor: "Anthropic",
+    plan: "ultra",
+    credits: 36,
+  },
+  { id: "gpt-6-sol", name: "GPT-6 Sol", vendor: "OpenAI", plan: "ultra", credits: 18 },
+  { id: "gpt-6-astra", name: "GPT-6 Astra", vendor: "OpenAI", plan: "ultra", credits: 90 },
+  { id: "gemini-4-argon", name: "Gemini 4 Argon", vendor: "Google", plan: "ultra", credits: 18 },
+  {
+    id: "deepseek-v4-pro",
+    name: "DeepSeek V4 Pro",
+    vendor: "DeepSeek",
+    plan: "ultra",
+    credits: 5,
+  },
+  { id: "glm-5.3", name: "GLM-5.3", vendor: "Z.ai", plan: "ultra", credits: 8 },
+  { id: "kimi-k3.1-pro", name: "Kimi K3.1 Pro", vendor: "Moonshot AI", plan: "ultra", credits: 17 },
+] as const
+
+export type HostedAiModelInfo = (typeof HOSTED_AI_MODELS)[number]
+
+export const HostedAiModelIdSchema = z.enum(
+  HOSTED_AI_MODELS.map((model) => model.id) as [
+    HostedAiModelInfo["id"],
+    ...HostedAiModelInfo["id"][],
+  ],
+)
+export type HostedAiModelId = z.infer<typeof HostedAiModelIdSchema>
+
+// The model each legacy tier stands for, for clients that send only `modelTier`.
+export const HOSTED_AI_TIER_MODELS = {
+  normal: "gpt-6.1-terra",
+  advance: "claude-sonnet-5-5",
+} as const satisfies Record<HostedAiModelTier, HostedAiModelId>
+
 // The plan that would unlock what the user cannot use.
 export const HostedAiUpgradePlanSchema = z.enum(["pro", "ultra"])
 export type HostedAiUpgradePlan = z.infer<typeof HostedAiUpgradePlanSchema>
@@ -87,6 +164,11 @@ export const HostedAiStatusOutputSchema = z.object({
     HostedAiFeatureSchema,
     z.record(HostedAiModelTierSchema, HostedAiTierStatusSchema),
   ),
+  // Per feature, the status of every model by id. Keyed by string so a model
+  // added later does not break clients that do not know it yet.
+  models: z
+    .record(HostedAiFeatureSchema, z.record(z.string(), HostedAiTierStatusSchema))
+    .optional(),
 })
 export type HostedAiStatusOutput = z.infer<typeof HostedAiStatusOutputSchema>
 
@@ -99,6 +181,8 @@ const generationInput = {
   prompt: nonBlankString,
   temperature: z.number().min(0).max(2).optional(),
   modelTier: HostedAiModelTierSchema.default("normal"),
+  // The model to run; wins over `modelTier` when given.
+  model: HostedAiModelIdSchema.optional(),
   // Lets the backend recognize a retried request.
   requestId: z.uuid().optional(),
 }
@@ -184,6 +268,7 @@ export type HostedAiRateLimitErrorData = z.infer<typeof HostedAiRateLimitErrorDa
 // HOSTED_AI_QUOTA_EXHAUSTED: the period's credit is spent.
 export const HostedAiQuotaExhaustedDataSchema = z.object({
   modelTier: HostedAiModelTierSchema,
+  model: HostedAiModelIdSchema.optional(),
   // The credit policy that ran out, such as "ultra-weekly-v1".
   policyId: z.string(),
   usedPercent: z.number(),

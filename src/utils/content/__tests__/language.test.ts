@@ -35,7 +35,7 @@ const BUILT_IN_PROVIDER = {
   kind: "system" as const,
   id: "read-frog-free-ai" as const,
   name: "Built-in AI",
-  modelTier: "normal" as const,
+  hostedModel: "gpt-6.1-terra" as const,
 }
 
 describe("detectLanguageWithSource", () => {

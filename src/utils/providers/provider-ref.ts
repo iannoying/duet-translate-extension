@@ -23,7 +23,7 @@ export type SerializableProviderRef =
   | {
       kind: "system"
       providerId: SystemProviderRef["id"]
-      modelTier: SystemProviderRef["modelTier"]
+      hostedModel: SystemProviderRef["hostedModel"]
       modelRevision: string
     }
 
@@ -208,7 +208,7 @@ export async function serializeProviderRef(
 
   const status = await fetchHostedAiStatus()
 
-  const tierStatus = getHostedAiTierStatus(status, feature, provider.modelTier)
+  const tierStatus = getHostedAiTierStatus(status, feature, provider.hostedModel)
   if (tierStatus && !tierStatus.available) {
     throw new HostedAiProviderUnavailableError(
       provider,
@@ -221,7 +221,7 @@ export async function serializeProviderRef(
   return {
     kind: "system",
     providerId: provider.id,
-    modelTier: provider.modelTier,
+    hostedModel: provider.hostedModel,
     modelRevision: tierStatus?.modelRevision ?? UNKNOWN_MODEL_REVISION,
   }
 }

@@ -25,6 +25,8 @@ import type { ErrorAction } from "@/utils/error-action"
 import { generateText, Output, parsePartialJson, streamText } from "ai"
 import { z } from "zod"
 import {
+  HOSTED_AI_TIER_MODELS,
+  type HostedAiModelId,
   HostedAiNoteSuggestionObjectSchema,
   HostedAiNoteSuggestionStreamInputSchema,
   HostedAiOutputFieldTypeSchema,
@@ -419,7 +421,7 @@ function getHostedAiQuotaExhaustedAction(error: unknown): ErrorAction | undefine
   const parsed = HostedAiQuotaExhaustedDataSchema.safeParse(
     isRecord(error) ? error.data : undefined,
   )
-  return parsed.success && parsed.data.policyId === "ultra-weekly-v1" ? undefined : upgradeAction()
+  return parsed.success && parsed.data.policyId.startsWith("ultra-") ? undefined : upgradeAction()
 }
 
 /**
@@ -744,11 +746,24 @@ const HOSTED_TEXT_STREAM_PROCEDURES: Record<HostedAiTextStreamRoute, () => Hoste
     backgroundOrpcClient.hostedAi.languageDetection.streamText as unknown as HostedStreamFn,
 }
 
+/**
+ * The model fields of a hosted request: `model`, plus the legacy `modelTier`
+ * a server that predates model ids reads instead (it runs GPT-6.1 Terra for
+ * "normal" and Claude Sonnet 5.5 for "advance").
+ */
+function hostedModelInput(model: HostedAiModelId | undefined) {
+  if (!model) return {}
+  return {
+    model,
+    modelTier: model === HOSTED_AI_TIER_MODELS.advance ? ("advance" as const) : ("normal" as const),
+  }
+}
+
 async function createHostedTextPartStream(
   serializablePayload: Extract<BackgroundStreamTextSerializablePayload, { providerKind: "system" }>,
   signal?: AbortSignal,
 ): Promise<AsyncIterable<unknown>> {
-  const { prompt, instructions, temperature, modelTier, requestId, hostedFeature } =
+  const { prompt, instructions, temperature, hostedModel, requestId, hostedFeature } =
     serializablePayload
 
   // The contract schema is the same one the server parses with, so a payload
@@ -757,7 +772,7 @@ async function createHostedTextPartStream(
     instructions,
     prompt,
     temperature,
-    modelTier,
+    ...hostedModelInput(hostedModel),
     requestId,
   })
   if (!input.success) {
@@ -804,7 +819,7 @@ export async function generateTextForProviderRef(
       {
         providerKind: "system",
         providerId: providerRef.providerId,
-        modelTier: providerRef.modelTier,
+        hostedModel: providerRef.hostedModel,
         requestId,
         hostedFeature: requireHostedFeature(hostedFeature),
         instructions,
@@ -899,7 +914,7 @@ async function createHostedStructuredObjectPartStream(
   serializablePayload: BackgroundStreamStructuredObjectSerializablePayload,
   signal?: AbortSignal,
 ): Promise<AsyncIterable<unknown>> {
-  const { outputSchema, prompt, instructions, temperature, modelTier, requestId } =
+  const { outputSchema, prompt, instructions, temperature, hostedModel, requestId } =
     serializablePayload
 
   // Contract-schema parse converges the hosted-only constraints (field-name
@@ -910,7 +925,7 @@ async function createHostedStructuredObjectPartStream(
     prompt,
     outputSchema,
     temperature,
-    modelTier,
+    ...hostedModelInput(hostedModel),
     requestId,
   })
   if (!input.success) {
@@ -953,13 +968,13 @@ async function createHostedNoteSuggestionPartStream(
   serializablePayload: BackgroundStreamNoteSuggestionSerializablePayload,
   signal?: AbortSignal,
 ): Promise<AsyncIterable<unknown>> {
-  const { prompt, instructions, temperature, modelTier, requestId } = serializablePayload
+  const { prompt, instructions, temperature, hostedModel, requestId } = serializablePayload
 
   const input = HostedAiNoteSuggestionStreamInputSchema.safeParse({
     instructions,
     prompt,
     temperature,
-    modelTier,
+    ...hostedModelInput(hostedModel),
     requestId,
   })
   if (!input.success) {

@@ -27,7 +27,7 @@ const {
     pageTranslation: null as Config["pageTranslation"] | null,
     pageTranslationProviderRef: null as
       | { kind: "local"; config: { provider: string } }
-      | { kind: "system"; id: string; name: string; modelTier: "normal" | "advance" }
+      | { kind: "system"; id: string; name: string; hostedModel: "gpt-6.1-terra" | "advance" }
       | null,
   },
   translateAtom: {},
@@ -166,7 +166,7 @@ describe("translation prompt selectors", () => {
       kind: "system",
       id: "read-frog-free-ai",
       name: "Built-in AI",
-      modelTier: "normal",
+      hostedModel: "gpt-6.1-terra",
     }
     render(<TranslatePromptSelector />)
 
@@ -196,7 +196,7 @@ describe("translation prompt selectors", () => {
       kind: "system",
       id: "read-frog-free-ai",
       name: "Built-in AI",
-      modelTier: "normal",
+      hostedModel: "gpt-6.1-terra",
     }
     render(<TranslationHubPromptSelector />)
 

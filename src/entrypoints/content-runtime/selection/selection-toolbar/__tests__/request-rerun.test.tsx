@@ -1754,7 +1754,7 @@ describe("selection toolbar requests", () => {
     })
     expect(streamBackgroundStructuredObjectMock.mock.calls[0]?.[0]).toMatchObject({
       providerId: "read-frog-free-ai",
-      modelTier: "normal",
+      hostedModel: "gpt-6.1-terra",
       requestId: expect.stringMatching(/^[0-9a-f-]{36}$/i),
     })
 

@@ -1,4 +1,3 @@
-import type { GeneratedI18nStructure } from "#i18n"
 import type { ProviderConfig, ProvidersConfig } from "@/types/config/provider"
 import type { Theme } from "@/types/config/theme"
 import type { FeatureKey } from "@/utils/constants/feature-providers"
@@ -6,39 +5,33 @@ import type {
   ProviderSelectorOption,
   SystemProviderSelectorItem,
 } from "@/utils/providers/provider-display"
-import readFrogLogo from "@/assets/providers/built-in-ai-provider.png?url&no-inline"
+import { HOSTED_AI_MODELS, type HostedAiModelInfo } from "@/api-contract/hosted-ai"
 import { isLLMProviderConfig, isTranslateProviderConfig } from "@/types/config/provider"
 import {
-  BUILT_IN_AI_PROVIDER_ID,
   BUILT_IN_AI_PROVIDER_IDS,
-  BUILT_IN_AI_ADVANCE_PROVIDER_ID,
   type BuiltInAiProviderId,
-  type HostedAiModelTier,
+  getBuiltInAiProviderIdForModel,
+  type HostedAiModelId,
 } from "@/utils/constants/provider-ids"
-import { i18n } from "@/utils/i18n"
+import { getLobeIconsCDNUrlFn } from "@/utils/logo"
 
 export {
   BUILT_IN_AI_PROVIDER_ID,
   BUILT_IN_AI_ADVANCE_PROVIDER_ID,
 } from "@/utils/constants/provider-ids"
-export const BUILT_IN_AI_PROVIDER_LOGO = readFrogLogo
-
-const BUILT_IN_AI_PROVIDER_NAME_KEY = "options.apiProviders.providers.name.builtInAi"
-const BUILT_IN_AI_PROVIDER_FALLBACK_NAME = "Built-in AI"
-const BUILT_IN_AI_ADVANCE_PROVIDER_NAME_KEY = "options.apiProviders.providers.name.builtInAiAdvance"
-const BUILT_IN_AI_ADVANCE_PROVIDER_FALLBACK_NAME = "Advanced Built-in AI"
 
 export type ProviderCapability = FeatureKey | "customAction" | "languageDetection"
-type SystemProviderNameKey = keyof GeneratedI18nStructure
 type ProviderConfigPredicate<T extends ProviderConfig = ProviderConfig> = (
   provider: ProviderConfig,
 ) => provider is T
 
 interface SystemProviderDef {
   id: BuiltInAiProviderId
-  modelTier: HostedAiModelTier
-  nameKey: SystemProviderNameKey
-  fallbackName: string
+  hostedModel: HostedAiModelId
+  name: string
+  vendor: string
+  // The cheapest plan that includes the model ("ultra" is sold as Max).
+  plan: HostedAiModelInfo["plan"]
   capabilities: readonly ProviderCapability[]
   logo: (theme: Theme) => string
 }
@@ -54,50 +47,58 @@ export interface SystemProviderRef {
   kind: "system"
   id: BuiltInAiProviderId
   name: string
-  modelTier: HostedAiModelTier
+  hostedModel: HostedAiModelId
 }
 
 export type ResolvedProviderRef<T extends ProviderConfig = ProviderConfig> =
   | LocalProviderRef<T>
   | SystemProviderRef
 
-const SYSTEM_PROVIDER_DEFS = {
-  [BUILT_IN_AI_PROVIDER_ID]: {
-    id: BUILT_IN_AI_PROVIDER_ID,
-    modelTier: "normal",
-    nameKey: BUILT_IN_AI_PROVIDER_NAME_KEY,
-    fallbackName: BUILT_IN_AI_PROVIDER_FALLBACK_NAME,
-    capabilities: [
-      "pageTranslation",
-      "selectionTranslation",
-      "videoSubtitles",
-      "inputTranslation",
-      "noteSuggestion",
-      "customAction",
-      "languageDetection",
-    ],
-    logo: () => BUILT_IN_AI_PROVIDER_LOGO,
-  },
-  [BUILT_IN_AI_ADVANCE_PROVIDER_ID]: {
-    id: BUILT_IN_AI_ADVANCE_PROVIDER_ID,
-    modelTier: "advance",
-    nameKey: BUILT_IN_AI_ADVANCE_PROVIDER_NAME_KEY,
-    fallbackName: BUILT_IN_AI_ADVANCE_PROVIDER_FALLBACK_NAME,
-    capabilities: [
-      "pageTranslation",
-      "selectionTranslation",
-      "videoSubtitles",
-      "inputTranslation",
-      "noteSuggestion",
-      "customAction",
-      "languageDetection",
-    ],
-    logo: () => BUILT_IN_AI_PROVIDER_LOGO,
-  },
-} as const satisfies Record<string, SystemProviderDef>
+const VENDOR_LOGOS: Record<HostedAiModelInfo["vendor"], string> = {
+  OpenAI: "openai",
+  Google: "gemini-color",
+  DeepSeek: "deepseek-color",
+  MiniMax: "minimax-color",
+  Anthropic: "claude-color",
+  "Z.ai": "zhipu-color",
+  "Moonshot AI": "kimi-color",
+}
+
+const SYSTEM_PROVIDER_CAPABILITIES = [
+  "pageTranslation",
+  "selectionTranslation",
+  "videoSubtitles",
+  "inputTranslation",
+  "noteSuggestion",
+  "customAction",
+  "languageDetection",
+] as const satisfies readonly ProviderCapability[]
+
+/**
+ * One built-in provider per hosted model, named after the model so users know
+ * what they pick. The backend checks the plan on every call; the plan here
+ * only drives the upgrade badge.
+ */
+const SYSTEM_PROVIDER_DEFS = Object.fromEntries(
+  HOSTED_AI_MODELS.map((model): [BuiltInAiProviderId, SystemProviderDef] => {
+    const id = getBuiltInAiProviderIdForModel(model.id)
+    return [
+      id,
+      {
+        id,
+        hostedModel: model.id,
+        name: model.name,
+        vendor: model.vendor,
+        plan: model.plan,
+        capabilities: SYSTEM_PROVIDER_CAPABILITIES,
+        logo: getLobeIconsCDNUrlFn(VENDOR_LOGOS[model.vendor]),
+      },
+    ]
+  }),
+) as Record<BuiltInAiProviderId, SystemProviderDef>
 
 function getSystemProviderDefs(): SystemProviderDef[] {
-  return Object.values(SYSTEM_PROVIDER_DEFS)
+  return BUILT_IN_AI_PROVIDER_IDS.map((id) => SYSTEM_PROVIDER_DEFS[id])
 }
 
 const LOCAL_PROVIDER_CAPABILITY_PREDICATES = {
@@ -123,7 +124,7 @@ export type CustomActionProviderRef = ProviderRefForCapability<"customAction">
 export type SelectionTranslationProviderRef = ProviderRefForCapability<"selectionTranslation">
 
 function getSystemProviderName(def: SystemProviderDef): string {
-  return i18n.t(def.nameKey as never) || def.fallbackName
+  return def.name
 }
 
 function createSystemProviderSelectorItem(def: SystemProviderDef): SystemProviderSelectorItem {
@@ -140,7 +141,7 @@ function createSystemProviderRef(def: SystemProviderDef): SystemProviderRef {
     kind: "system",
     id: def.id,
     name: getSystemProviderName(def),
-    modelTier: def.modelTier,
+    hostedModel: def.hostedModel,
   }
 }
 
@@ -156,8 +157,19 @@ export function getBuiltInAiProviderName(providerId: BuiltInAiProviderId): strin
   return getSystemProviderName(SYSTEM_PROVIDER_DEFS[providerId])
 }
 
-export function getHostedAiModelTier(providerId: BuiltInAiProviderId): HostedAiModelTier {
-  return providerId === BUILT_IN_AI_ADVANCE_PROVIDER_ID ? "advance" : "normal"
+export function getBuiltInAiProviderLogo(
+  providerId: BuiltInAiProviderId,
+): SystemProviderDef["logo"] {
+  return SYSTEM_PROVIDER_DEFS[providerId].logo
+}
+
+export function getHostedAiModel(providerId: BuiltInAiProviderId): HostedAiModelId {
+  return SYSTEM_PROVIDER_DEFS[providerId].hostedModel
+}
+
+export function getBuiltInAiProviderInfo(providerId: BuiltInAiProviderId) {
+  const { name, vendor, plan } = SYSTEM_PROVIDER_DEFS[providerId]
+  return { name, vendor, plan }
 }
 
 export function isSystemProviderId(providerId: string): boolean {

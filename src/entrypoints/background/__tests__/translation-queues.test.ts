@@ -178,7 +178,7 @@ describe("translation queue helpers", () => {
       shouldUseBatchQueue({
         kind: "system",
         providerId: "read-frog-free-ai",
-        modelTier: "normal",
+        hostedModel: "gpt-6.1-terra",
         modelRevision: "normal-r1",
       }),
     ).toBe(true)
@@ -226,7 +226,7 @@ describe("translation queue helpers", () => {
           providerRef: {
             kind: "system",
             providerId: "read-frog-free-ai",
-            modelTier: "normal",
+            hostedModel: "gpt-6.1-terra",
             modelRevision: "normal-r1",
           },
           scheduleAt: Date.now(),
@@ -241,7 +241,7 @@ describe("translation queue helpers", () => {
     const secondPayload = runStreamTextInBackgroundMock.mock.calls[1]![0]
     expect(firstPayload).toMatchObject({
       providerId: "read-frog-free-ai",
-      modelTier: "normal",
+      hostedModel: "gpt-6.1-terra",
       instructions: "Translate accurately",
       prompt: "Source text",
       requestId: expect.stringMatching(/^[0-9a-f-]{36}$/i),
@@ -281,7 +281,7 @@ describe("translation queue helpers", () => {
           providerRef: {
             kind: "system",
             providerId: "read-frog-free-ai",
-            modelTier: "normal",
+            hostedModel: "gpt-6.1-terra",
             modelRevision: "normal-r1",
           },
           scheduleAt: Date.now(),
@@ -1107,7 +1107,7 @@ describe("translation queue helpers", () => {
         providerRef: {
           kind: "system" as const,
           providerId: "read-frog-advance-ai",
-          modelTier: "advance",
+          hostedModel: "claude-sonnet-5-5",
           modelRevision: "advance-r1",
         },
         scheduleAt: Date.now(),
@@ -1135,7 +1135,7 @@ describe("translation queue helpers", () => {
         providerRef: {
           kind: "system" as const,
           providerId: "read-frog-free-ai",
-          modelTier: "normal",
+          hostedModel: "gpt-6.1-terra",
           modelRevision: "normal-r1",
         },
         scheduleAt: Date.now(),
@@ -1167,7 +1167,7 @@ describe("translation queue helpers", () => {
         providerRef: {
           kind: "system",
           providerId: "read-frog-free-ai",
-          modelTier: "normal",
+          hostedModel: "gpt-6.1-terra",
           modelRevision: "r1",
         },
         hostedFeature,
@@ -1200,7 +1200,7 @@ describe("translation queue helpers", () => {
       providerRef: {
         kind: "system" as const,
         providerId: "read-frog-free-ai",
-        modelTier: "normal",
+        hostedModel: "gpt-6.1-terra",
         modelRevision: "normal-r1",
       },
       scheduleAt: Date.now(),
@@ -1256,7 +1256,7 @@ describe("translation queue helpers", () => {
     const hostedRef = {
       kind: "system" as const,
       providerId: "read-frog-advance-ai",
-      modelTier: "advance",
+      hostedModel: "claude-sonnet-5-5",
       modelRevision: "advance-r1",
     }
     const { setupPageTranslationHandlers } = await import("../page-translation")

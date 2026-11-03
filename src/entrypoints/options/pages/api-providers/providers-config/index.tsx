@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react"
 import { useAtom, useAtomValue, useSetAtom } from "jotai"
 import { useEffect, useRef, useState } from "react"
 import { useLocation } from "react-router"
+import { HOSTED_AI_MODELS } from "@/api-contract/hosted-ai"
 import { SponsorBadge } from "@/components/badges/sponsor-badge"
 import { useHostedAiStatus } from "@/components/llm-providers/use-hosted-ai-status"
 import ProviderIcon from "@/components/provider-icon"
@@ -37,9 +38,11 @@ import {
 } from "@/utils/navigation"
 import { isDurablyUnusableTier } from "@/utils/providers/provider-availability"
 import {
-  BUILT_IN_AI_PROVIDER_LOGO,
-  BUILT_IN_AI_ADVANCE_PROVIDER_ID,
+  BUILT_IN_AI_PROVIDER_ID,
+  getBuiltInAiProviderInfo,
+  getBuiltInAiProviderLogo,
   getBuiltInAiProviderName,
+  getHostedAiModel,
   isBuiltInAiProviderId,
 } from "@/utils/providers/provider-registry"
 import { ConfigItem } from "../../../components/config-item"
@@ -332,16 +335,28 @@ function BuiltInProviderSection() {
       <h3 className="px-1 text-xs font-medium text-muted-foreground">
         {i18n.t("options.apiProviders.builtInProvider" as never)}
       </h3>
-      <div className="flex flex-col gap-4 pt-2">
-        {BUILT_IN_AI_PROVIDER_IDS.map((providerId) => (
-          <BuiltInProviderCard key={providerId} providerId={providerId} />
-        ))}
-      </div>
+      {(["pro", "ultra"] as const).map((plan) => (
+        <div key={plan} className="flex flex-col gap-4 pt-2">
+          <h4 className="px-1 text-[11px] text-muted-foreground/80">
+            {i18n.t(
+              plan === "pro"
+                ? "options.apiProviders.builtInModelGroups.pro"
+                : "options.apiProviders.builtInModelGroups.max",
+            )}
+          </h4>
+          {BUILT_IN_AI_PROVIDER_IDS.filter(
+            (providerId) => getBuiltInAiProviderInfo(providerId).plan === plan,
+          ).map((providerId) => (
+            <BuiltInProviderCard key={providerId} providerId={providerId} />
+          ))}
+        </div>
+      ))}
     </section>
   )
 }
 
 function BuiltInProviderCard({ providerId }: { providerId: BuiltInAiProviderId }) {
+  const { theme } = useTheme()
   const [selectedProviderId, setSelectedProviderId] = useAtom(selectedProviderIdAtom)
   const config = useAtomValue(configAtom)
   const providerName = getBuiltInAiProviderName(providerId)
@@ -377,10 +392,10 @@ function BuiltInProviderCard({ providerId }: { providerId: BuiltInAiProviderId }
       </EntityListItem.Badges>
       <EntityListItem.Content>
         <ProviderIcon
-          logo={BUILT_IN_AI_PROVIDER_LOGO}
+          logo={getBuiltInAiProviderLogo(providerId)(theme)}
           name={providerName}
           size="base"
-          textClassName="text-sm"
+          textClassName="text-sm whitespace-normal break-words"
         />
         <EntityListItem.Toggle aria-label={providerName} checked disabled />
       </EntityListItem.Content>
@@ -402,8 +417,8 @@ const BUILT_IN_FEATURE_KEYS = [
 ] as const
 
 function BuiltInProviderPanel({ providerId }: { providerId: BuiltInAiProviderId }) {
-  const isAdvance = providerId === BUILT_IN_AI_ADVANCE_PROVIDER_ID
-  const modelTier = isAdvance ? ("advance" as const) : ("normal" as const)
+  const hostedModel = getHostedAiModel(providerId)
+  const model = HOSTED_AI_MODELS.find((entry) => entry.id === hostedModel)
   const { status } = useHostedAiStatus()
 
   // Both cards list every hosted-capable feature. Same policy as the provider
@@ -413,7 +428,7 @@ function BuiltInProviderPanel({ providerId }: { providerId: BuiltInAiProviderId 
   // quota, open circuit, unconfigured model) — those surface at run time. Fail
   // open while status is unknown so one failed fetch never locks the UI.
   const getAssignmentStatus = (feature: HostedAiFeature) => {
-    const tierStatus = getHostedAiTierStatus(status, feature, modelTier)
+    const tierStatus = getHostedAiTierStatus(status, feature, hostedModel)
     return {
       disabled: isDurablyUnusableTier(tierStatus),
       upgradeTo: tierStatus?.upgradeTo ?? undefined,
@@ -427,11 +442,16 @@ function BuiltInProviderPanel({ providerId }: { providerId: BuiltInAiProviderId 
           <div className="flex flex-col gap-4">
             <ProviderEditor.Identity />
             <ProviderEditor.Attribution>
-              {i18n.t(
-                isAdvance
-                  ? "options.apiProviders.providers.attribution.builtInAiAdvance"
-                  : "options.apiProviders.providers.attribution.builtInAi",
-              )}
+              {providerId === BUILT_IN_AI_PROVIDER_ID || !model
+                ? i18n.t("options.apiProviders.providers.attribution.builtInAi", [
+                    model?.credits ?? 1,
+                  ])
+                : i18n.t(
+                    model.plan === "pro"
+                      ? "options.apiProviders.providers.attribution.builtInAiPro"
+                      : "options.apiProviders.providers.attribution.builtInAiMax",
+                    [model.vendor, model.name, model.credits],
+                  )}
             </ProviderEditor.Attribution>
           </div>
           <ProviderEditor.Assignments defaultOpen>
