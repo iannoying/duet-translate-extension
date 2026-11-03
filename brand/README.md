@@ -2,7 +2,7 @@
 
 SVG sources of the Duet Translate (懂你翻译) icon, exported from the brand design system. The PNGs the extension ships live in `public/icon/` and `src/assets/icons/app-logo.png`.
 
-- `icon16.svg`, `icon32.svg`: toolbar sizes, drawn on the pixel grid, bubbles only (no letters).
+- `icon16.svg`, `icon32.svg`: toolbar sizes, the lettered mark (“文” and “A”) cropped to fill the canvas, so the letters show in the Chrome toolbar.
 - `icon48.svg`, `icon120.svg`: tile nearly fills the canvas, with “文” and “A”.
 - `icon128.svg`: 96px tile with 16px transparent padding, as the Chrome Web Store asks.
 
