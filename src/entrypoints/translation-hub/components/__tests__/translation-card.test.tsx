@@ -194,10 +194,14 @@ vi.mock("@/utils/config/helpers", () => ({
 
 vi.mock("@/utils/providers/provider-registry", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/utils/providers/provider-registry")>()),
-  BUILT_IN_AI_PROVIDER_LOGO: "built-in-logo",
   resolveProviderRefForCapability: () =>
     providerRefState.kind === "system"
-      ? { kind: "system", id: "read-frog-free-ai", name: "Built-in AI", modelTier: "normal" }
+      ? {
+          kind: "system",
+          id: "read-frog-free-ai",
+          name: "Built-in AI",
+          hostedModel: "gpt-6.1-terra",
+        }
       : {
           kind: "local",
           id: "provider-1",
@@ -297,7 +301,7 @@ describe("TranslationCard built-in translation", () => {
       expect.objectContaining({
         providerKind: "system",
         providerId: "read-frog-free-ai",
-        modelTier: "normal",
+        hostedModel: "gpt-6.1-terra",
         hostedFeature: "pageTranslation",
         requestId: expect.any(String),
         instructions: expect.any(String),

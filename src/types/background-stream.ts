@@ -4,13 +4,13 @@ import type { HostedAiFeature } from "@/api-contract"
 import type { AnalyticsFailureReason } from "@/types/analytics"
 import type { AISDKReasoning, LLMProviderConfig } from "@/types/config/provider"
 import type { SelectionToolbarCustomActionOutputType } from "@/types/config/selection-toolbar"
-import type { BuiltInAiProviderId, HostedAiModelTier } from "@/utils/constants/provider-ids"
+import type { BuiltInAiProviderId, HostedAiModelId } from "@/utils/constants/provider-ids"
 import type { ErrorAction } from "@/utils/error-action"
 import type { NoteSuggestionEnvelope } from "@/utils/note-suggestion/types"
 
 interface BaseBackgroundStreamSerializablePayload {
   providerId: string
-  modelTier?: HostedAiModelTier
+  hostedModel?: HostedAiModelId
   /** Hosted billing idempotency key. Ignored by local/BYOK providers. */
   requestId?: string
   instructions?: string

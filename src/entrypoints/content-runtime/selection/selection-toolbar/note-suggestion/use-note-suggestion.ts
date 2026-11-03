@@ -146,7 +146,7 @@ export function useNoteSuggestion() {
         if (signal.aborted) {
           return
         }
-        const tierStatus = getHostedAiTierStatus(status, "noteSuggestion", provider.modelTier)
+        const tierStatus = getHostedAiTierStatus(status, "noteSuggestion", provider.hostedModel)
         if (tierStatus && !tierStatus.available) {
           logger.info(
             "[NoteSuggestion] Skipped: hosted tier unavailable",
@@ -179,7 +179,7 @@ export function useNoteSuggestion() {
         provider.kind === "system"
           ? {
               providerId: provider.id,
-              modelTier: provider.modelTier,
+              hostedModel: provider.hostedModel,
               requestId: getRandomUUID(),
               instructions: systemPrompt,
               prompt,

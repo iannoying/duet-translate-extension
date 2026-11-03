@@ -22,7 +22,7 @@ import { prepareTranslationText } from "@/utils/host/translate/text-preparation"
 import { i18n } from "@/utils/i18n"
 import { getTranslatePromptFromConfig } from "@/utils/prompts/translate"
 import {
-  BUILT_IN_AI_PROVIDER_LOGO,
+  getBuiltInAiProviderLogo,
   resolveProviderRefForCapability,
 } from "@/utils/providers/provider-registry"
 import { cn } from "@/utils/styles/utils"
@@ -56,7 +56,7 @@ export function TranslationCard({
   const provider = resolveProviderRefForCapability("pageTranslation", providersConfig, providerId)
   const providerLogo =
     provider?.kind === "system"
-      ? BUILT_IN_AI_PROVIDER_LOGO
+      ? getBuiltInAiProviderLogo(provider.id)(theme)
       : provider?.kind === "local"
         ? PROVIDER_ITEMS[provider.config.provider].logo(theme)
         : undefined
@@ -121,7 +121,7 @@ export function TranslationCard({
               {
                 providerKind: "system",
                 providerId: provider.id,
-                modelTier: provider.modelTier,
+                hostedModel: provider.hostedModel,
                 requestId: getRandomUUID(),
                 hostedFeature: "pageTranslation",
                 instructions: systemPrompt,

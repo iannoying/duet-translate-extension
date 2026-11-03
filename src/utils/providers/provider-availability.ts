@@ -3,7 +3,7 @@ import type { ProvidersConfig } from "@/types/config/provider"
 import type { HostedAiFeature, HostedAiStatus, HostedAiTierStatus } from "@/utils/hosted-ai/types"
 import { getHostedAiTierStatus } from "@/utils/hosted-ai/status"
 import {
-  getHostedAiModelTier,
+  getHostedAiModel,
   getProviderIdsForCapability,
   isBuiltInAiProviderId,
 } from "./provider-registry"
@@ -76,9 +76,7 @@ export function isProviderIdDurablyUnusable(
   if (!feature) {
     return false
   }
-  return isDurablyUnusableTier(
-    getHostedAiTierStatus(status, feature, getHostedAiModelTier(providerId)),
-  )
+  return isDurablyUnusableTier(getHostedAiTierStatus(status, feature, getHostedAiModel(providerId)))
 }
 
 /**

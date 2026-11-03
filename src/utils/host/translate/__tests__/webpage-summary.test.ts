@@ -22,7 +22,7 @@ const localRef: PromptableProviderRef = {
 const hostedRef: PromptableProviderRef = {
   kind: "system",
   providerId: "read-frog-advance-ai",
-  modelTier: "advance",
+  hostedModel: "claude-sonnet-5-5",
   modelRevision: "advance-r1",
 }
 

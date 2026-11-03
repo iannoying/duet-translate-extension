@@ -10,7 +10,7 @@ import { backgroundOrpcClient } from "@/utils/orpc/background-client"
  * within seconds.
  *
  * A stale `available: true` cannot cost credit: nothing derived from this
- * response rides the wire (the generation schema carries only modelTier,
+ * response rides the wire (the generation schema carries only hostedModel,
  * requestId, instructions, prompt, temperature), and the server refuses an
  * over-quota request before it reaches the model, releasing the reservation at
  * zero. The verdict is also boolean, not a budget — a fresh response says

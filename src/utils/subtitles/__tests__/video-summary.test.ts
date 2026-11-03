@@ -68,7 +68,7 @@ function systemRef(providerId: string) {
     kind: "system",
     id: providerId,
     name: providerId,
-    modelTier: "standard",
+    hostedModel: "standard",
   } as unknown as VideoSummaryProviderRef
 }
 
@@ -97,10 +97,10 @@ describe("videoSummaryQueryKey", () => {
       kind: "system",
       id: "built-in-ai",
       name: "built-in-ai",
-      modelTier: "standard",
+      hostedModel: "standard",
     } as unknown as VideoSummaryProviderRef)
     const b = videoSummaryQueryKey("video-1", "cmn", {
-      modelTier: "standard",
+      hostedModel: "standard",
       name: "built-in-ai",
       id: "built-in-ai",
       kind: "system",

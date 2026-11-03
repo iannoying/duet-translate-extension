@@ -148,7 +148,10 @@ options:
     description: 新增 懂你翻譯 可以呼叫的提供者。內建 20 多個，也可以新增相容 Chat Completions 的自訂 API 和 Open Responses 自訂 API。
     configTitle: 提供者設定
     addProvider: 新增提供者
-    builtInProvider: 內建提供者
+    builtInProvider: 方案內含的模型
+    builtInModelGroups:
+      pro: "Pro 和 Max 可用"
+      max: "僅 Max 可用"
     builtInAiUsage:
       title: 內建 AI 額度
       remaining: "剩餘 $1%"
@@ -248,13 +251,12 @@ options:
       invalidJson: JSON 格式無效
     providers:
       name:
-        builtInAi: 內建 AI
-        builtInAiAdvance: 高級內建 AI
         customChatComplete: 自訂 Chat Complete
         customResponses: 自訂 Responses
       attribution:
-        builtInAi: 由 懂你翻譯 託管的普通模型。免費使用者可在自訂 AI 指令中使用，Pro 和 Max 使用者可在所有功能上使用。
-        builtInAiAdvance: 由 懂你翻譯 託管的進階模型，Max 會員專屬。網頁翻譯、自訂 AI 指令等全部內建 AI 功能均可使用，共享每週額度，額度消耗比標準模型更快。
+        builtInAi: "OpenAI 的 GPT-6.1 Terra，由 懂你翻譯 提供，無需 API Key。免費使用者可在自訂 AI 指令中使用，Pro 和 Max 使用者可在所有功能上使用。額度消耗是 DeepSeek V4.1 Flash 的 $1 倍。"
+        builtInAiPro: "$1 的 $2，由 懂你翻譯 提供，無需 API Key。Pro 和 Max 使用者可在所有功能上使用，額度消耗是 DeepSeek V4.1 Flash 的 $3 倍。"
+        builtInAiMax: "$1 的 $2，由 懂你翻譯 提供，無需 API Key。Max 會員專屬，所有功能均可使用，額度消耗是 DeepSeek V4.1 Flash 的 $3 倍。"
       description:
         openai: 提供 GPT-4o 等模型
         azure: 透過 Azure 部署使用 OpenAI 模型
@@ -1536,7 +1538,7 @@ side:
 translateService:
   title: 翻譯服務
   description: 僅用於翻譯網頁內容
-  builtInModels: 內建模型
+  builtInModels: 方案內含的模型
   llmModels: 大語言模型
   normalTranslator: 一般翻譯
   selectServices: 選擇服務

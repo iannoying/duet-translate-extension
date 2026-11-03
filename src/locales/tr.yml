@@ -148,7 +148,10 @@ options:
     description: Duet Translate'un çağırabileceği sağlayıcıları ekleyin. 20'den fazlası yerleşik gelir; ayrıca Chat Completions uyumlu ve Open Responses API'lerini özel olarak ekleyebilirsiniz.
     configTitle: Sağlayıcı yapılandırması
     addProvider: Sağlayıcı ekle
-    builtInProvider: Yerleşik sağlayıcı
+    builtInProvider: Planınıza dahil modeller
+    builtInModelGroups:
+      pro: "Pro ve Max"
+      max: "Yalnızca Max"
     builtInAiUsage:
       title: Yerleşik AI kotası
       remaining: "%$1 kaldı"
@@ -247,13 +250,12 @@ options:
       invalidJson: Geçersiz JSON formatı
     providers:
       name:
-        builtInAi: Yerleşik AI
-        builtInAiAdvance: Gelişmiş yerleşik AI
         customChatComplete: Özel Chat Complete
         customResponses: Özel Responses
       attribution:
-        builtInAi: Duet Translate tarafından barındırılan standart model. Ücretsiz hesaplar özel AI eylemlerinde, Pro ve Max üyeleri tüm özelliklerde kullanabilir.
-        builtInAiAdvance: Duet Translate tarafından barındırılan gelişmiş model, yalnızca Max üyelerine özeldir. Sayfa çevirisi, özel AI eylemleri ve diğer tüm yerleşik AI özelliklerinde çalışır; haftalık kota ortaktır. Kotayı standart modelden daha hızlı tüketir.
+        builtInAi: "OpenAI'ın GPT-6.1 Terra modeli, Duet Translate tarafından sunulur, API anahtarı gerekmez. Ücretsiz hesaplar özel AI eylemlerinde, Pro ve Max üyeleri tüm özelliklerde kullanabilir. Kotayı DeepSeek V4.1 Flash'ın $1 katı hızla tüketir."
+        builtInAiPro: "$1 tarafından geliştirilen $2, Duet Translate tarafından sunulur, API anahtarı gerekmez. Pro ve Max üyeleri tüm özelliklerde kullanabilir. Kotayı DeepSeek V4.1 Flash'ın $3 katı hızla tüketir."
+        builtInAiMax: "$1 tarafından geliştirilen $2, Duet Translate tarafından sunulur, API anahtarı gerekmez. Yalnızca Max üyelerine özeldir ve tüm özelliklerde kullanılabilir. Kotayı DeepSeek V4.1 Flash'ın $3 katı hızla tüketir."
       description:
         openai: GPT-4o gibi modeller sağlar
         azure: Azure dağıtımlarınız üzerinden OpenAI modelleri
@@ -1526,7 +1528,7 @@ side:
 translateService:
   title: Çeviri Servisi
   description: Yalnızca web sayfası çevirisi için
-  builtInModels: Built-in Models
+  builtInModels: Planınıza dahil modeller
   llmModels: LLM Models
   normalTranslator: Normal Çevirmen
   selectServices: Hizmet seçin

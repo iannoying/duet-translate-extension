@@ -51,7 +51,7 @@ describe("feature provider analytics", () => {
         kind: "system",
         id: BUILT_IN_AI_PROVIDER_ID,
         name: "Built-in AI",
-        modelTier: "normal",
+        hostedModel: "gpt-6.1-terra",
       }),
     ).toEqual(BUILT_IN_AI_FEATURE_PROVIDER)
     expect(BUILT_IN_AI_FEATURE_PROVIDER).toEqual({
@@ -65,7 +65,7 @@ describe("feature provider analytics", () => {
       classifySerializedProvider({
         kind: "system",
         providerId: BUILT_IN_AI_PROVIDER_ID,
-        modelTier: "normal",
+        hostedModel: "gpt-6.1-terra",
         modelRevision: "rev-1",
       }),
     ).toEqual(BUILT_IN_AI_FEATURE_PROVIDER)

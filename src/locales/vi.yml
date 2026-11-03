@@ -148,7 +148,10 @@ options:
     description: Thêm các nhà cung cấp mà Duet Translate có thể gọi. Hơn 20 nhà cung cấp được tích hợp sẵn; bạn cũng có thể thêm API tùy chỉnh tương thích Chat Completions và API Open Responses.
     configTitle: Cấu hình nhà cung cấp
     addProvider: Thêm nhà cung cấp
-    builtInProvider: Nhà cung cấp tích hợp
+    builtInProvider: Mô hình có trong gói
+    builtInModelGroups:
+      pro: "Pro và Max"
+      max: "Chỉ Max"
     builtInAiUsage:
       title: Hạn mức AI tích hợp
       remaining: "Còn lại $1%"
@@ -247,13 +250,12 @@ options:
       invalidJson: Định dạng JSON không hợp lệ
     providers:
       name:
-        builtInAi: AI tích hợp
-        builtInAiAdvance: AI tích hợp nâng cao
         customChatComplete: Tùy chỉnh Chat Complete
         customResponses: Tùy chỉnh Responses
       attribution:
-        builtInAi: Mô hình tiêu chuẩn do Duet Translate lưu trữ. Tài khoản miễn phí dùng được trong hành động AI tùy chỉnh; thành viên Pro và Max dùng được ở mọi tính năng.
-        builtInAiAdvance: Mô hình nâng cao do Duet Translate lưu trữ, dành riêng cho thành viên Max. Dùng được ở mọi tính năng AI tích hợp — dịch trang, hành động AI tùy chỉnh và hơn nữa — với hạn mức tuần dùng chung. Tiêu hao hạn mức nhanh hơn mô hình tiêu chuẩn.
+        builtInAi: "GPT-6.1 Terra của OpenAI, do Duet Translate cung cấp, không cần khóa API. Tài khoản miễn phí dùng được trong hành động AI tùy chỉnh; thành viên Pro và Max dùng được ở mọi tính năng. Tiêu hao hạn mức nhanh gấp $1 lần DeepSeek V4.1 Flash."
+        builtInAiPro: "$2 của $1, do Duet Translate cung cấp, không cần khóa API. Thành viên Pro và Max dùng được ở mọi tính năng. Tiêu hao hạn mức nhanh gấp $3 lần DeepSeek V4.1 Flash."
+        builtInAiMax: "$2 của $1, do Duet Translate cung cấp, không cần khóa API. Dành riêng cho thành viên Max, dùng được ở mọi tính năng. Tiêu hao hạn mức nhanh gấp $3 lần DeepSeek V4.1 Flash."
       description:
         openai: Cung cấp các mô hình như GPT-4o
         azure: Mô hình OpenAI lưu trữ trên Azure qua các bản triển khai của bạn
@@ -1526,7 +1528,7 @@ side:
 translateService:
   title: Dịch vụ dịch thuật
   description: Chỉ để dịch trang web
-  builtInModels: Built-in Models
+  builtInModels: Mô hình có trong gói
   llmModels: LLM Models
   normalTranslator: Trình dịch thông thường
   selectServices: Chọn dịch vụ

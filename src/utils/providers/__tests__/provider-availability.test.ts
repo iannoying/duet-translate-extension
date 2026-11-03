@@ -2,6 +2,7 @@ import type { ProviderConfig } from "@/types/config/provider"
 import type { HostedAiStatus, HostedAiTierStatus } from "@/utils/hosted-ai/types"
 import { describe, expect, it } from "vitest"
 import { DEFAULT_CONFIG } from "@/utils/constants/config"
+import { BUILT_IN_AI_PROVIDER_IDS } from "@/utils/constants/provider-ids"
 import {
   getUsableProviderIdsForCapability,
   isDurablyUnusableTier,
@@ -111,9 +112,9 @@ describe("getUsableProviderIdsForCapability", () => {
 
   it("counts the built-ins when there is no status to judge them by", () => {
     expect(getUsableProviderIdsForCapability("pageTranslation", [], undefined)).toEqual([
-      "read-frog-free-ai",
-      "read-frog-advance-ai",
+      ...BUILT_IN_AI_PROVIDER_IDS,
     ])
+    expect(BUILT_IN_AI_PROVIDER_IDS).toHaveLength(12)
   })
 })
 
@@ -129,7 +130,7 @@ describe("canProviderRefGenerateText", () => {
       canProviderRefGenerateText({
         kind: "system",
         providerId: "read-frog-free-ai",
-        modelTier: "normal",
+        hostedModel: "gpt-6.1-terra",
         modelRevision: "r1",
       }),
     ).toBe(true)

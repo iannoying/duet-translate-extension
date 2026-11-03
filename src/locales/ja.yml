@@ -148,7 +148,10 @@ options:
     description: Duet Translate が呼び出せるプロバイダーを追加します。20 以上を内蔵し、Chat Completions 互換 API と Open Responses API をカスタム追加できます。
     configTitle: プロバイダー設定
     addProvider: プロバイダーを追加
-    builtInProvider: 組み込みプロバイダー
+    builtInProvider: プランに含まれるモデル
+    builtInModelGroups:
+      pro: "Pro と Max"
+      max: "Max 専用"
     builtInAiUsage:
       title: 組み込み AI クォータ
       remaining: "残り $1%"
@@ -247,13 +250,12 @@ options:
       invalidJson: 無効なJSON形式
     providers:
       name:
-        builtInAi: 組み込み AI
-        builtInAiAdvance: 高度な組み込み AI
         customChatComplete: カスタム Chat Complete
         customResponses: カスタム Responses
       attribution:
-        builtInAi: Duet Translate がホストする標準モデル。無料ユーザーはカスタム AI アクションで、Pro と Max のユーザーはすべての機能で利用できます。
-        builtInAiAdvance: Duet Translate がホストする高性能モデルで、Max メンバー専用です。ページ翻訳やカスタム AI アクションなど、すべての組み込み AI 機能で利用でき、週間クォータを共有します。標準モデルよりクォータの消費が速くなります。
+        builtInAi: "OpenAI の GPT-6.1 Terra。Duet Translate が提供するため API キーは不要です。無料ユーザーはカスタム AI アクションで、Pro と Max のユーザーはすべての機能で利用できます。クォータの消費は DeepSeek V4.1 Flash の $1 倍です。"
+        builtInAiPro: "$1 の $2。Duet Translate が提供するため API キーは不要です。Pro と Max のユーザーはすべての機能で利用できます。クォータの消費は DeepSeek V4.1 Flash の $3 倍です。"
+        builtInAiMax: "$1 の $2。Duet Translate が提供するため API キーは不要です。Max メンバー専用で、すべての機能で利用できます。クォータの消費は DeepSeek V4.1 Flash の $3 倍です。"
       description:
         openai: GPT-4oなどのモデルを提供
         azure: Azure のデプロイ経由で OpenAI モデルを利用
@@ -1526,7 +1528,7 @@ side:
 translateService:
   title: 翻訳サービス
   description: ウェブページの翻訳にのみ使用
-  builtInModels: Built-in Models
+  builtInModels: プランに含まれるモデル
   llmModels: LLM Models
   normalTranslator: 通常翻訳
   selectServices: サービスを選択

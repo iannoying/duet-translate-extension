@@ -284,7 +284,7 @@ describe("ProvidersConfig", () => {
     renderProvidersConfig()
 
     expect(
-      screen.getByText("options.apiProviders.providers.attribution.builtInAi"),
+      screen.getByText("options.apiProviders.providers.attribution.builtInAi:9"),
     ).toBeInTheDocument()
     expect(screen.queryByText("options.apiProviders.sponsorCta")).not.toBeInTheDocument()
     expect(screen.queryByText("options.apiProviders.form.duplicate")).not.toBeInTheDocument()
@@ -296,12 +296,30 @@ describe("ProvidersConfig", () => {
     }
   })
 
-  it("lists both built-in provider cards", () => {
+  it("lists a built-in provider card per model, Pro models first", () => {
     renderProvidersConfig()
 
-    expect(screen.getByText("options.apiProviders.providers.name.builtInAi")).toBeInTheDocument()
+    for (const name of [
+      "GPT-6.1 Terra",
+      "DeepSeek V4.1 Flash",
+      "Claude Sonnet 5.5",
+      "GPT-6 Astra",
+    ]) {
+      expect(screen.getByText(name)).toBeInTheDocument()
+    }
+    expect(screen.getByText("options.apiProviders.builtInModelGroups.pro")).toBeInTheDocument()
+    expect(screen.getByText("options.apiProviders.builtInModelGroups.max")).toBeInTheDocument()
+  })
+
+  it("names a Pro model's vendor and credit rate in its editor", () => {
+    testState.selectedProviderId = "duet-ai-deepseek-flash"
+
+    renderProvidersConfig()
+
     expect(
-      screen.getByText("options.apiProviders.providers.name.builtInAiAdvance"),
+      screen.getByText(
+        "options.apiProviders.providers.attribution.builtInAiPro:DeepSeek|DeepSeek V4.1 Flash|1",
+      ),
     ).toBeInTheDocument()
   })
 
@@ -311,7 +329,9 @@ describe("ProvidersConfig", () => {
     renderProvidersConfig()
 
     expect(
-      screen.getByText("options.apiProviders.providers.attribution.builtInAiAdvance"),
+      screen.getByText(
+        "options.apiProviders.providers.attribution.builtInAiMax:Anthropic|Claude Sonnet 5.5|18",
+      ),
     ).toBeInTheDocument()
     for (const label of BUILT_IN_ASSIGNMENT_LABELS) {
       expect(screen.getByText(label)).toBeInTheDocument()

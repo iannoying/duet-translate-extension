@@ -10,7 +10,7 @@ import type {
 import type { Config } from "@/types/config/config"
 import type { AISDKReasoning } from "@/types/config/provider"
 import type { SelectionToolbarCustomAction } from "@/types/config/selection-toolbar"
-import type { HostedAiModelTier } from "@/utils/constants/provider-ids"
+import type { HostedAiModelId } from "@/utils/constants/provider-ids"
 import type { CachedWebPageContext } from "@/utils/host/translate/webpage-context"
 import type { CustomActionProviderRef } from "@/utils/providers/provider-registry"
 
@@ -90,7 +90,7 @@ interface CustomActionExecutionRequest {
     }>
     prompt: string
     providerId: string
-    modelTier?: HostedAiModelTier
+    hostedModel?: HostedAiModelId
     providerOptions?: Record<string, Record<string, JSONValue>>
     reasoning?: AISDKReasoning
     instructions: string
@@ -314,7 +314,7 @@ function buildCustomActionExecutionRequest({
     selectionValues: getSelectionOutputValues(action.outputSchema, promptTokens.selection),
     payload: {
       providerId: provider.id,
-      modelTier: provider.kind === "system" ? provider.modelTier : undefined,
+      hostedModel: provider.kind === "system" ? provider.hostedModel : undefined,
       instructions: systemPrompt,
       prompt,
       outputSchema,

@@ -275,7 +275,7 @@ async function translateWithHostedTextStream({
     {
       providerKind: "system",
       providerId: provider.id,
-      modelTier: provider.modelTier,
+      hostedModel: provider.hostedModel,
       requestId: getRandomUUID(),
       hostedFeature: "selectionTranslation",
       instructions: systemPrompt,

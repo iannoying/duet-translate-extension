@@ -289,7 +289,7 @@ describe("background-stream", () => {
     const result = await runStructuredObjectStreamInBackground(
       {
         providerId: "read-frog-advance-ai",
-        modelTier: "advance",
+        hostedModel: "claude-sonnet-5-5",
         requestId: "123e4567-e89b-42d3-a456-426614174000",
         instructions: "Return structured data",
         prompt: "Analyze selection",
@@ -315,6 +315,7 @@ describe("background-stream", () => {
           { name: "summary", type: "string" },
         ],
         temperature: undefined,
+        model: "claude-sonnet-5-5",
         modelTier: "advance",
         requestId: "123e4567-e89b-42d3-a456-426614174000",
       },
@@ -391,7 +392,7 @@ describe("background-stream", () => {
     try {
       await runStructuredObjectStreamInBackground({
         providerId: "read-frog-free-ai",
-        modelTier: "normal",
+        hostedModel: "gpt-6.1-terra",
         requestId: "123e4567-e89b-42d3-a456-426614174001",
         instructions: "Return structured data",
         prompt: "Analyze selection",
@@ -438,7 +439,7 @@ describe("background-stream", () => {
       streamRequestId,
       payload: {
         providerId: "read-frog-free-ai",
-        modelTier: "normal",
+        hostedModel: "gpt-6.1-terra",
         requestId: "123e4567-e89b-42d3-a456-426614174021",
         instructions: "Return structured data",
         prompt: "Analyze selection",
@@ -469,7 +470,7 @@ describe("background-stream", () => {
   })
 
   it("offers no upgrade when the Ultra pool itself runs dry", async () => {
-    mockHostedCustomActionQuotaExhausted("ultra-weekly-v1")
+    mockHostedCustomActionQuotaExhausted("ultra-weekly-v2")
 
     const errorMessage = await runHostedCustomActionOverPort("req-quota-ultra")
     expect(errorMessage?.error?.message).toBe("hostedAi.availability.quotaExhausted")
@@ -503,7 +504,7 @@ describe("background-stream", () => {
       try {
         await runStructuredObjectStreamInBackground({
           providerId: "read-frog-free-ai",
-          modelTier: "normal",
+          hostedModel: "gpt-6.1-terra",
           requestId: "123e4567-e89b-42d3-a456-426614174002",
           instructions: "Return structured data",
           prompt: "Analyze selection",
@@ -551,7 +552,7 @@ describe("background-stream", () => {
     await expect(
       runStructuredObjectStreamInBackground({
         providerId: "read-frog-free-ai",
-        modelTier: "normal",
+        hostedModel: "gpt-6.1-terra",
         requestId: "123e4567-e89b-42d3-a456-426614174003",
         instructions: "Return structured data",
         prompt: "Analyze selection",
@@ -593,7 +594,7 @@ describe("background-stream", () => {
             providerKind: "system",
             hostedFeature: "pageTranslation",
             providerId: "read-frog-free-ai",
-            modelTier: "normal",
+            hostedModel: "gpt-6.1-terra",
             requestId: "123e4567-e89b-42d3-a456-426614174003",
             instructions: "Translate text",
             prompt: "Hello world",
@@ -889,7 +890,7 @@ describe("background-stream", () => {
         providerKind: "system",
         hostedFeature: "pageTranslation",
         providerId: "read-frog-free-ai",
-        modelTier: "normal",
+        hostedModel: "gpt-6.1-terra",
         requestId: "123e4567-e89b-42d3-a456-426614174002",
         instructions: "Translate text",
         prompt: "Hello world",
@@ -907,6 +908,7 @@ describe("background-stream", () => {
         instructions: "Translate text",
         prompt: "Hello world",
         temperature: undefined,
+        model: "gpt-6.1-terra",
         modelTier: "normal",
         requestId: "123e4567-e89b-42d3-a456-426614174002",
       },
@@ -963,7 +965,7 @@ describe("background-stream", () => {
       providerKind: "system",
       providerId: "read-frog-free-ai",
       hostedFeature: "selectionTranslation",
-      modelTier: "normal",
+      hostedModel: "gpt-6.1-terra",
       requestId: "123e4567-e89b-42d3-a456-426614174003",
       instructions: "Translate text",
       prompt: "Hello world",
@@ -977,6 +979,7 @@ describe("background-stream", () => {
         instructions: "Translate text",
         prompt: "Hello world",
         temperature: undefined,
+        model: "gpt-6.1-terra",
         modelTier: "normal",
         requestId: "123e4567-e89b-42d3-a456-426614174003",
       },
@@ -1349,7 +1352,7 @@ describe("background-stream", () => {
     const { runNoteSuggestionStreamInBackground } = await import("../background-stream")
     const result = await runNoteSuggestionStreamInBackground({
       providerId: "read-frog-advance-ai",
-      modelTier: "advance",
+      hostedModel: "claude-sonnet-5-5",
       requestId: "123e4567-e89b-42d3-a456-426614174010",
       instructions: "Suggest words",
       prompt: "Selection context",
@@ -1363,6 +1366,7 @@ describe("background-stream", () => {
         instructions: "Suggest words",
         prompt: "Selection context",
         temperature: undefined,
+        model: "claude-sonnet-5-5",
         modelTier: "advance",
         requestId: "123e4567-e89b-42d3-a456-426614174010",
       },
@@ -1462,7 +1466,7 @@ describe("background-stream", () => {
     try {
       await runNoteSuggestionStreamInBackground({
         providerId: "read-frog-free-ai",
-        modelTier: "normal",
+        hostedModel: "gpt-6.1-terra",
         requestId: "123e4567-e89b-42d3-a456-426614174011",
         instructions: "Suggest words",
         prompt: "Selection context",

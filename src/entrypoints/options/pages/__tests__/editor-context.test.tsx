@@ -3,7 +3,7 @@ import type { APIProviderConfig } from "@/types/config/provider"
 // @vitest-environment jsdom
 import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 import { createStore, Provider } from "jotai"
-import { describe, expect, it } from "vitest"
+import { describe, expect, it, vi } from "vitest"
 import { fakeBrowser } from "wxt/testing/fake-browser"
 import { ThemeProvider } from "@/components/providers/theme-provider"
 import { isAPIProviderConfig } from "@/types/config/provider"
@@ -76,6 +76,11 @@ function CustomProviderAssignments({ providerConfig }: { providerConfig: APIProv
     </CustomProviderEditor.Provider>
   )
 }
+
+vi.mock("@/components/providers/theme-provider", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/components/providers/theme-provider")>()),
+  useTheme: () => ({ theme: "light" }),
+}))
 
 describe("editor compound component contexts", () => {
   it("fails fast when an ActionEditor component is outside its provider", () => {

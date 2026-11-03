@@ -6,7 +6,7 @@ import {
   isDurablyUnusableTier,
 } from "@/utils/providers/provider-availability"
 import { isSystemProviderSelectorItem } from "@/utils/providers/provider-display"
-import { getHostedAiModelTier, isBuiltInAiProviderId } from "@/utils/providers/provider-registry"
+import { getHostedAiModel, isBuiltInAiProviderId } from "@/utils/providers/provider-registry"
 import { useHostedAiStatus } from "./use-hosted-ai-status"
 
 export function useHostedAiProviderOptions(
@@ -33,7 +33,7 @@ export function useHostedAiProviderOptions(
     // The previous `!accessAllowed || !hasFunding` test inverted that for the
     // transient half: `credits` is emptied by a billing failure as well as by
     // genuine unfundedness, so one bad lookup hard-disabled every built-in row.
-    const tierStatus = getHostedAiTierStatus(status, feature, getHostedAiModelTier(provider.id))
+    const tierStatus = getHostedAiTierStatus(status, feature, getHostedAiModel(provider.id))
     return {
       ...provider,
       disabled: isDurablyUnusableTier(tierStatus),

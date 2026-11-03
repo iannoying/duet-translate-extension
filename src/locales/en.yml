@@ -148,7 +148,10 @@ options:
     description: Add the providers Duet Translate can call. Over 20 are built in, with custom support for Chat Completions-compatible and Open Responses APIs.
     configTitle: Provider config
     addProvider: Add provider
-    builtInProvider: Built-in provider
+    builtInProvider: Models included with your plan
+    builtInModelGroups:
+      pro: "Pro and Max"
+      max: "Max only"
     builtInAiUsage:
       title: Built-in AI quota
       remaining: "$1% left"
@@ -248,13 +251,12 @@ options:
       invalidJson: Invalid JSON format
     providers:
       name:
-        builtInAi: Built-in AI
-        builtInAiAdvance: Advanced Built-in AI
         customChatComplete: Custom Chat Complete
         customResponses: Custom Responses
       attribution:
-        builtInAi: Duet Translate's hosted standard model. Free accounts can use it for Custom AI Actions; Pro and Max members can use it on every feature.
-        builtInAiAdvance: Duet Translate's hosted advanced model, exclusive to Max members. Runs page translation, Custom AI Actions, and every other Built-in AI feature on a shared weekly quota. Uses up the quota faster than the standard model.
+        builtInAi: "OpenAI's GPT-6.1 Terra, provided by Duet Translate with no API key needed. Free accounts can use it for Custom AI Actions; Pro and Max members can use it on every feature. Spends the quota $1× as fast as DeepSeek V4.1 Flash."
+        builtInAiPro: "$1's $2, provided by Duet Translate with no API key needed. Pro and Max members can use it on every feature. Spends the quota $3× as fast as DeepSeek V4.1 Flash."
+        builtInAiMax: "$1's $2, provided by Duet Translate with no API key needed. Exclusive to Max members and available on every feature. Spends the quota $3× as fast as DeepSeek V4.1 Flash."
       description:
         openai: Provides models like GPT-4o
         azure: Azure-hosted OpenAI models through your deployments
@@ -1673,7 +1675,7 @@ side:
 translateService:
   title: Translation Service
   description: For translate the webpage only
-  builtInModels: Built-in Models
+  builtInModels: Models included with your plan
   llmModels: LLM Models
   normalTranslator: Normal Translators
   selectServices: Select services

@@ -6,7 +6,12 @@ import type {
   HostedAiTierStatus,
   HostedAiUnavailableReason,
 } from "./types"
-import type { HostedAiModelTier } from "@/utils/constants/provider-ids"
+import type { HostedAiModelId } from "@/utils/constants/provider-ids"
+import {
+  HOSTED_AI_MODELS,
+  HOSTED_AI_TIER_MODELS,
+  type HostedAiModelTier,
+} from "@/api-contract/hosted-ai"
 import { i18n } from "@/utils/i18n"
 
 const REASON_I18N_KEYS = {
@@ -99,10 +104,23 @@ export function getHostedAiTierDescription(
   return details.length > 0 ? details.join(" · ") : undefined
 }
 
+/**
+ * The status of one model for a feature. A server that predates model ids
+ * reports only the two legacy tiers, which stand for GPT-6.1 Terra and Claude
+ * Sonnet 5.5; another model reads as the tier of its plan there, so the plan
+ * gates still apply.
+ */
 export function getHostedAiTierStatus(
   status: HostedAiStatus | undefined,
   feature: HostedAiFeature,
-  tier: HostedAiModelTier,
+  model: HostedAiModelId,
 ): HostedAiTierStatus | undefined {
-  return status?.features[feature]?.[tier]
+  if (!status) return undefined
+  if (status.models) return status.models[feature]?.[model]
+  const legacyTier = (Object.keys(HOSTED_AI_TIER_MODELS) as HostedAiModelTier[]).find(
+    (key) => HOSTED_AI_TIER_MODELS[key] === model,
+  )
+  const plan = HOSTED_AI_MODELS.find((entry) => entry.id === model)?.plan
+  const tier = legacyTier ?? (plan === "pro" ? "normal" : "advance")
+  return status.features[feature]?.[tier]
 }

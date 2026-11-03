@@ -103,7 +103,7 @@ async function executeQueuedTranslation<TContext>(
     {
       providerKind: "system",
       providerId: system.providerId,
-      modelTier: system.modelTier,
+      hostedModel: system.hostedModel,
       requestId: options.hostedRequestId,
       hostedFeature: requireHostedFeature(hostedFeature),
       instructions: systemPrompt,

@@ -4,10 +4,7 @@ import { describe, expect, it } from "vitest"
 import { DEFAULT_CONFIG } from "@/utils/constants/config"
 import { buildFeatureProviderPatch } from "@/utils/constants/feature-providers"
 import { isSystemProviderSelectorItem } from "@/utils/providers/provider-display"
-import {
-  BUILT_IN_AI_PROVIDER_LOGO,
-  getSelectableProvidersForCapability,
-} from "@/utils/providers/provider-registry"
+import { getSelectableProvidersForCapability } from "@/utils/providers/provider-registry"
 import {
   computeLanguageDetectionFallbackAfterDeletion,
   computeProviderFallbacksAfterDeletion,
@@ -92,25 +89,34 @@ describe("feature providers", () => {
     it("marks registry-backed system providers for selector grouping", () => {
       const providers = getSelectableProvidersForCapability("customAction", [])
 
-      expect(providers).toEqual([
-        expect.objectContaining({
-          kind: "system",
-          id: "read-frog-free-ai",
-          logo: expect.any(Function),
-        }),
-        expect.objectContaining({
-          kind: "system",
-          id: "read-frog-advance-ai",
-          logo: expect.any(Function),
-        }),
+      // One built-in provider per model: the Pro models, then the Max ones.
+      expect(providers.map((provider) => provider.id)).toEqual([
+        "read-frog-free-ai",
+        "duet-ai-gemini-3.8-flash",
+        "duet-ai-deepseek-flash",
+        "duet-ai-minimax-m3.1-flash",
+        "read-frog-advance-ai",
+        "duet-ai-claude-opus-5-5",
+        "duet-ai-gpt-6-sol",
+        "duet-ai-gpt-6-astra",
+        "duet-ai-gemini-4-argon",
+        "duet-ai-deepseek-v4-pro",
+        "duet-ai-glm-5.3",
+        "duet-ai-kimi-k3.1-pro",
       ])
+      for (const provider of providers) {
+        expect(provider).toMatchObject({ kind: "system", logo: expect.any(Function) })
+      }
 
       const builtInAiProvider = providers[0]
       expect(builtInAiProvider && isSystemProviderSelectorItem(builtInAiProvider)).toBe(true)
       if (!builtInAiProvider || !isSystemProviderSelectorItem(builtInAiProvider)) {
         throw new Error("Built-in AI provider selector item was not returned")
       }
-      expect(builtInAiProvider.logo("light")).toBe(BUILT_IN_AI_PROVIDER_LOGO)
+      expect(builtInAiProvider.name).toBe("GPT-6.1 Terra")
+      expect(builtInAiProvider.logo("light")).toContain("/light/openai.")
+      expect(providers[4]?.name).toBe("Claude Sonnet 5.5")
+      expect(providers[2]?.name).toBe("DeepSeek V4.1 Flash")
     })
   })
 

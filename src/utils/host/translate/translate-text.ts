@@ -191,7 +191,7 @@ function getSessionProviderRefFor(
   if (
     sessionRef?.kind !== "system" ||
     sessionRef.providerId !== provider.id ||
-    sessionRef.modelTier !== provider.modelTier
+    sessionRef.hostedModel !== provider.hostedModel
   ) {
     return null
   }
@@ -239,7 +239,7 @@ export async function resolvePageProviderRef(
 
   // The feature is part of the key: two features on the same provider and tier
   // gate on different tier statuses, so they must not share an in-flight fetch.
-  const key = `${provider.id}:${provider.modelTier}:${feature}`
+  const key = `${provider.id}:${provider.hostedModel}:${feature}`
   lastRequestedSystemKey = key
 
   // The session snapshot belongs to the page-translation run; other features

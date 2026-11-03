@@ -42,7 +42,7 @@ import { API_PROVIDER_ITEMS } from "@/utils/constants/providers"
 import { getSelectionToolbarActions, patchSelectionToolbarAction } from "@/utils/custom-actions"
 import { i18n } from "@/utils/i18n"
 import {
-  BUILT_IN_AI_PROVIDER_LOGO,
+  getBuiltInAiProviderLogo,
   getBuiltInAiProviderName,
 } from "@/utils/providers/provider-registry"
 import { providerSupportsTranslationOnlyMode } from "@/utils/providers/translation-only-gate"
@@ -176,10 +176,11 @@ function BuiltInProvider({
   providerId: BuiltInAiProviderId
   children: React.ReactNode
 }) {
+  const { theme } = useTheme()
   const value = useProviderEditorValue({
     identity: {
       id: providerId,
-      logo: BUILT_IN_AI_PROVIDER_LOGO,
+      logo: getBuiltInAiProviderLogo(providerId)(theme),
       name: getBuiltInAiProviderName(providerId),
     },
   })

@@ -148,7 +148,10 @@ options:
     description: Añade los proveedores que Duet Translate puede llamar. Más de 20 vienen integrados y puedes añadir API personalizadas compatibles con Chat Completions u Open Responses.
     configTitle: Configuración de proveedores
     addProvider: Añadir proveedor
-    builtInProvider: Proveedor integrado
+    builtInProvider: Modelos incluidos en tu plan
+    builtInModelGroups:
+      pro: "Pro y Max"
+      max: "Solo Max"
     builtInAiUsage:
       title: Cuota de IA integrada
       remaining: "$1% restante"
@@ -248,13 +251,12 @@ options:
       invalidJson: Formato JSON no válido
     providers:
       name:
-        builtInAi: IA integrada
-        builtInAiAdvance: IA integrada avanzada
         customChatComplete: Personalizado Chat Complete
         customResponses: Personalizado Responses
       attribution:
-        builtInAi: Modelo estándar alojado por Duet Translate. Las cuentas gratuitas pueden usarlo en las acciones de IA personalizadas; los miembros Pro y Max, en todas las funciones.
-        builtInAiAdvance: Modelo avanzado alojado por Duet Translate, exclusivo para miembros Max. Funciona en todas las funciones de IA integrada — traducción de página, acciones de IA personalizadas y más — con una cuota semanal compartida. Consume la cuota más rápido que el modelo estándar.
+        builtInAi: "GPT-6.1 Terra de OpenAI, ofrecido por Duet Translate sin necesidad de clave API. Las cuentas gratuitas pueden usarlo en las acciones de IA personalizadas; los miembros Pro y Max, en todas las funciones. Consume la cuota $1 veces más rápido que DeepSeek V4.1 Flash."
+        builtInAiPro: "$2 de $1, ofrecido por Duet Translate sin necesidad de clave API. Los miembros Pro y Max pueden usarlo en todas las funciones. Consume la cuota $3 veces más rápido que DeepSeek V4.1 Flash."
+        builtInAiMax: "$2 de $1, ofrecido por Duet Translate sin necesidad de clave API. Exclusivo para miembros Max y disponible en todas las funciones. Consume la cuota $3 veces más rápido que DeepSeek V4.1 Flash."
       description:
         openai: Proporciona modelos como GPT-4o
         azure: Modelos OpenAI hospedados en Azure mediante tus implementaciones
@@ -1531,7 +1533,7 @@ side:
 translateService:
   title: Servicio de traducción
   description: Solo para traducir la página web
-  builtInModels: Built-in Models
+  builtInModels: Modelos incluidos en tu plan
   llmModels: LLM Models
   normalTranslator: Traductor normal
   selectServices: Seleccionar servicios

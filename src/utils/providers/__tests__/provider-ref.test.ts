@@ -28,7 +28,7 @@ const SYSTEM_PROVIDER: SystemProviderRef = {
   kind: "system",
   id: "read-frog-free-ai",
   name: "Built-in AI",
-  modelTier: "normal",
+  hostedModel: "gpt-6.1-terra",
 }
 
 function tier(overrides: Partial<HostedAiTierStatus> = {}): HostedAiTierStatus {
@@ -91,7 +91,7 @@ describe("serializeProviderRef status coalescing", () => {
       expect(ref).toEqual({
         kind: "system",
         providerId: "read-frog-free-ai",
-        modelTier: "normal",
+        hostedModel: "gpt-6.1-terra",
         modelRevision: "normal-r7",
       })
     }

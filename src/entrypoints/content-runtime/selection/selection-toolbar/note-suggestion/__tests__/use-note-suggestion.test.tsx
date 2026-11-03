@@ -54,7 +54,7 @@ const SYSTEM_PROVIDER_REF = {
   kind: "system",
   id: "read-frog-free-ai",
   name: "Built-in AI",
-  modelTier: "normal",
+  hostedModel: "gpt-6.1-terra",
 } satisfies NoteSuggestionFireInput["provider"]
 
 const VALID_ENVELOPE = {
@@ -190,7 +190,7 @@ describe("useNoteSuggestion", () => {
     // hosted payload — the server owns those knobs.
     expect(request).toEqual({
       providerId: SYSTEM_PROVIDER_REF.id,
-      modelTier: SYSTEM_PROVIDER_REF.modelTier,
+      hostedModel: SYSTEM_PROVIDER_REF.hostedModel,
       requestId: expect.any(String),
       instructions: expect.any(String),
       prompt: expect.any(String),

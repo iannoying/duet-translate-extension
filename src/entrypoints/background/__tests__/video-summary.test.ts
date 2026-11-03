@@ -23,7 +23,7 @@ vi.mock("../background-stream", () => {
 const providerRef: PromptableProviderRef = {
   kind: "system",
   providerId: "read-frog-free-ai",
-  modelTier: "normal",
+  hostedModel: "gpt-6.1-terra",
   modelRevision: "normal-r1",
 }
 const request = { transcript: "Video transcript", targetLanguage: "English", providerRef }
